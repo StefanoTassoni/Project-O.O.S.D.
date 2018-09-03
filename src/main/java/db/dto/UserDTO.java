@@ -1,6 +1,6 @@
 package db.dto;
 
-public class UserDTO{
+public class UserDTO extends BaseDTO{
 	
 	private Integer id;
 	private String name;
