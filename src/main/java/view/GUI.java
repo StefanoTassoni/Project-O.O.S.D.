@@ -1,5 +1,6 @@
 package view;
 
+import controller.exception.ServiceException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,15 +10,18 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import model.service.*;
+import model.service.LoginService;
+import model.User;
 
 public class GUI extends Application implements EventHandler<ActionEvent>{
 	
 	private static GUI instance;
 	private String TITLE = "Digital Library";
-	Button clickButton;
+	Button loginButton, clickButton2;
 	Stage loginWindow;; 
-	Scene loginScene, redirectTestScene;
+	Scene loginScene, successLoginScene;
 	
 	public static GUI getInstance() 
 	{
@@ -35,33 +39,66 @@ public class GUI extends Application implements EventHandler<ActionEvent>{
 	{
 		loginWindow = primaryStage;
 		
-		Label label1 = new Label("Welcome to Digital Library");
+		Label loginLabel = new Label("Welcome to Digital Library");
 		
-		clickButton = new Button();
-		clickButton.setText("Go to scene 2");
-		clickButton.setOnAction(e -> loginWindow.setScene(redirectTestScene));
+		loginButton = new Button();
+		loginButton.setText("Login");
+		
+		clickButton2 = new Button();
+		
+		TextField usernameField = new TextField();
+		usernameField.setPromptText("username");
+		TextField passField = new TextField();
+		passField.setPromptText("password");
 		
 //		Scene loginScene = new Scene(layout, 300 , 250);
 //		loginWindow.setScene(loginScene);
 //		loginWindow.show();
 		
 		VBox layout1 = new VBox(20);
-		layout1.getChildren().addAll(label1, clickButton);
+		layout1.getChildren().addAll(loginLabel, usernameField, passField,loginButton);
 		
 		loginScene = new Scene(layout1, 200 , 200);
-		
-		Button clickButton2 = new Button();
-		clickButton2.setText("Go to scene 1 please");
-		clickButton2.setOnAction(e -> loginWindow.setScene(loginScene));
-		
-		StackPane layout = new StackPane();
-		layout.getChildren().add(clickButton2);
-		
-		redirectTestScene = new Scene(layout, 600 , 300);
 		
 		loginWindow.setScene(loginScene);
 		loginWindow.setTitle(TITLE);
 		loginWindow.show();
+		
+		//Event handling
+		loginButton.setOnAction(e -> 
+		{
+			if(!usernameField.getText().isEmpty() && !passField.getText().isEmpty() ) 
+			{
+				System.out.println("GUI.cls - start() - username: " + usernameField.getText());
+				System.out.println("GUI.cls - start() - password: " + passField.getText());
+				LoginService logService = LoginService.getInstance();
+				try {
+					User u = new User();
+					u = logService.login((String)usernameField.getText(),(String)passField.getText());
+					if(u != null) 
+					{
+						clickButton2.setText("Go back to login");
+						
+						Label successLoginLabel = new Label("Welcome ");
+						
+						StackPane layout = new StackPane();
+						layout.getChildren().addAll(successLoginLabel);
+						
+						successLoginScene = new Scene(layout, 600 , 300);
+						loginWindow.setScene(successLoginScene);		
+					}
+				} catch (ServiceException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+			else 
+			{
+				System.out.println("GUI.cls - start() - username or password empty");
+			}
+				
+		});
+		clickButton2.setOnAction(e -> loginWindow.setScene(loginScene));
 	}
 
 
