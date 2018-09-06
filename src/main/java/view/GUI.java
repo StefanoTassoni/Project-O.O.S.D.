@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import model.service.*;
 import model.service.LoginService;
 import model.User;
@@ -48,7 +49,7 @@ public class GUI extends Application implements EventHandler<ActionEvent>{
 		
 		TextField usernameField = new TextField();
 		usernameField.setPromptText("username");
-		TextField passField = new TextField();
+		PasswordField passField = new PasswordField();
 		passField.setPromptText("password");
 		
 //		Scene loginScene = new Scene(layout, 300 , 250);
