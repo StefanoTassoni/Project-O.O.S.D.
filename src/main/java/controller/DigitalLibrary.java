@@ -25,12 +25,6 @@ public class DigitalLibrary extends Application{
 		try 
 		{
 			Database.connect();
-			
-//			LoginService log = LoginService.getInstance();
-//			User u = new User();
-//			u = log.login("federiange", "fede");
-//			System.out.println(u);
-			
 			launch(args);
 			
 		} 

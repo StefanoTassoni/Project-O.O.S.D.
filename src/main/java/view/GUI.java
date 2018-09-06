@@ -19,7 +19,7 @@ public class GUI extends Application implements EventHandler<ActionEvent>{
 	
 	private static GUI instance;
 	private String TITLE = "Digital Library";
-	Button loginButton, clickButton2;
+	Button loginButton, logOutButton;
 	Stage loginWindow;; 
 	Scene loginScene, successLoginScene;
 	
@@ -44,7 +44,7 @@ public class GUI extends Application implements EventHandler<ActionEvent>{
 		loginButton = new Button();
 		loginButton.setText("Login");
 		
-		clickButton2 = new Button();
+		logOutButton = new Button();
 		
 		TextField usernameField = new TextField();
 		usernameField.setPromptText("username");
@@ -77,15 +77,29 @@ public class GUI extends Application implements EventHandler<ActionEvent>{
 					u = logService.login((String)usernameField.getText(),(String)passField.getText());
 					if(u != null) 
 					{
-						clickButton2.setText("Go back to login");
+						logOutButton.setText("logout");
 						
-						Label successLoginLabel = new Label("Welcome ");
+						Label successLoginLabel = new Label("Welcome " + u.getUsername());
 						
-						StackPane layout = new StackPane();
-						layout.getChildren().addAll(successLoginLabel);
+						VBox layout = new VBox(20);
+						layout.getChildren().addAll(successLoginLabel, logOutButton);
 						
 						successLoginScene = new Scene(layout, 600 , 300);
 						loginWindow.setScene(successLoginScene);		
+					}
+					else 
+					{
+						Scene unsuccessLoginScene;
+						
+						Label unsuccessLoginLabel = new Label("Something went wrong. Retry");
+						logOutButton.setText("Back to login");
+						
+						VBox layout = new VBox(20);
+						layout.getChildren().addAll(unsuccessLoginLabel, logOutButton);
+						
+						unsuccessLoginScene = new Scene(layout, 600 , 300);
+						loginWindow.setScene(unsuccessLoginScene);
+						
 					}
 				} catch (ServiceException e1) {
 					e1.printStackTrace();
@@ -98,7 +112,7 @@ public class GUI extends Application implements EventHandler<ActionEvent>{
 			}
 				
 		});
-		clickButton2.setOnAction(e -> loginWindow.setScene(loginScene));
+		logOutButton.setOnAction(e -> loginWindow.setScene(loginScene));
 	}
 
 
