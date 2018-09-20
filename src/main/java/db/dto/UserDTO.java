@@ -7,6 +7,8 @@ public class UserDTO extends BaseDTO{
 	private String surname;
 	private String username;
 	private String password;
+	private String nome_gruppo;
+
 	
 	public Integer getId() {
 		return id;
@@ -38,11 +40,17 @@ public class UserDTO extends BaseDTO{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public String getNomeGruppo() {
+		return nome_gruppo;
+	}
+	public void setNomeGruppo(String nome_gruppo) {
+		this.nome_gruppo = nome_gruppo;
+	}
 	
 	@Override
 	public String toString() {
-		return "UserDTO [id=" + id + ", name=" + name + ", surname=" + surname + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", username=" + username + ", password="
+				+ password + ", nome gruppo=" + nome_gruppo +"]";
 	}
 	
 }
