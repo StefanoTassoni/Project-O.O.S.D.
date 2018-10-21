@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns:fx="http://javafx.com/fxml" fx:controller="controller.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Separator layoutX="293.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="15.0" />
       <GridPane alignment="center" hgap="10" layoutY="62.0" prefHeight="338.0" prefWidth="300.0" vgap="10">
@@ -54,21 +54,22 @@
             <Insets bottom="10" left="25" right="25" top="25" />
          </padding>
          <children>
-            <Label text="Nome:"  GridPane.rowIndex="1" />
-            <TextField fx:id="registerNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-            <Label text="Cognome:" GridPane.rowIndex="2" />
-            <TextField fx:id="registerSurnameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Username:" GridPane.rowIndex="3" />
-            <TextField fx:id="registerUsernameField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Email:" GridPane.rowIndex="4" />
-            <TextField fx:id="registerEmailField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="Password:" GridPane.rowIndex="5" />
-            <PasswordField fx:id="registerPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Nome:" />
+            <TextField fx:id="usernameField11" GridPane.columnIndex="1" />
+            <Label text="Cognome:" GridPane.rowIndex="1" />
+            <TextField fx:id="usernameField111" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Username:" GridPane.rowIndex="2" />
+            <TextField fx:id="usernameField1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Password:" GridPane.rowIndex="4" />
+            <PasswordField fx:id="passwordField1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
-                  <Button fx:id="registerButton" onAction="#handleRegistrationButton" text="Registrati" />
+                  <Button fx:id="signInButton1" onAction="#handleLoginButton" text="Registrati" />
                </children>
             </HBox>
+            <TextField fx:id="usernameField112" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Email:" GridPane.rowIndex="3" />
+            <TextField fx:id="usernameField1111" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
          <columnConstraints>
             <ColumnConstraints />

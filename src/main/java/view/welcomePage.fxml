@@ -1,12 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.CardPane?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
-<Pane fx:controller="controller.TextEditorCtrl" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" >
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controller.TextEditorCtrl">
    <children>
-      <Text layoutX="31.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HI!! Welcome" wrappingWidth="243.21875" />
-      <Button fx:id="textEditorBTN" layoutX="39.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleEditorButton" text="Html editor" />
+      <SplitPane layoutX="-2.0" layoutY="-3.0" prefHeight="400.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <CardPane layoutY="105.0" prefHeight="296.0" prefWidth="300.0" style="-fx-border-color: grey;">
+                     <TextField promptText="Username" />
+                     <TextField promptText="Password" />
+                     <Button alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="320.0" text="Login" textAlignment="CENTER" />
+                  </CardPane>
+                  <CardPane layoutX="298.0" layoutY="105.0" prefHeight="296.0" prefWidth="300.0" style="-fx-border-color: grey;">
+                     <items>
+                        <TextField promptText="Inserisci il tuo nome" />
+                        <TextField promptText="Username" />
+                        <TextField promptText="Idirizzo E-mail" />
+                        <TextField promptText="Password" />
+                        <TextField promptText="Conferma Password" />
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="320.0" text="Registrati" textAlignment="CENTER" />
+                     </items>
+                  </CardPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="107.0" prefWidth="300.0" style="-fx-border-color: grey;">
+                     <children>
+                        <Label layoutY="29.0" prefHeight="33.0" prefWidth="305.0" style="-fx-padding:10;" text="Inserisci username e password per il log in:">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="-1.0" layoutY="-2.0" prefHeight="42.0" prefWidth="303.0" style="-fx-padding:10;" text="Effetta il Login alla biblioteca">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="298.0" minHeight="0.0" minWidth="0.0" prefHeight="107.0" prefWidth="300.0" style="-fx-border-color: grey;">
+                     <children>
+                        <Label layoutY="29.0" prefHeight="33.0" prefWidth="305.0" style="-fx-padding:10;" text="Compila il form per avere immediato accesso">
+                           <font>
+                              <Font name="System Bold Italic" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="-1.0" layoutY="-2.0" prefHeight="42.0" prefWidth="303.0" style="-fx-padding:10;" text="Iscriviti adesso!">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
 </Pane>

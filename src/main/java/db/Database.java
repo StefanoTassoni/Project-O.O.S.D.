@@ -33,7 +33,7 @@ public class Database {
 		String driverName = "com.mysql.cj.jdbc.Driver";
 	    Class.forName(driverName);
 
-	    String serverName = "localhost";
+	    String serverName = "localhost:3307";
 	    String mydatabase = "digitallibrary?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	    
 	    String url = "jdbc:mysql://" + serverName + "/" + mydatabase; 

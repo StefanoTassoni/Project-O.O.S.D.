@@ -25,8 +25,8 @@ public class DigitalLibrary extends Application{
 	public static Stage stage;
 	public static Parent root;
 	private static String TITLE = "Digital Library";
-	public static Integer xDim = 500;
-	public static Integer yDim = 500;
+	public static Integer xDim = 600;
+	public static Integer yDim = 400;
 	
 	public static void main(String [] args) throws ClassNotFoundException, NamingException, ServiceException {	
 		
@@ -47,10 +47,11 @@ public class DigitalLibrary extends Application{
 	{
 		stage = primaryStage;
 		root = FXMLLoader.load(getClass().getClassLoader().getResource("view/LoginPage.fxml"));
-        Scene scene = new Scene(root, 500, 475);
+        Scene scene = new Scene(root, xDim, yDim);
         stage = new Stage();
         stage.setTitle(TITLE);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
 		
 //		GUI gui = GUI.getInstance();
