@@ -47,7 +47,7 @@ public class LoginController
 					{
 						Map<String, Object> objectMap = new HashMap<String, Object>();
 						objectMap.put("Username", u.getUsername());
-						DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/AdminPage.fxml");
+						DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");
 						//loginWindow.setScene(sceneHandler("successLogin", objectMap));		
 					}
 					else 

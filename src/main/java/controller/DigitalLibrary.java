@@ -1,22 +1,17 @@
 package controller;
 
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
-import java.sql.Connection;
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.service.LoginService;
-import model.User;
 
 import javax.naming.NamingException;
 
 import controller.exception.ServiceException;
-import controller.utils.GUIUtils;
 import db.Database;
 
 
