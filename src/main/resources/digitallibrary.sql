@@ -2,8 +2,8 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Creato il: Set 19, 2018 alle 18:04
+-- Host: 127.0.0.1:3307
+-- Creato il: Ott 22, 2018 alle 11:19
 -- Versione del server: 5.7.19
 -- Versione PHP: 5.6.31
 
@@ -87,12 +87,22 @@ DROP TABLE IF EXISTS `opera`;
 CREATE TABLE IF NOT EXISTS `opera` (
   `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `titolo` varchar(200) NOT NULL,
+  `categoria` varchar(200) NOT NULL,
   `autore` varchar(200) NOT NULL,
   `lingua` varchar(200) NOT NULL,
   `date_creazione` date NOT NULL,
   `data_publicazione` datetime NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `opera`
+--
+
+INSERT INTO `opera` (`ID`, `titolo`, `categoria`, `autore`, `lingua`, `date_creazione`, `data_publicazione`) VALUES
+(1, 'divina commedia', 'romanzo', 'dante alighieri', 'italiano volgare', '1800-01-01', '2018-05-15 00:00:00'),
+(2, 'odissea', 'poema', 'omero', 'greco antico', '1200-01-01', '2018-06-10 00:00:00'),
+(3, 'decamerone', 'raccolta di novelle', 'giovanni boccaccio', 'italiano', '1350-01-01', '2020-05-15 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -154,16 +164,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `SURNAME` varchar(200) NOT NULL,
   `USERNAME` varchar(200) NOT NULL,
   `PASSWORD` varchar(200) NOT NULL,
+  `MAIL` varchar(200) NOT NULL,
   `NOME_GRUPPO` enum('supervisore','lettore','trascrittore') NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `user`
 --
 
-INSERT INTO `user` (`ID`, `NAME`, `SURNAME`, `USERNAME`, `PASSWORD`, `NOME_GRUPPO`) VALUES
-(1, 'FEDERICO', 'ANGELINI', 'federiange', 'fede', 'supervisore');
+INSERT INTO `user` (`ID`, `NAME`, `SURNAME`, `USERNAME`, `PASSWORD`, `MAIL`, `NOME_GRUPPO`) VALUES
+(1, 'FEDERICO', 'ANGELINI', 'federiange', 'fede', 'fede@gmail.com', 'supervisore'),
+(2, 'gino', 'paoli', 'paolino', 'daipaolo', 'gino@gmail.com', 'lettore'),
+(3, 'rocco', 'papaleo', 'rocchetta', 'pappa', 'rocco@gmail.com', 'trascrittore');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

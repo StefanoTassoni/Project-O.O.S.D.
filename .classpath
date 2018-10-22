@@ -34,6 +34,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/federico/Documents/Oosd Prog folder/Project-O.O.S.D./src/main/resources/charm-glisten-5.0.1.jar"/>
+	<classpathentry kind="lib" path="src/main/resources/charm-glisten-5.0.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
