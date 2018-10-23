@@ -27,6 +27,7 @@ public class DigitalLibrary extends Application{
 		
 		try 
 		{
+			System.setProperty("javafx.platform" , "Desktop");
 			Database.connect();
 			launch(args);
 			

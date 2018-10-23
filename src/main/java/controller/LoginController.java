@@ -2,6 +2,7 @@ package controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.prefs.Preferences;
 
 import controller.exception.ServiceException;
 import controller.utils.GUIUtils;
@@ -37,8 +38,8 @@ public class LoginController
     		
     		if(!usernameField.getText().isEmpty() && !passwordField.getText().isEmpty() ) 
 			{
-				System.out.println("GUI.cls - start() - username: " + usernameField.getText());
-				System.out.println("GUI.cls - start() - password: " + passwordField.getText());
+				System.out.println("LoginController.cls - handleLoginButton() - username: " + usernameField.getText());
+				System.out.println("LoginController.cls - handleLoginButton() - password: " + passwordField.getText());
 				LoginService logService = LoginService.getInstance();
 				try {
 					User u = new User();
@@ -47,13 +48,14 @@ public class LoginController
 					{
 						Map<String, Object> objectMap = new HashMap<String, Object>();
 						objectMap.put("Username", u.getUsername());
-						DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");
-						//loginWindow.setScene(sceneHandler("successLogin", objectMap));		
+						//Prefereces used to store session information
+						Preferences userPreferences = Preferences.userRoot();
+						userPreferences.put("username",u.getUsername());
+						DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");		
 					}
 					else 
 					{
-						errorText.setText("Sorry, something went wrong...Retry!");
-						//loginWindow.setScene(sceneHandler("successLogin", null));	
+						errorText.setText("Sorry, something went wrong...Retry!");	
 					}
 				} catch (ServiceException e) {
 					e.printStackTrace();
@@ -62,7 +64,7 @@ public class LoginController
 			}
 			else 
 			{
-				System.out.println("GUI.cls - start() - username or password empty");
+				System.out.println("LoginController.cls - handleLoginButton() - username or password empty");
 			}
         
     }
@@ -75,11 +77,11 @@ public class LoginController
 				&& !registerUsernameField.getText().isEmpty() && !registerPasswordField.getText().isEmpty() 
 				&& !registerEmailField.getText().isEmpty()) 
 		{
-			System.out.println("GUI.cls - start() - name: " + registerNameField.getText());
-			System.out.println("GUI.cls - start() - surname: " + registerSurnameField.getText());
-			System.out.println("GUI.cls - start() - username: " + registerUsernameField.getText());
-			System.out.println("GUI.cls - start() - Pass: " + registerPasswordField.getText());
-			System.out.println("GUI.cls - start() - email: " + registerEmailField.getText());
+			System.out.println("LoginController.cls - handleRegistrationButton() - name: " + registerNameField.getText());
+			System.out.println("LoginController.cls - handleRegistrationButton() - surname: " + registerSurnameField.getText());
+			System.out.println("LoginController.cls - handleRegistrationButton() - username: " + registerUsernameField.getText());
+			System.out.println("LoginController.cls - handleRegistrationButton() - Pass: " + registerPasswordField.getText());
+			System.out.println("LoginController.cls - handleRegistrationButton() - email: " + registerEmailField.getText());
 //			LoginService logService = LoginService.getInstance();
 //			try {
 //				User u = new User();
@@ -103,7 +105,7 @@ public class LoginController
 		}
 		else 
 		{
-			System.out.println("GUI.cls - start() - username already exist");
+			System.out.println("LoginController.cls - handleRegistrationButton() - username already exist");
 		}
     
 }
