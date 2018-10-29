@@ -33,5 +33,14 @@ public class GUIUtils{
 		return root;
     }
 	
+	public Parent replaceResizeSceneContent(Parent root, String fxml, Integer xdim , Integer ydim) throws Exception {
+		root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
+		DigitalLibrary.stage.setResizable(true);
+        Scene scene = new Scene(root, xdim, ydim);
+        DigitalLibrary.stage.setScene(scene);
+        DigitalLibrary.stage.setResizable(false);
+		return root;
+    }
+	
 	
 }

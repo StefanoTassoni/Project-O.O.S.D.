@@ -49,7 +49,7 @@ public class ResearchController
     
     @FXML protected void gotoResearchHome() throws Exception 
     {	
-    		System.out.println("ResearchController.cls - gotoResearchHome() - username or password empty");
+    		System.out.println("ResearchController.cls - gotoResearchHome()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
@@ -62,11 +62,12 @@ public class ResearchController
     }
     
     @FXML protected void gotoUserProfile() throws Exception 
-    {	
+    {
+    		System.out.println("ResearchController.cls - gotoUserProfile()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/LoginPage.fxml");
+			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
 		} 
 		catch (Exception e) 
 		{
@@ -76,6 +77,7 @@ public class ResearchController
     
     @FXML protected void gotoModuleCompiling() throws Exception 
     {	
+    		System.out.println("ResearchController.cls - gotoModuleCompiling()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
