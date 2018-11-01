@@ -71,7 +71,7 @@ public class UserProfileCtrl implements Initializable{
     {	
     		System.out.println("UserProfileCtrl.cls - gotoEditProfile()");
     		Preferences session = Preferences.userRoot();
-    		System.out.println("UserProfileCtrl.cls - gotoResearchHome()" + session.get("username", null));
+    		System.out.println("UserProfileCtrl.cls - gotoResearchHome() - sessionUsernname: " + session.get("username", null));
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
@@ -89,7 +89,7 @@ public class UserProfileCtrl implements Initializable{
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/EditUserPasswordPage.fxml");
+			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/EditUserPassword.fxml", 600, 500);
 		} 
 		catch (Exception e) 
 		{

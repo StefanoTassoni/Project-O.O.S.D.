@@ -63,6 +63,7 @@ public class Database {
 	 * @throws SQLException
 	 */
 	public static List<Map<String, Object>> select(String query) throws SQLException {
+		System.out.println("Database.cls - select() - query: " + query);
 		return Database.executeQuery(query);
 	}
 

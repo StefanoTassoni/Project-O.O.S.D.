@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.CardPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.OperaListCtrl">
+   <children>
+      <CardPane prefHeight="400.0" prefWidth="222.0">
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
+          <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
+          <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
+      </CardPane>
+      <Label contentDisplay="CENTER" layoutX="325.0" layoutY="29.0" prefHeight="26.0" prefWidth="178.0" style="-fx-alignment: Center;" text="La tua Ricerca" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableView" layoutX="231.0" layoutY="75.0" prefHeight="285.0" prefWidth="357.0">
+        <columns>
+          <!--<TableColumn fx:id="operaName" prefWidth="75.0" text="Indice" />-->
+          <TableColumn fx:id="operaTitle" prefWidth="75.0" text="Opera" />
+          <TableColumn fx:id="operaAuthor" prefWidth="75.0" text="Autore" />
+          <TableColumn fx:id="operaCategory" prefWidth="75.0" text="Categoria" />
+        </columns>
+      </TableView>
+      <Pagination layoutX="226.0" layoutY="61.0" prefHeight="351.0" prefWidth="373.0" />
+   </children>
+</Pane>

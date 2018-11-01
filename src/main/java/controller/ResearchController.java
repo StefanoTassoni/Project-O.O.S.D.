@@ -1,10 +1,14 @@
 package controller;
 
+import java.util.List;
+
 import controller.utils.GUIUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import model.Opera;
+import model.service.OperaService;
  
 public class ResearchController 
 {
@@ -22,10 +26,9 @@ public class ResearchController
     @FXML protected void searchOpera(ActionEvent event) throws Exception 
     {	
     		GUIUtils guiUtils = GUIUtils.getInstance();
+    		OperaService operaService = OperaService.getInstance();
     		
-    		if(!operaName.getText().isEmpty() && !operaCategory.getText().isEmpty() &&
-			!operaAuthor.getText().isEmpty() && !operaYear.getText().isEmpty() &&
-			!operaLanguage.getText().isEmpty() ) 
+    		if(!operaName.getText().isEmpty()) 
 		{
 			try 
 			{
@@ -34,6 +37,12 @@ public class ResearchController
 				System.out.println("ResearchController.cls - searchOpera() - operaAuthor: " + operaAuthor.getText());
 				System.out.println("ResearchController.cls - searchOpera() - operaLanguage: " + operaLanguage.getText());
 				System.out.println("ResearchController.cls - searchOpera() - operaYear: " + operaYear.getText());
+				List<Opera> operas = operaService.getByTitle(operaName.getText());
+				
+				System.out.println("ResearchController.cls - searchOpera() - operas: " + operas.toString());
+				
+				DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/OperaListPage.fxml");
+				
 			} 
 			catch (Exception e) 
 			{
@@ -42,7 +51,7 @@ public class ResearchController
 		}
 		else 
 		{
-			System.out.println("ResearchController.cls - searchOpera() - username or password empty");
+			System.out.println("ResearchController.cls - searchOpera() - Insert opera title");
 		}
     
     }
