@@ -38,13 +38,11 @@ public class OperaListCtrl implements Initializable, ObservableList<Opera>{
     		ObservableList<Opera> tableRow =  FXCollections.observableArrayList();
 	    	try 
 	    {
-	    		OperaService operaService = OperaService.getInstance();
-	    		List<Opera> operas = operaService.getAllOperas();
-	    		
+	    		//OperaService operaService = OperaService.getInstance();
+	    		//List<Opera> operas = operaService.getAllOperas();
+	    		List<Opera> operas = DigitalLibrary.currentResearch;
 	    		if (!operas.isEmpty()) 
 	    		{
-	    			
-	    			
 				for (Opera op: operas) 
 				{
 					tableRow.add(op);
@@ -57,7 +55,7 @@ public class OperaListCtrl implements Initializable, ObservableList<Opera>{
     			
 			tableView.setItems(tableRow);
 		} 
-        catch (ServiceException e) 
+        catch (Exception e) 
         {
 			e.printStackTrace();
 		}

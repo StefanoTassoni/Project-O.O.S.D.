@@ -1,17 +1,24 @@
 package controller;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import controller.utils.GUIUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Label;
+
 import model.Opera;
 import model.service.OperaService;
  
-public class ResearchController 
-{
+public class ResearchController implements Initializable{
     
     /***REGISTER***/
     @FXML TextField operaName;
@@ -21,6 +28,31 @@ public class ResearchController
     @FXML TextField operaLanguage;
     @FXML Button searchButton;
     //@FXML Text registerErrorText;
+    
+    @FXML Label viewModul;
+    @FXML Label validTranscription;
+    @FXML Label assignImage;
+    @FXML Label getImage;
+    @FXML Label manageLevel;
+    
+    
+    public void initialize(URL location, ResourceBundle resources) 
+    {
+	    	try 
+	    {
+	    		//TODO if profile = user delete following tab
+	    		System.out.println("ResearchController.cls - initialize()");
+	    		viewModul.setVisible(false);
+	    		validTranscription.setVisible(false);
+	    		assignImage.setVisible(false);
+	    		getImage.setVisible(false);
+	    		manageLevel.setVisible(false);
+		} 
+        catch (Exception e) 
+        {
+			e.printStackTrace();
+		}
+    }
     
     
     @FXML protected void searchOpera(ActionEvent event) throws Exception 
@@ -37,9 +69,9 @@ public class ResearchController
 				System.out.println("ResearchController.cls - searchOpera() - operaAuthor: " + operaAuthor.getText());
 				System.out.println("ResearchController.cls - searchOpera() - operaLanguage: " + operaLanguage.getText());
 				System.out.println("ResearchController.cls - searchOpera() - operaYear: " + operaYear.getText());
-				List<Opera> operas = operaService.getByTitle(operaName.getText());
+				DigitalLibrary.currentResearch = operaService.getByTitle(operaName.getText());
 				
-				System.out.println("ResearchController.cls - searchOpera() - operas: " + operas.toString());
+				System.out.println("ResearchController.cls - searchOpera() - operas: " + DigitalLibrary.currentResearch.toString());
 				
 				DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/OperaListPage.fxml");
 				

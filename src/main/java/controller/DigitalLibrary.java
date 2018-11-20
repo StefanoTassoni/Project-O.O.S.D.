@@ -1,13 +1,15 @@
 package controller;
 
 import java.sql.SQLException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Opera;
 
 import javax.naming.NamingException;
 
@@ -19,6 +21,7 @@ public class DigitalLibrary extends Application{
 
 	public static Stage stage;
 	public static Parent root;
+	public static List<Opera> currentResearch = new ArrayList<Opera>();
 	private static String TITLE = "Digital Library";
 	public static Integer xDim = 600;
 	public static Integer yDim = 400;
@@ -49,9 +52,7 @@ public class DigitalLibrary extends Application{
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-		
-//		GUI gui = GUI.getInstance();
-//		gui.start(primaryStage);
+
 	}
 	
 }
