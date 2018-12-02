@@ -29,6 +29,9 @@
           <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
           <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
       </CardPane>
+      <CardPane fx:id="CardPaneTranscriptor" prefHeight="400.0" prefWidth="222.0">
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
+      </CardPane>
       <Label contentDisplay="CENTER" layoutX="325.0" layoutY="29.0" prefHeight="26.0" prefWidth="178.0" style="-fx-alignment: Center;" text="La tua Ricerca" textAlignment="CENTER">
          <font>
             <Font size="16.0" />

@@ -33,6 +33,7 @@ public class ResearchController implements Initializable{
     
     @FXML CardPane CardPaneAdmin;
     @FXML CardPane CardPaneUser;
+    @FXML CardPane CardPaneTranscriptor;
     
     
     public void initialize(URL location, ResourceBundle resources) 
@@ -41,8 +42,34 @@ public class ResearchController implements Initializable{
 	    {
 	    		//TODO if profile = user delete following tab
 	    		System.out.println("ResearchController.cls - initialize()");
-	    		CardPaneUser.setVisible(false);
-	    		CardPaneAdmin.setVisible(true);
+	    		Preferences userPreferences = Preferences.userRoot();
+	    		String groupId = userPreferences.get("groupId", null);
+	    		System.out.println("ResearchController.cls - initialize() - groupId: " + groupId);
+	    		if(groupId != null) 
+	    		{
+	    			if(groupId.equals("1")) 
+	    			{
+	    				CardPaneAdmin.setVisible(true);
+		    			CardPaneUser.setVisible(false);
+		    			CardPaneTranscriptor.setVisible(false);
+	    			}
+	    			else if(groupId.equals("2")) 
+	    			{
+	    				CardPaneUser.setVisible(true);
+		    			CardPaneAdmin.setVisible(false);
+		    			CardPaneTranscriptor.setVisible(false);
+	    			}
+	    			else if(groupId.equals("3")) 
+	    			{
+	    				CardPaneTranscriptor.setVisible(true);
+	    				CardPaneUser.setVisible(false);
+		    			CardPaneAdmin.setVisible(false);
+	    			}
+	    		}
+	    		else 
+	    		{
+	    			System.out.println("ResearchController.cls - initialize() - no group related to this account!");
+	    		}
 	    		
 		} 
         catch (Exception e) 

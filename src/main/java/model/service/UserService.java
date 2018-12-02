@@ -77,9 +77,7 @@ public class UserService{
 	public Integer getUserGroupId(String userId) throws ServiceException 
 	{
 		List<UserGroupDTO> userGroupDTOList = userGroupDAO.selectUserGroup(userId);
-		System.out.println("UserService.cls - getUserGroupId() - userGroupDTOList: " + userGroupDTOList);
 		List<UserGroup> userGroups = UserGroupMapper.toModel(userGroupDTOList);
-		System.out.println("UserService.cls - getUserGroupId() - userGroups: " + userGroups);
 		return userGroups.get(0).getFkGroup();
 	}
 	
