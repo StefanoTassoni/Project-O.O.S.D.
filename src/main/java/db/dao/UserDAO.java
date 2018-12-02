@@ -1,10 +1,14 @@
 package db.dao;
 
+import db.dto.OperaDTO;
 import db.dto.UserDTO;
+
+import java.util.List;
+
 import controller.exception.ServiceException;
 
 public class UserDAO extends BaseDAO<UserDTO> {
-			
+	
 	private static UserDAO instance;
 
 	private UserDAO() {
@@ -34,5 +38,6 @@ public class UserDAO extends BaseDAO<UserDTO> {
 	public void remove(UserDTO user) throws ServiceException {
 		delete(user);
 	}
+	
 	
 }

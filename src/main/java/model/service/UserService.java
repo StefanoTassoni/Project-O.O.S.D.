@@ -5,28 +5,33 @@ import java.util.List;
 
 
 import db.dao.UserDAO;
+import db.dao.UserGroupDAO;
+import db.dto.OperaDTO;
+import db.dto.UserGroupDTO;
 //import it.univaq.ingweb.courseweb.db.dao.UserGroupsDAO;
 import db.dto.UserDTO;
 //import it.univaq.ingweb.courseweb.db.dao.dto.UserGroupsDTO;
 import controller.exception.enums.ErrorCode;
 import controller.exception.ServiceException;
+import model.mapper.OperaMapper;
+import model.mapper.UserGroupMapper;
 import model.mapper.UserMapper;
+import model.Opera;
 import model.User;
+import model.UserGroup;
 
 public class UserService{
 
 		
 	private UserDAO userDAO;
-//	private UserGroupsDAO userGroupDAO;
+	private UserGroupDAO userGroupDAO;
 	
-
-
 	
 	private static UserService instance;
 	
 	private UserService() {
 		userDAO = UserDAO.getInstance();
-//		userGroupDAO = UserGroupsDAO.getInstance();
+		userGroupDAO = UserGroupDAO.getInstance();
 //		teacherDAO = TeacherDAO.getInstance();
 	}
 	
@@ -68,6 +73,16 @@ public class UserService{
 			existing = true;
 		return existing;
 	}
+	
+	public Integer getUserGroupId(String userId) throws ServiceException 
+	{
+		List<UserGroupDTO> userGroupDTOList = userGroupDAO.selectUserGroup(userId);
+		System.out.println("UserService.cls - getUserGroupId() - userGroupDTOList: " + userGroupDTOList);
+		List<UserGroup> userGroups = UserGroupMapper.toModel(userGroupDTOList);
+		System.out.println("UserService.cls - getUserGroupId() - userGroups: " + userGroups);
+		return userGroups.get(0).getFkGroup();
+	}
+	
 	
 //	public void saveUser(User user, String group) throws ServiceException {
 //		UserDTO userDTO = UserMapper.toDTO(user); 

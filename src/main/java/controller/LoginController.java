@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.prefs.Preferences;
 
 import controller.exception.ServiceException;
@@ -13,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import model.User;
 import model.service.LoginService;
+import model.service.UserService;
  
 public class LoginController 
 {
@@ -41,16 +40,21 @@ public class LoginController
 				System.out.println("LoginController.cls - handleLoginButton() - username: " + usernameField.getText());
 				System.out.println("LoginController.cls - handleLoginButton() - password: " + passwordField.getText());
 				LoginService logService = LoginService.getInstance();
-				try {
+				UserService userService = UserService.getInstance();
+				
+				try 
+				{
 					User u = new User();
 					u = logService.login((String)usernameField.getText(),(String)passwordField.getText());
+					
 					if(u != null) 
 					{
-						Map<String, Object> objectMap = new HashMap<String, Object>();
-						objectMap.put("Username", u.getUsername());
+						Integer groupId = userService.getUserGroupId(String.valueOf(u.getId()));
 						//Prefereces used to store session information
 						Preferences userPreferences = Preferences.userRoot();
 						userPreferences.put("username",u.getUsername());
+						userPreferences.put("groupId", String.valueOf(groupId));
+						System.out.println("LoginController.cls - handleLoginButton() - groupId: " + groupId);
 						DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");		
 					}
 					else 

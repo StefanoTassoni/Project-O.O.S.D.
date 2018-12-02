@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 
 import controller.utils.GUIUtils;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Label;
+import com.gluonhq.charm.glisten.control.CardPane;
 
 import model.Opera;
 import model.service.OperaService;
@@ -29,11 +31,8 @@ public class ResearchController implements Initializable{
     @FXML Button searchButton;
     //@FXML Text registerErrorText;
     
-    @FXML Label viewModul;
-    @FXML Label validTranscription;
-    @FXML Label assignImage;
-    @FXML Label getImage;
-    @FXML Label manageLevel;
+    @FXML CardPane CardPaneAdmin;
+    @FXML CardPane CardPaneUser;
     
     
     public void initialize(URL location, ResourceBundle resources) 
@@ -42,11 +41,9 @@ public class ResearchController implements Initializable{
 	    {
 	    		//TODO if profile = user delete following tab
 	    		System.out.println("ResearchController.cls - initialize()");
-	    		viewModul.setVisible(false);
-	    		validTranscription.setVisible(false);
-	    		assignImage.setVisible(false);
-	    		getImage.setVisible(false);
-	    		manageLevel.setVisible(false);
+	    		CardPaneUser.setVisible(false);
+	    		CardPaneAdmin.setVisible(true);
+	    		
 		} 
         catch (Exception e) 
         {

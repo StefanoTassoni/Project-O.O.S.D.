@@ -14,15 +14,20 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml"  fx:controller="controller.ResearchController">
    <children>
-      <CardPane prefHeight="400.0" prefWidth="222.0">
+      <CardPane fx:id="CardPaneAdmin" prefHeight="400.0" prefWidth="222.0">
           <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
           <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
           <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
-          <Label fx:id="viewModul" onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Consulta Moduli" />
-          <Label fx:id="validTranscription" onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Validazione Trascrizioni" />
-          <Label fx:id="assignImage" onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Assegnazione Immagini" />
-          <Label fx:id="getImage" onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Acqusizione Immagini" />
-          <Label fx:id="manageLevel" onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Gestione Livelli Trascrittori" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Consulta Moduli" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Validazione Trascrizioni" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Assegnazione Immagini" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Acqusizione Immagini" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Gestione Livelli Trascrittori" />
+      </CardPane>
+      <CardPane fx:id="CardPaneUser" prefHeight="400.0" prefWidth="222.0">
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
+          <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
+          <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
       </CardPane>
       <Label contentDisplay="CENTER" layoutX="325.0" layoutY="29.0" prefHeight="26.0" prefWidth="178.0" style="-fx-alignment: Center;" text="La tua Ricerca" textAlignment="CENTER">
          <font>
