@@ -1,6 +1,10 @@
 package controller;
 
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
@@ -31,6 +35,8 @@ public class ResearchController implements Initializable{
     @FXML Button searchButton;
     //@FXML Text registerErrorText;
     
+    
+    /***Sidebar START***/
     @FXML CardPane CardPaneAdmin;
     @FXML CardPane CardPaneUser;
     @FXML CardPane CardPaneTranscriptor;
@@ -93,7 +99,40 @@ public class ResearchController implements Initializable{
 				System.out.println("ResearchController.cls - searchOpera() - operaAuthor: " + operaAuthor.getText());
 				System.out.println("ResearchController.cls - searchOpera() - operaLanguage: " + operaLanguage.getText());
 				System.out.println("ResearchController.cls - searchOpera() - operaYear: " + operaYear.getText());
-				DigitalLibrary.currentResearch = operaService.getByTitle(operaName.getText());
+				
+				if (operaCategory.getText().isEmpty() && operaAuthor.getText().isEmpty() 
+						&& operaLanguage.getText().isEmpty() && operaYear.getText().isEmpty()) 
+				{
+					DigitalLibrary.currentResearch = operaService.getByTitle(operaName.getText());
+				}
+				else 
+				{
+					List<String> queryConditions = new ArrayList<String>();
+				
+					queryConditions.add(" TITOLO LIKE \"%" + operaName.getText() + "%\"  ");
+					
+					if (!operaCategory.getText().isEmpty()) queryConditions.add(" CATEGORIA LIKE \"%" + operaCategory.getText() + "%\"  ");
+					
+					if (!operaAuthor.getText().isEmpty()) queryConditions.add(" AUTORE LIKE \"%" + operaAuthor.getText() + "%\"  ");
+					
+					if (!operaLanguage.getText().isEmpty()) queryConditions.add(" LINGUA LIKE \"%" + operaLanguage.getText() + "%\"  ");
+					
+					if (!operaYear.getText().isEmpty())
+					{ 
+						String dataCreazione = operaYear.getText();
+						SimpleDateFormat sdf = new SimpleDateFormat("YYYY");
+						java.util.Date textFieldAsDate = null;
+
+						try {
+						    textFieldAsDate = sdf.parse(dataCreazione);
+						} catch (ParseException pe) {
+							System.out.println("ResearchController.cls - searchOpera() - parseError: " + pe);
+						}
+						queryConditions.add(" DATA_CREAZIONE = \"" + textFieldAsDate + "\"  ");
+					}
+					
+					DigitalLibrary.currentResearch = operaService.getByResearchField(queryConditions);
+				}
 				
 				System.out.println("ResearchController.cls - searchOpera() - operas: " + DigitalLibrary.currentResearch.toString());
 				
@@ -153,6 +192,6 @@ public class ResearchController implements Initializable{
 			e.printStackTrace();
 		}
     }
-    
+    /***Sidebar STOP***/
     
 }

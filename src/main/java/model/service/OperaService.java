@@ -3,6 +3,7 @@ package model.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import db.dao.OperaDAO;
@@ -42,5 +43,16 @@ public class OperaService {
 		return OperaMapper.toModel(operaDTOList);
 	}
 	
+	public List<Opera> getByResearchField(List<String> researchField) throws ServiceException 
+	{
+		String queryString = "";
+		for(String field : researchField) 
+		{
+			queryString += field + " AND ";
+		}
+		queryString = queryString.substring(0, queryString.length() - 4);
+		List<OperaDTO> operaDTOList = OperaDAO.getOperaByResearchField(queryString);
+		return OperaMapper.toModel(operaDTOList);
+	}
 	
 }

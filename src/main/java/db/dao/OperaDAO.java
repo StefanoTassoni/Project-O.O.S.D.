@@ -12,6 +12,10 @@ public class OperaDAO extends BaseDAO<OperaDTO> {
 			"SELECT * FROM OPERA "
 			+ "WHERE TITOLO LIKE \"%{0}%\"";
 	
+	private static final String SELECT_OPERA_BY_RESEARCHFIELD = 
+			"SELECT * FROM OPERA "
+			+ "WHERE {0}";
+	
 	
 	private static OperaDAO instance;
 
@@ -39,6 +43,11 @@ public class OperaDAO extends BaseDAO<OperaDTO> {
 	public List<OperaDTO> getOperaByName(String title) throws ServiceException 
 	{
 		return select(SELECT_OPERA_BY_NAME, title);
+	}
+	
+	public List<OperaDTO> getOperaByResearchField(String conditions) throws ServiceException 
+	{
+		return select(SELECT_OPERA_BY_RESEARCHFIELD, conditions);
 	}
 
 	public void remove(OperaDTO opera) throws ServiceException 
