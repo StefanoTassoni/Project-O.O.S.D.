@@ -119,16 +119,11 @@ public class ResearchController implements Initializable{
 					
 					if (!operaYear.getText().isEmpty())
 					{ 
-						String dataCreazione = operaYear.getText();
-						SimpleDateFormat sdf = new SimpleDateFormat("YYYY");
-						java.util.Date textFieldAsDate = null;
-
-						try {
-						    textFieldAsDate = sdf.parse(dataCreazione);
-						} catch (ParseException pe) {
-							System.out.println("ResearchController.cls - searchOpera() - parseError: " + pe);
-						}
-						queryConditions.add(" DATA_CREAZIONE = \"" + textFieldAsDate + "\"  ");
+						String dataInizioAnno = operaYear.getText() + "-01-01";
+						String dataFineAnno = operaYear.getText() + "-31-12";
+						
+						queryConditions.add(" (DATE_CREAZIONE >= \"" + dataInizioAnno + "\" AND DATE_CREAZIONE < \"" + dataFineAnno + "\"  ) ");
+						System.out.println("ResearchController.cls - searchOpera() - last queryConditions: " + queryConditions.get(queryConditions.size() - 1));
 					}
 					
 					DigitalLibrary.currentResearch = operaService.getByResearchField(queryConditions);
@@ -186,6 +181,21 @@ public class ResearchController implements Initializable{
 		try 
 		{
 			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/temp.fxml");
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+    }
+    
+    
+    @FXML protected void gotoImageAcquisition() throws Exception 
+    {	
+    		System.out.println("ResearchController.cls - gotoImageAcquisition()");
+    		GUIUtils guiUtils = GUIUtils.getInstance();
+		try 
+		{
+			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/ImageAcquisitionHome.fxml");
 		} 
 		catch (Exception e) 
 		{

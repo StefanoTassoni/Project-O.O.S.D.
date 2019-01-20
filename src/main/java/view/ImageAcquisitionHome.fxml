@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.CardPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.ImageAcquisitionHomeController">
+   <children>
+      <!-- Sidebar START -->
+      <CardPane fx:id="CardPaneAdmin" prefHeight="400.0" prefWidth="222.0">
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
+          <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
+          <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Consulta Moduli" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Validazione Trascrizioni" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Assegnazione Immagini" />
+          <Label onMouseClicked="#gotoImageAcquisition" style="-fx-padding:10;" text="Acqusizione Immagini" />
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Gestione Livelli Trascrittori" />
+      </CardPane>
+      <CardPane fx:id="CardPaneUser" prefHeight="400.0" prefWidth="222.0">
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
+          <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
+          <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
+      </CardPane>
+      <CardPane fx:id="CardPaneTranscriptor" prefHeight="400.0" prefWidth="222.0">
+          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
+      </CardPane>
+   <!-- Sidebar STOP -->
+      <Label contentDisplay="CENTER" layoutX="325.0" layoutY="29.0" prefHeight="26.0" prefWidth="178.0" style="-fx-alignment: Center;" text="La tua Ricerca" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <StackPane layoutX="231.0" layoutY="75.0" prefHeight="285.0" prefWidth="357.0">
+         <children>
+            <TableView fx:id="AllOperaView" prefHeight="285.0" prefWidth="357.0">
+              <columns>
+                <TableColumn fx:id="operaTitle" maxWidth="119.0" minWidth="119.0" text="Opera" />
+                <!--  <TableColumn fx:id="operaAuthor" maxWidth="119.0" minWidth="119.0" text="Autore" />
+                <TableColumn fx:id="operaCategory" maxWidth="119.0" minWidth="119.0" text="Categoria" />-->
+              </columns>
+            </TableView>
+         </children>
+      </StackPane>
+   </children>
+</Pane>
