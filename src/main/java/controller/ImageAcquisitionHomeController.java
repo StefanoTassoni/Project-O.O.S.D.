@@ -35,7 +35,7 @@ import model.service.OperaService;
 public class ImageAcquisitionHomeController implements Initializable, ObservableList<Opera>{
     
     /***REGISTER***/
-//    @FXML TextField operaName;
+    @FXML TextField AllOperaFilter;
 //    @FXML TextField operaYear;
 //    @FXML TextField operaLanguage;
 //    @FXML Button searchButton;
@@ -82,20 +82,29 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 		    			CardPaneAdmin.setVisible(false);
 	    			}
 	    			
+	    			String isFiltered = userPreferences.get("isFiltered", null);
 	    			OperaService opService = OperaService.getInstance();
-	    			List<Opera> operas = opService.getAllOperas();
-		    		if (!operas.isEmpty()) 
+	    			List<Opera> operas = new ArrayList<Opera>();
+	    			
+	    			if(isFiltered != null) 
+	    			{
+	    				userPreferences.remove("isFiltered");
+	    				operas = DigitalLibrary.currentResearch;
+	    			}
+	    			else
+	    			{	
+	    				operas = opService.getAllOperas();
+	    			}
+		    		
+	    			if (!operas.isEmpty()) 
 		    		{
 					for (Opera op: operas) 
 					{
-						System.out.println("ImageAcquisitionHomeController.cls - initialize() - Opera: " + op.toString());
 						tableRow.add(op);
 					}	
 				}
 	        
 		    		operaTitle.setCellValueFactory(new PropertyValueFactory<Opera, String>("titolo"));
-//	    			operaAuthor.setCellValueFactory(new PropertyValueFactory<Opera, String>("autore"));
-//	    			operaCategory.setCellValueFactory(new PropertyValueFactory<Opera, String>("categoria"));
 	    			
 	    			AllOperaView.setItems(tableRow);
 	    		}
@@ -111,6 +120,24 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 		}
     }
     
+    @FXML protected void filterOperas() throws Exception 
+    {	
+    		System.out.println("ImageAcquisitionHomeController.cls - filterOperas()");
+    		GUIUtils guiUtils = GUIUtils.getInstance();
+		try 
+		{
+			Preferences userPreferences = Preferences.userRoot();
+			userPreferences.put("isFiltered","true");
+			String filter = (!(AllOperaFilter.getText().isEmpty()) ? AllOperaFilter.getText() : "");
+			OperaService opService = OperaService.getInstance();
+			DigitalLibrary.currentResearch = opService.getByTitle(filter);
+			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/ImageAcquisitionHome.fxml");
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+    }
     
     
     @FXML protected void gotoResearchHome() throws Exception 
