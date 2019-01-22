@@ -82,11 +82,11 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 		    			CardPaneAdmin.setVisible(false);
 	    			}
 	    			
-	    			String isFiltered = userPreferences.get("isFiltered", null);
+	    			Boolean isFiltered = userPreferences.getBoolean("isFiltered", false);
 	    			OperaService opService = OperaService.getInstance();
 	    			List<Opera> operas = new ArrayList<Opera>();
 	    			
-	    			if(isFiltered != null) 
+	    			if(isFiltered == true) 
 	    			{
 	    				userPreferences.remove("isFiltered");
 	    				operas = DigitalLibrary.currentResearch;
@@ -127,7 +127,7 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 		try 
 		{
 			Preferences userPreferences = Preferences.userRoot();
-			userPreferences.put("isFiltered","true");
+			userPreferences.putBoolean("isFiltered",true);
 			String filter = (!(AllOperaFilter.getText().isEmpty()) ? AllOperaFilter.getText() : "");
 			OperaService opService = OperaService.getInstance();
 			DigitalLibrary.currentResearch = opService.getByTitle(filter);
