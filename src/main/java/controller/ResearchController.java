@@ -180,7 +180,7 @@ public class ResearchController implements Initializable{
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/temp.fxml");
+			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/CompilationModule.fxml");
 		} 
 		catch (Exception e) 
 		{
