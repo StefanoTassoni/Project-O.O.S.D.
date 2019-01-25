@@ -10,6 +10,7 @@ public enum ErrorCode {
 	COURSE_ALREADY_EXISTS("error.service.course_already_exists"),
 	COURSE_NOT_FOUND("error.service.course_not_found"),
 	USER_NOT_FOUND("error.service.user_not_found"),
+	MODULO_NOT_FOUND("error.service.modulo_not_found"),
 	RETRIEVE_DATA_FROM_DB("error.dao.retrieve_from_db"),
 	
 	// BACK OFFICE 
