@@ -22,16 +22,14 @@ public class CompilationModuleCtrl {
 		 
 		 GUIUtils guiUtils = GUIUtils.getInstance();
  		
- 		if(!username.getText().isEmpty() && !mail.getText().isEmpty() 
- 			&& !message.getText().isEmpty()) 
+ 		if(!message.getText().isEmpty()) 
 		{
  			try
 			{
- 				System.out.println("EditUserProfileCtrl.cls - sendModule() - username: " + username.getText());
-				System.out.println("EditUserProfileCtrl.cls - sendModule() - mail: " + mail.getText());
 				System.out.println("EditUserProfileCtrl.cls - sendModule() - message: " + message.getText());
-				//ModuloService moduloService = ModuloService.getInstance();
-				
+				ModuloService moduloService = ModuloService.getInstance();
+				moduloService.insertModulo(message.getText());
+				DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");
 			}			
  			
 			catch (Exception e) 

@@ -1,6 +1,7 @@
 package db.dao;
 
 import db.dto.ModuloDTO;
+import db.dto.UserDTO;
 import controller.exception.ServiceException;
 
 public class ModuloDAO extends BaseDAO<ModuloDTO>{
@@ -25,8 +26,12 @@ public class ModuloDAO extends BaseDAO<ModuloDTO>{
 		return find(moduloDTO);
 	}
 	
-	public void remove(ModuloDTO modulo) throws ServiceException{
+	public void removeModule(ModuloDTO modulo) throws ServiceException{
 		delete(modulo);
+	}
+	
+	public void insertModulo(ModuloDTO modulo) throws ServiceException {
+		insert(modulo);
 	}
 	
 }

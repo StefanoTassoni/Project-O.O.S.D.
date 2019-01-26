@@ -1,5 +1,6 @@
 package model.service;
 
+import java.util.prefs.Preferences;
 import db.dao.ModuloDAO;
 import db.dto.ModuloDTO;
 import model.mapper.ModuloMapper;
@@ -7,6 +8,7 @@ import model.Modulo;
 
 
 import java.util.List;
+import java.util.prefs.Preferences;
 
 import controller.exception.ServiceException;
 import controller.exception.enums.ErrorCode;
@@ -40,13 +42,13 @@ public class ModuloService {
 		return ModuloMapper.toModel(moduloDTO);
 	}
 	
-	/*inserisce un nuovo modulo
-	public void setModulo(String user, String message, Integer iduser ) {
-		String query= "INSERT INTO `modulo`(`ID`, `message`, `IDuser`) VALUES (1 ,'eccolo', 2)";
-		
-		//ModuloDTO moduloDTO = moduloDAO.insert(query);
+	public void insertModulo(String msg) throws ServiceException{
+		Preferences userPreferences = Preferences.userRoot();
+		ModuloDTO moduloDTO = new ModuloDTO();
+		moduloDTO.setFkIdUser(Integer.valueOf(userPreferences.get("userId",null)));
+		moduloDTO.setMessage(msg);
+		moduloDAO.insert(moduloDTO);
 	}
-	*/
 	
 }
 	

@@ -52,6 +52,7 @@ public class LoginController
 						Integer groupId = userService.getUserGroupId(String.valueOf(u.getId()));
 						//Prefereces used to store session information
 						Preferences userPreferences = Preferences.userRoot();
+						userPreferences.putInt("userId",u.getId());
 						userPreferences.put("username",u.getUsername());
 						userPreferences.put("groupId", String.valueOf(groupId));
 						System.out.println("LoginController.cls - handleLoginButton() - groupId: " + groupId);

@@ -11,8 +11,9 @@ public class ModuloMapper {
 	public static ModuloDTO toDTO(Modulo model) {
 		ModuloDTO dto = new ModuloDTO();
 		dto.setId(model.getId());
-		dto.setMessage(model.getMessage() );
-		dto.setIdUser(model.getIdUser());
+		dto.setMessage(model.getMessage());
+		dto.setFkIdUser(model.getFkIdUser());
+		System.out.println("ModuloMapper.cls - toDTO - dto : " + dto); 
 		return dto;
 	}
 	
@@ -20,7 +21,8 @@ public class ModuloMapper {
 		Modulo model = new Modulo();
 		model.setId(dto.getId());
 		model.setMessage(dto.getMessage());
-		model.setIdUser(dto.getIdUser());
+		model.setFkIdUser(dto.getFkIdUser());
+		System.out.println("ModuloMapper.cls - toModel - dto : " + model);
 		return model;
 	}
 	

@@ -4,7 +4,7 @@ package model;
 		
 		private Integer id;
 		private String message;
-		private Integer idUser;
+		private Integer fk_id_user;
 		
 		public Integer getId() {
 			return id;
@@ -20,16 +20,16 @@ package model;
 			this.message = message;
 		}
 		
-		public Integer getIdUser() {
-			return idUser;
+		public Integer getFkIdUser() {
+			return fk_id_user;
 		}
-		public void setIdUser(Integer idUser) {
-			this.idUser = idUser;
+		public void setFkIdUser(Integer idUser) {
+			this.fk_id_user = idUser;
 		}
 		
 		@Override
 		public String toString() {
-			return "Modulo [id=" + id + ", message=" + message + ", idUser=" + idUser +"]";	
+			return "Modulo [id=" + id + ", message=" + message + ", fk_id_user=" + fk_id_user +"]";	
 		}
 		
 	}
