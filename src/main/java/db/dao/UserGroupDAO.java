@@ -31,8 +31,6 @@ public class UserGroupDAO extends BaseDAO<UserGroupDTO> {
 	
 	public List<UserGroupDTO> selectUserGroup(String userId) throws ServiceException 
 	{
-		List<UserGroupDTO> temp = select(SELECT_USER_GROUP_BY_ID, userId);
-		System.out.println("selectUserGroup() - temp " + temp);
 		return select(SELECT_USER_GROUP_BY_ID, userId);
 	}
 
