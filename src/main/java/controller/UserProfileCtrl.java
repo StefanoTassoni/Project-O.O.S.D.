@@ -43,29 +43,7 @@ public class UserProfileCtrl implements Initializable{
 //		avatar.setFill(imagePattern);
     }
 
-	
-	
-//	@FXML protected void searchOpera(ActionEvent event) throws Exception 
-//    {	
-//    		GUIUtils guiUtils = GUIUtils.getInstance();
-//    		System.out.println("UserProfileCtrl.cls - constructor()");
-//    		if(true) 
-//		{
-//			try 
-//			{
-//				
-//			} 
-//			catch (Exception e) 
-//			{
-//				e.printStackTrace();
-//			}
-//		}
-//		else 
-//		{
-//			System.out.println("UserProfileCtrl.cls - searchOpera() - username or password empty");
-//		}
-//    
-//    }
+
 	
 	@FXML protected void gotoEditProfile() throws Exception 
     {	
@@ -90,49 +68,6 @@ public class UserProfileCtrl implements Initializable{
 		try 
 		{
 			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/EditUserPassword.fxml", 600, 500);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-	
-	
-	@FXML protected void gotoResearchHome() throws Exception 
-    {	
-    		System.out.println("UserProfileCtrl.cls - gotoResearchHome()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoUserProfile() throws Exception 
-    {	
-    		System.out.println("UserProfileCtrl.cls - gotoUserProfile()");	
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoModuleCompiling() throws Exception 
-    {	
-    		System.out.println("UserProfileCtrl.cls - gotoUserProfile()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/temp.fxml");
 		} 
 		catch (Exception e) 
 		{

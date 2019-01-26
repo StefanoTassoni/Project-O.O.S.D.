@@ -59,59 +59,33 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 	    		//TODO if profile = user delete following tab
 	    		System.out.println("ImageAcquisitionHomeController.cls - initialize()");
 	    		Preferences userPreferences = Preferences.userRoot();
-	    		String groupId = userPreferences.get("groupId", null);
-	    		System.out.println("ImageAcquisitionHomeController.cls - initialize() - groupId: " + groupId);
-	    		if(groupId != null) 
+	    			
+    			Boolean isFiltered = userPreferences.getBoolean("isFiltered", false);
+    			OperaService opService = OperaService.getInstance();
+    			List<Opera> operas = new ArrayList<Opera>();
+    			
+    			if(isFiltered == true) 
+    			{
+    				userPreferences.remove("isFiltered");
+    				operas = DigitalLibrary.currentResearch;
+    			}
+    			else
+    			{	
+    				operas = opService.getAllOperas();
+    			}
+	    		
+    			if (!operas.isEmpty()) 
 	    		{
-	    			if(groupId.equals("1")) 
-	    			{
-	    				CardPaneAdmin.setVisible(true);
-		    			CardPaneUser.setVisible(false);
-		    			CardPaneTranscriptor.setVisible(false);
-	    			}
-	    			else if(groupId.equals("2")) 
-	    			{
-	    				CardPaneUser.setVisible(true);
-		    			CardPaneAdmin.setVisible(false);
-		    			CardPaneTranscriptor.setVisible(false);
-	    			}
-	    			else if(groupId.equals("3")) 
-	    			{
-	    				CardPaneTranscriptor.setVisible(true);
-	    				CardPaneUser.setVisible(false);
-		    			CardPaneAdmin.setVisible(false);
-	    			}
-	    			
-	    			Boolean isFiltered = userPreferences.getBoolean("isFiltered", false);
-	    			OperaService opService = OperaService.getInstance();
-	    			List<Opera> operas = new ArrayList<Opera>();
-	    			
-	    			if(isFiltered == true) 
-	    			{
-	    				userPreferences.remove("isFiltered");
-	    				operas = DigitalLibrary.currentResearch;
-	    			}
-	    			else
-	    			{	
-	    				operas = opService.getAllOperas();
-	    			}
-		    		
-	    			if (!operas.isEmpty()) 
-		    		{
-					for (Opera op: operas) 
-					{
-						tableRow.add(op);
-					}	
-				}
-	        
-		    		operaTitle.setCellValueFactory(new PropertyValueFactory<Opera, String>("titolo"));
-	    			
-	    			AllOperaView.setItems(tableRow);
-	    		}
-	    		else 
-	    		{
-	    			System.out.println("ImageAcquisitionHomeController.cls - initialize() - no group related to this account!");
-	    		}
+				for (Opera op: operas) 
+				{
+					tableRow.add(op);
+				}	
+			}
+        
+	    		operaTitle.setCellValueFactory(new PropertyValueFactory<Opera, String>("titolo"));
+    			
+    			AllOperaView.setItems(tableRow);
+	    		
 	    		
 		} 
         catch (Exception e) 
@@ -139,66 +113,7 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 		}
     }
     
-    
-    @FXML protected void gotoResearchHome() throws Exception 
-    {	
-    		System.out.println("ImageAcquisitionHomeController.cls - gotoResearchHome()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoUserProfile() throws Exception 
-    {
-    		System.out.println("ImageAcquisitionHomeController.cls - gotoUserProfile()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoModuleCompiling() throws Exception 
-    {	
-    		System.out.println("ImageAcquisitionHomeController.cls - gotoModuleCompiling()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/temp.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    
-    @FXML protected void gotoImageAcquisition() throws Exception 
-    {	
-    		System.out.println("ImageAcquisitionHomeController.cls - gotoImageAcquisition()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/ImageAcquisitionHome.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    /***Sidebar STOP***/
-
-
+  
 
 	public int size() {
 		// TODO Auto-generated method stub

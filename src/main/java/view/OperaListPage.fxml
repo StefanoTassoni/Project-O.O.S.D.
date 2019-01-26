@@ -13,11 +13,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.OperaListCtrl">
    <children>
-      <CardPane prefHeight="400.0" prefWidth="222.0">
-          <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
-          <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
-          <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
-      </CardPane>
+      <!-- Sidebar START -->
+      <fx:include source="SideBar.fxml"/>
+   <!-- Sidebar STOP -->
       <Label contentDisplay="CENTER" layoutX="325.0" layoutY="29.0" prefHeight="26.0" prefWidth="178.0" style="-fx-alignment: Center;" text="La tua Ricerca" textAlignment="CENTER">
          <font>
             <Font size="16.0" />

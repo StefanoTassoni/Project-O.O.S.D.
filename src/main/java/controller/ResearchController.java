@@ -24,7 +24,7 @@ import com.gluonhq.charm.glisten.control.CardPane;
 import model.Opera;
 import model.service.OperaService;
  
-public class ResearchController implements Initializable{
+public class ResearchController {
     
     /***REGISTER***/
     @FXML TextField operaName;
@@ -33,56 +33,6 @@ public class ResearchController implements Initializable{
     @FXML TextField operaYear;
     @FXML TextField operaLanguage;
     @FXML Button searchButton;
-    //@FXML Text registerErrorText;
-    
-    
-    /***Sidebar START***/
-    @FXML CardPane CardPaneAdmin;
-    @FXML CardPane CardPaneUser;
-    @FXML CardPane CardPaneTranscriptor;
-    
-    
-    public void initialize(URL location, ResourceBundle resources) 
-    {
-	    	try 
-	    {
-	    		//TODO if profile = user delete following tab
-	    		System.out.println("ResearchController.cls - initialize()");
-	    		Preferences userPreferences = Preferences.userRoot();
-	    		String groupId = userPreferences.get("groupId", null);
-	    		System.out.println("ResearchController.cls - initialize() - groupId: " + groupId);
-	    		if(groupId != null) 
-	    		{
-	    			if(groupId.equals("1")) 
-	    			{
-	    				CardPaneAdmin.setVisible(true);
-		    			CardPaneUser.setVisible(false);
-		    			CardPaneTranscriptor.setVisible(false);
-	    			}
-	    			else if(groupId.equals("2")) 
-	    			{
-	    				CardPaneUser.setVisible(true);
-		    			CardPaneAdmin.setVisible(false);
-		    			CardPaneTranscriptor.setVisible(false);
-	    			}
-	    			else if(groupId.equals("3")) 
-	    			{
-	    				CardPaneTranscriptor.setVisible(true);
-	    				CardPaneUser.setVisible(false);
-		    			CardPaneAdmin.setVisible(false);
-	    			}
-	    		}
-	    		else 
-	    		{
-	    			System.out.println("ResearchController.cls - initialize() - no group related to this account!");
-	    		}
-	    		
-		} 
-        catch (Exception e) 
-        {
-			e.printStackTrace();
-		}
-    }
     
     
     @FXML protected void searchOpera(ActionEvent event) throws Exception 
@@ -146,62 +96,5 @@ public class ResearchController implements Initializable{
     
     }
     
-    @FXML protected void gotoResearchHome() throws Exception 
-    {	
-    		System.out.println("ResearchController.cls - gotoResearchHome()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoUserProfile() throws Exception 
-    {
-    		System.out.println("ResearchController.cls - gotoUserProfile()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoModuleCompiling() throws Exception 
-    {	
-    		System.out.println("ResearchController.cls - gotoModuleCompiling()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/CompilationModule.fxml", 600, 500);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    
-    @FXML protected void gotoImageAcquisition() throws Exception 
-    {	
-    		System.out.println("ResearchController.cls - gotoImageAcquisition()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/ImageAcquisitionHome.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    /***Sidebar STOP***/
     
 }

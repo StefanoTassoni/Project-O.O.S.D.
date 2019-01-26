@@ -60,48 +60,7 @@ public class OperaListCtrl implements Initializable, ObservableList<Opera>{
 			e.printStackTrace();
 		}
     }
-    
-    @FXML protected void gotoResearchHome() throws Exception 
-    {	
-    		System.out.println("OperaListCtrl.cls - gotoResearchHome()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoUserProfile() throws Exception 
-    {
-    		System.out.println("OperaListCtrl.cls - gotoUserProfile()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoModuleCompiling() throws Exception 
-    {	
-    		System.out.println("OperaListCtrl.cls - gotoModuleCompiling()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/temp.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
+
 
 	public int size() {
 		// TODO Auto-generated method stub

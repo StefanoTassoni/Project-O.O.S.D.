@@ -45,7 +45,7 @@ public class EditUserPasswordCtrl {
 			}
 			finally 
 			{
-				gotoUserProfile();
+				DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
 			}
 		}
 		else 
@@ -55,50 +55,6 @@ public class EditUserPasswordCtrl {
     
     }
 	
-	
-	
-	@FXML protected void gotoResearchHome() throws Exception 
-    {	
-    		System.out.println("EditUserPasswordCtrl.cls - gotoResearchHome()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/Libraryhome.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML protected void gotoUserProfile() throws Exception 
-    {	
-    		System.out.println("EditUserPasswordCtrl.cls - gotoUserProfile()");	
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
-    
-    
-    @FXML protected void gotoModuleCompiling() throws Exception 
-    {	
-    		System.out.println("EditUserPasswordCtrl.cls - gotoUserProfile()");
-    		GUIUtils guiUtils = GUIUtils.getInstance();
-		try 
-		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/temp.fxml");
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-    }
 	
 	
 }
