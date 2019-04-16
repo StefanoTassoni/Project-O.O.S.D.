@@ -132,6 +132,10 @@ public class SideBarCtrl implements Initializable{
 		
 	@FXML protected void temp() throws Exception 
 	{	
+
+    @FXML protected void temp() throws Exception 
+    {	
+
     		System.out.println("SideBarCtrl.cls - temp()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
