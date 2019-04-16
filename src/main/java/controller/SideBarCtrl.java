@@ -75,7 +75,7 @@ public class SideBarCtrl implements Initializable{
 	
 	@FXML protected void gotoResearchHome() throws Exception 
     {	
-    		System.out.println("ResearchController.cls - gotoResearchHome()");
+    		System.out.println("SideBarCtrl.cls - gotoResearchHome()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
@@ -89,7 +89,7 @@ public class SideBarCtrl implements Initializable{
     
     @FXML protected void gotoUserProfile() throws Exception 
     {
-    		System.out.println("ResearchController.cls - gotoUserProfile()");
+    		System.out.println("SideBarCtrl.cls - gotoUserProfile()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
@@ -103,7 +103,7 @@ public class SideBarCtrl implements Initializable{
     
     @FXML protected void gotoModuleCompiling() throws Exception 
     {	
-    		System.out.println("ResearchController.cls - gotoModuleCompiling()");
+    		System.out.println("SideBarCtrl.cls - gotoModuleCompiling()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
@@ -115,10 +115,38 @@ public class SideBarCtrl implements Initializable{
 		}
     }
     
+
+    @FXML protected void gotoSeeModule() throws Exception 
+    {
+    		System.out.println("ResearchController.cls - gotoSeeModule()");
+    		GUIUtils guiUtils = GUIUtils.getInstance();
+		try 
+		{
+			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/SeeModule.fxml", 600, 500);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+    }
+		
+	@FXML protected void temp() throws Exception 
+	{	
+    		System.out.println("SideBarCtrl.cls - temp()");
+    		GUIUtils guiUtils = GUIUtils.getInstance();
+		try 
+		{
+			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/Temp.fxml", 600, 500);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+    }
     
     @FXML protected void gotoImageAcquisition() throws Exception 
     {	
-    		System.out.println("ResearchController.cls - gotoImageAcquisition()");
+    		System.out.println("SideBarCtrl.cls - gotoImageAcquisition()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Creato il: Gen 22, 2019 alle 15:22
+-- Creato il: Gen 28, 2019 alle 14:01
 -- Versione del server: 5.7.19
 -- Versione PHP: 5.6.31
 
@@ -96,10 +96,10 @@ DROP TABLE IF EXISTS `modulo`;
 CREATE TABLE IF NOT EXISTS `modulo` (
   `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `message` text NOT NULL,
-  `IDuser` int(10) UNSIGNED NOT NULL,
+  `fk_id_user` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `user_modulo` (`IDuser`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  KEY `user_modulo` (`fk_id_user`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

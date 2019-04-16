@@ -42,6 +42,10 @@ public class ModuloService {
 		return ModuloMapper.toModel(moduloDTO);
 	}
 	
+	/*public Modulo getByUsername(String modUsername) throws ServiceException{
+		DA COMPLETARE!!!
+	}*/
+	
 	public void insertModulo(String msg) throws ServiceException{
 		Preferences userPreferences = Preferences.userRoot();
 		ModuloDTO moduloDTO = new ModuloDTO();

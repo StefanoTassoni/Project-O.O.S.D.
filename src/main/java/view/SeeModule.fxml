@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.CardPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.SeeModuleCtrl">
+   <children>
+      <!-- Sidebar START -->
+      <fx:include source="SideBar.fxml"/>
+   <!-- Sidebar STOP -->
+      <Label contentDisplay="CENTER" layoutX="231.0" layoutY="27.0" prefHeight="27.0" prefWidth="107.0" style="-fx-alignment: Center;" text="Filtra Modulo:" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <StackPane layoutX="231.0" layoutY="75.0" prefHeight="285.0" prefWidth="357.0">
+         <children>
+            <TableView fx:id="AllModuleView" prefHeight="285.0" prefWidth="357.0">
+              <columns>
+                <TableColumn fx:id="username" maxWidth="119.0" minWidth="119.0" text="User" />
+                <!-- <TableColumn fx:id="operaCategory" maxWidth="119.0" minWidth="119.0" text="Categoria" />-->
+              </columns>
+            </TableView>
+         </children>
+      </StackPane>
+      <TextField fx:id="textModuleFilter" layoutX="338.0" layoutY="27.0" promptText="Username dell'utente" />
+      <Button onMouseClicked="#filterModule" layoutX="515.0" layoutY="27.0" mnemonicParsing="false" text="Filtra" />
+   </children>
+</Pane>

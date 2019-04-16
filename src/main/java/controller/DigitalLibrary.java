@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Opera;
+import model.Modulo;
 
 import javax.naming.NamingException;
 
@@ -22,6 +23,7 @@ public class DigitalLibrary extends Application{
 	public static Stage stage;
 	public static Parent root;
 	public static List<Opera> currentResearch = new ArrayList<Opera>();
+	public static List<Modulo> currentResearchModule = new ArrayList<Modulo>();
 	private static String TITLE = "Digital Library";
 	public static Integer xDim = 600;
 	public static Integer yDim = 400;
