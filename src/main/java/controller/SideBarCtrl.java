@@ -130,8 +130,6 @@ public class SideBarCtrl implements Initializable{
 		}
     }
 		
-	@FXML protected void temp() throws Exception 
-	{	
 
     @FXML protected void temp() throws Exception 
     {	

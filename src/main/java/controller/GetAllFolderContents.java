@@ -31,6 +31,8 @@ public class GetAllFolderContents implements Initializable{
     @FXML private ImageView[] images = new ImageView[10];
     @FXML private TilePane imgBox = new TilePane();;
     @FXML private VBox vBox = new VBox();
+    @FXML private ImageView imageView1= new ImageView	();
+    @FXML private ImageView imageView2= new ImageView	();
     private List<Image> AllImages = new LinkedList();
     
     @FXML
@@ -110,7 +112,9 @@ public class GetAllFolderContents implements Initializable{
 	            {
 	            		Image image = new Image(f.toURI().toString());
 	            		AllImages.add(image);
-	                System.out.println("GetAllFolderContents.cls - photo() - f: " + f);
+	                System.out.println("GetAllFolderContents.cls - photo() - Image path: " + f);
+		            Image imageTest = new Image(f.toURI().toString());
+		            imageView1.setImage(imageTest);
 	            }
 	            
 //	            images = new ImageView[AllImages.size()];
