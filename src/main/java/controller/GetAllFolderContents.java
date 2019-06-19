@@ -3,148 +3,132 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.event.ActionEvent;
-import javafx.scene.Scene;
+import javafx.geometry.Insets;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import model.Opera;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.shape.Polygon;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class GetAllFolderContents implements Initializable{
 
-    private String path;
-    private ArrayList<File> files;
-    private String[] extens;
 
-    @FXML private ImageView[] images = new ImageView[10];
-    @FXML private TilePane imgBox = new TilePane();;
-    @FXML private VBox vBox = new VBox();
-    @FXML private ImageView imageView1= new ImageView	();
-    @FXML private ImageView imageView2= new ImageView	();
-    private List<Image> AllImages = new LinkedList();
-    
-    @FXML
-    public Polygon right_arrow;
-    public Polygon left_arrow;
-    public Button edit_button;
-    public ImageView home_button;
-    public TextField search_box;
-    public TextArea tag_box;
-    public ChoiceBox language_box;
-    public Label photo_title;
-    public Label photo_number;
-    public ImageView photo_box;
-    public Image home_picture;
-
-    public void goToEditPage (ActionEvent event) throws Exception {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Edit.fxml"));
-
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void goToHomePage (){
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home.fxml"));
-
-            Parent root1 = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public Image getPicture(){
-
-
-        /*home_picture = new Image(String.valueOf(getClass().getResource("home.png")));
-        */return home_picture;
-    }
-
-
-    public File getPhotoById(int id) {
-        id--;
-        return this.files.get(id);
-    }
-
+    @FXML private ListView<ImageView> ImageList = new ListView<ImageView>(); 
+    @FXML private TilePane ImageTilePane = new TilePane(); 
+       
     public void initialize(URL location, ResourceBundle resources) 
     {
     		System.out.println("GetAllFolderContents.cls - initialize()" );
     		System.out.println("Working Directory = " + System.getProperty("user.dir"));
     		
-    		files = new ArrayList<File>();
-        String style_outter = "-fx-border-color: black;" + 
-				"-fx-border-style: solid;" + 
-				"-fx-border-width: 5;";
-        imgBox.setHgap(5.0);
-        imgBox.setVgap(2.0);
-        imgBox.setStyle(style_outter);
-       
+    		ImageTilePane.setPadding(new Insets(15, 15, 15, 15));
+    		ImageTilePane.setHgap(15);
+    		
+    		
         File repo = new File ("src/main/resources/imagedir/Divina Commedia");
         System.out.println("GetAllFolderContents.cls - photo() - repo: " + repo );
+        
         if (repo.isDirectory()) 
         {
         		try 
         		{
 	            File[] fileList = repo.listFiles();
 	            
+	            
+	            ObservableList<ImageView> items = FXCollections.observableArrayList();
+	            ImageList.setItems(items);
+	            
+	            
 	            for (File f : fileList) 
 	            {
+	            		/****ListView START**/
 	            		Image image = new Image(f.toURI().toString());
-	            		AllImages.add(image);
 	                System.out.println("GetAllFolderContents.cls - photo() - Image path: " + f);
-		            Image imageTest = new Image(f.toURI().toString());
-		            imageView1.setImage(imageTest);
+		            ImageView item = new ImageView(image);
+		            ImageList.getItems().add(item);
+		            /****ListView END**/
+		            
+		            /****TilePane START**/
+		            ImageView imageView;
+	                imageView = createImageView(f);
+		            ImageTilePane.getChildren().addAll(imageView);
+		            /****TilePane END**/
 	            }
 	            
-//	            images = new ImageView[AllImages.size()];
-	            
-	            for (int j = 0; j < AllImages.size(); j++) 
-	            {
-	                images[j] = new ImageView(AllImages.get(j));
-	                images[j].setFitHeight(50);
-	                images[j].setFitWidth(50);
-	                images[j].setSmooth(true);
-	                images[j].setPreserveRatio(true);
-	                images[j].setStyle(style_outter);
-	                images[j].setVisible(true);
-	                System.out.println("image added");
-	            }
+	           
             }
         		catch (Exception e) 
         		{
             		System.out.println("GetAllFolderContents.cls - photo() - e: " + e);
             		e.printStackTrace();
 			}
-            
-        }
+        		
+        }/****Check isADirectory****/
         else 
         {
         		System.out.println("GetAllFolderContents.cls - photo() - repo is not a folder ");
         }
         
-    		System.out.println("GetAllFolderContents.cls - initialize() - imgBox all children: " + imgBox.getChildren());
-    		System.out.println("GetAllFolderContents.cls - initialize() - imageview: " + images);
     }
+    
+    private ImageView createImageView(final File imageFile) {
+        // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define
+        // The last two arguments are: preserveRatio, and use smooth (slower)
+        // resizing
+
+        ImageView imageView = null;
+        try {
+            final Image image = new Image(new FileInputStream(imageFile), 50, 0, true, true);
+            imageView = new ImageView(image);
+            imageView.setFitWidth(50);
+            
+//            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//
+//                @Override
+//                public void handle(MouseEvent mouseEvent) {
+//
+//                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+//
+//                        if(mouseEvent.getClickCount() == 2){
+//                            try {
+//                                BorderPane borderPane = new BorderPane();
+//                                ImageView imageView = new ImageView();
+//                                Image image = new Image(new FileInputStream(imageFile));
+//                                imageView.setImage(image);
+//                                imageView.setStyle("-fx-background-color: BLACK");
+//                                imageView.setFitHeight(stage.getHeight() - 10);
+//                                imageView.setPreserveRatio(true);
+//                                imageView.setSmooth(true);
+//                                imageView.setCache(true);
+//                                borderPane.setCenter(imageView);
+//                                borderPane.setStyle("-fx-background-color: BLACK");
+//                                Stage newStage = new Stage();
+//                                newStage.setWidth(stage.getWidth());
+//                                newStage.setHeight(stage.getHeight());
+//                                newStage.setTitle(imageFile.getName());
+//                                Scene scene = new Scene(borderPane,Color.BLACK);
+//                                newStage.setScene(scene);
+//                                newStage.show();
+//                            } catch (FileNotFoundException e) {
+//                                e.printStackTrace();
+//                            }
+//
+//                        }
+//                    }
+//                }
+//            });
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return imageView;
+    }
+    
+    
     
 }
