@@ -22,6 +22,7 @@ public class DigitalLibrary extends Application{
 
 	public static Stage stage;
 	public static Parent root;
+	public static Opera currentOpera = new Opera();
 	public static List<Opera> currentResearch = new ArrayList<Opera>();
 	public static List<Modulo> currentResearchModule = new ArrayList<Modulo>();
 	private static String TITLE = "Digital Library";

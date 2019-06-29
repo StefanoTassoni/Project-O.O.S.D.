@@ -9,8 +9,8 @@ public class OperaDTO extends BaseDTO{
 	private String categoria;
 	private String autore;
 	private String lingua;
-	private Date data_creazione;
-	private Date data_publicazione;
+	private Date dateCreazione;
+	private Date dataPublicazione;
 
 	
 	public Integer getId() {
@@ -43,23 +43,23 @@ public class OperaDTO extends BaseDTO{
 	public void setLingua(String lingua) {
 		this.lingua = lingua;
 	}
-	public Date getData_creazione() {
-		return data_creazione;
+	public Date getDateCreazione() {
+		return dateCreazione;
 	}
-	public void setData_creazione(Date data_creazione) {
-		this.data_creazione = data_creazione;
+	public void setDateCreazione(Date dateCreazione) {
+		this.dateCreazione = dateCreazione;
 	}
-	public Date getData_publicazione() {
-		return data_publicazione;
+	public Date getDataPublicazione() {
+		return dataPublicazione;
 	}
-	public void setData_publicazione(Date data_publicazione) {
-		this.data_publicazione = data_publicazione;
+	public void setDataPublicazione(Date dataPublicazione) {
+		this.dataPublicazione = dataPublicazione;
 	}
 	
 	@Override
 	public String toString() {
 		return "Opera [id=" + id + ", titolo=" + titolo + ", categoria=" + categoria + ", autore=" + autore + ", lingua="
-				+ lingua + ", data_creazione=" + data_creazione + ", data_publicazione=" + data_publicazione +"]";
+				+ lingua + ", dateCreazione=" + dateCreazione + ", dataPublicazione=" + dataPublicazione +"]";
 	}
 	
 }

@@ -1,9 +1,7 @@
 package controller.utils;
 
 import controller.DigitalLibrary;
-import controller.exception.ServiceException;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -12,12 +10,10 @@ public class GUIUtils{
 	
 	
 	private static GUIUtils instance;
-//	private static GUIEventHandler eventHandler;
 	
 	
 	public static GUIUtils getInstance() 
 	{
-//		eventHandler = GUIEventHandler.getInstance();
 		
 		if (instance == null) 
 		{
@@ -42,5 +38,22 @@ public class GUIUtils{
 		return root;
     }
 	
+	public void popUpNewSceneContent(Parent root, String fxml) throws Exception {
+		try 
+		{
+			final Stage dialog = new Stage();
+	        dialog.initOwner(DigitalLibrary.stage);
+	        root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
+	        dialog.setResizable(true);
+	        Scene dialogScene = new Scene(root, 600, 400);
+	        dialog.setScene(dialogScene);
+	        dialog.show();
+        } 
+		catch (Exception e) 
+		{
+			System.out.println("GUIUtils.cls - popUpNewSceneContent() - exception" );
+			e.printStackTrace();
+		}
+    }
 	
 }

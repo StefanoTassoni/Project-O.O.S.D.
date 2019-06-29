@@ -23,7 +23,7 @@
       </Label>
       <StackPane layoutX="231.0" layoutY="75.0" prefHeight="285.0" prefWidth="357.0">
          <children>
-            <TableView fx:id="tableView" prefHeight="285.0" prefWidth="357.0">
+            <TableView fx:id="tableView" prefHeight="285.0" prefWidth="357.0" onMouseClicked="#showOpera">
               <columns>
                 <TableColumn fx:id="operaTitle" maxWidth="119.0" minWidth="119.0" text="Opera" />
                 <TableColumn fx:id="operaAuthor" maxWidth="119.0" minWidth="119.0" text="Autore" />

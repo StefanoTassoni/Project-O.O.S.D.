@@ -31,6 +31,13 @@ public class OperaService {
 		return instance;
 	}
 	
+	public Opera getOperaById(Integer id) throws ServiceException 
+	{
+		OperaDTO operaDTO = OperaDAO.getById(id);
+		System.out.println("OperaService.cls - getOperaById() - operaDto: " + operaDTO.toString() );
+		return OperaMapper.toModel(operaDTO);
+	}
+	
 	public List<Opera> getAllOperas() throws ServiceException 
 	{
 		List<OperaDTO> operaDTOList = OperaDAO.selectAll();

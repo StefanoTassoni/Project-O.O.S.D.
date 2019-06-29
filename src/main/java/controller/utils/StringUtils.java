@@ -2,6 +2,9 @@ package controller.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.google.common.base.CaseFormat;
@@ -56,5 +59,22 @@ public class StringUtils {
         }
 
     }
+	
+	public static String stringToDate(Date date, Boolean withHH) {			
+		try{
+			String pattern = withHH ? "dd/MM/yyyy HH:mm:ss" : "dd/MM/yyyy";
+		
+			DateFormat df = new SimpleDateFormat(pattern);
+			String convertedDateString = df.format(date);
+
+			System.out.println("StringUtils.cls - stringToDate() - Converted Date is: " + convertedDateString);
+			return convertedDateString;
+		}
+		catch(Exception e){
+			System.out.println("StringUtils.cls - stringToDate() - exception: " + e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 }

@@ -7,25 +7,23 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
 
-import controller.exception.ServiceException;
 import controller.utils.GUIUtils;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.Opera;
 import model.service.OperaService;
  
 public class OperaListCtrl implements Initializable, ObservableList<Opera>{
     
+	//@FXML private TableView<Opera> tableView;
 	@FXML private TableView<Opera> tableView;
     @FXML private TableColumn<Opera, String> operaTitle;
     @FXML private TableColumn<Opera, String> operaAuthor;
@@ -35,17 +33,19 @@ public class OperaListCtrl implements Initializable, ObservableList<Opera>{
     
     public void initialize(URL location, ResourceBundle resources) 
     {
+    		//ObservableList<Opera> tableRow =  FXCollections.observableArrayList();
     		ObservableList<Opera> tableRow =  FXCollections.observableArrayList();
 	    	try 
 	    {
-	    		//OperaService operaService = OperaService.getInstance();
-	    		//List<Opera> operas = operaService.getAllOperas();
+	    		//DigitalLibrary.currentResearch è uilizzato per mantenere e passare tra le pagine l'ultima ricerca effettuata
 	    		List<Opera> operas = DigitalLibrary.currentResearch;
+	    		
 	    		if (!operas.isEmpty()) 
 	    		{
 				for (Opera op: operas) 
 				{
 					tableRow.add(op);
+					//tableRow.add(new TableData("Beer","Brewery","Country"));
 				}	
 			}
         
@@ -54,6 +54,8 @@ public class OperaListCtrl implements Initializable, ObservableList<Opera>{
     			operaCategory.setCellValueFactory(new PropertyValueFactory<Opera, String>("categoria"));
     			
 			tableView.setItems(tableRow);
+			
+			
 		} 
         catch (Exception e) 
         {
@@ -61,7 +63,30 @@ public class OperaListCtrl implements Initializable, ObservableList<Opera>{
 		}
     }
 
-
+    @FXML
+    public void showOpera(MouseEvent event)
+    {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+            System.out.println("OperaListCtrl.cls - showOpera() - Opera detail requested: " + tableView.getSelectionModel().getSelectedItem().getTitolo());
+            GUIUtils guiUtils = GUIUtils.getInstance();
+            OperaService operaService = OperaService.getInstance();
+            try 
+            {
+	            	DigitalLibrary.currentOpera = operaService.getOperaById(tableView.getSelectionModel().getSelectedItem().getId());	
+	            	guiUtils.popUpNewSceneContent(DigitalLibrary.root,"view/OperaDetailView.fxml");
+			} 
+            catch (Exception e) {
+				e.printStackTrace();
+			}
+        }
+    }
+    
+    
+    
+    /*************************
+     **** Auto generated Trash*
+     *************************/
 	public int size() {
 		// TODO Auto-generated method stub
 		return 0;

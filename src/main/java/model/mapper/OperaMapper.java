@@ -15,8 +15,8 @@ public class OperaMapper {
 		dto.setCategoria(model.getCategoria());
 		dto.setAutore(model.getAutore());
 		dto.setLingua(model.getLingua());
-		dto.setData_creazione(model.getData_creazione());
-		dto.setData_publicazione(model.getData_publicazione());
+		dto.setDateCreazione(model.getDateCreazione());
+		dto.setDataPublicazione(model.getDataPublicazione());
 		return dto;
 	}
 	
@@ -27,8 +27,8 @@ public class OperaMapper {
 		model.setCategoria(dto.getCategoria());
 		model.setAutore(dto.getAutore());
 		model.setLingua(dto.getLingua());
-		model.setData_creazione(dto.getData_creazione());
-		model.setData_publicazione(dto.getData_publicazione());
+		model.setDateCreazione(dto.getDateCreazione());
+		model.setDataPublicazione(dto.getDataPublicazione());
 		return model;
 	}
 	
