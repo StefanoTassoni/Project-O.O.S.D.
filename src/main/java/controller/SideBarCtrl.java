@@ -1,28 +1,14 @@
 package controller;
 
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
 import controller.utils.GUIUtils;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.Label;
 import com.gluonhq.charm.glisten.control.CardPane;
 
-import model.Opera;
-import model.service.OperaService;
 
 public class SideBarCtrl implements Initializable{
 
