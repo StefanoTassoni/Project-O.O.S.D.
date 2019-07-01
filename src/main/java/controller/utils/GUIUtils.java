@@ -56,4 +56,23 @@ public class GUIUtils{
 		}
     }
 	
+	
+	public void popUpNewResizeSceneContent(Parent root, String fxml, Integer xdim , Integer ydim) throws Exception {
+		try 
+		{
+			final Stage dialog = new Stage();
+	        dialog.initOwner(DigitalLibrary.stage);
+	        root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
+	        dialog.setResizable(true);
+	        Scene dialogScene = new Scene(root, xdim, ydim);
+	        dialog.setScene(dialogScene);
+	        dialog.show();
+        } 
+		catch (Exception e) 
+		{
+			System.out.println("GUIUtils.cls - popUpNewSceneContent() - exception" );
+			e.printStackTrace();
+		}
+    }
+	
 }

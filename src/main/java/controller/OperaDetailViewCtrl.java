@@ -8,16 +8,17 @@ import java.util.ResourceBundle;
 
 import org.apache.commons.lang.ArrayUtils;
 
+import controller.utils.GUIUtils;
 import controller.utils.StringUtils;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
+import model.service.OperaService;
 
 public class OperaDetailViewCtrl implements Initializable{
 	
@@ -78,7 +79,7 @@ public class OperaDetailViewCtrl implements Initializable{
     	            {   
     	            		if(!f.toString().contains("/cover")) 
     	            		{
-	    	            		System.out.println("OperaDetailViewCtrl.cls - inizialize() - current file: " + f);
+	    	            		//System.out.println("OperaDetailViewCtrl.cls - inizialize() - current file: " + f);
 	    		            ImageView imageView;
 	    	                imageView = createImageView(f);
 	    	                imageGallery.getChildren().addAll(imageView);
@@ -86,8 +87,8 @@ public class OperaDetailViewCtrl implements Initializable{
     	            		else 
     	                {
     	            			//setting the cover
-    	            			System.out.println("OperaDetailViewCtrl.cls - inizialize() - current file: " + f);
-    	            			final Image image = new Image(new FileInputStream(f), 50, 0, true, true);
+    	            			//System.out.println("OperaDetailViewCtrl.cls - inizialize() - current file: " + f);
+    	            			final Image image = new Image(new FileInputStream(f));//new FileInputStream(f), 50, 0, true, true
     	            			operaCover.setImage(image);
     	            			//operaCover.setFitWidth(50);
     	                }
@@ -104,15 +105,12 @@ public class OperaDetailViewCtrl implements Initializable{
         }/****Check isADirectory****/
         else 
         {
-        		System.out.println("GetAllFolderContents.cls - photo() - repo is not a folder ");
+        		System.out.println("OperaDetailViewCtrl.cls - photo() - repo is not a folder ");
         }
     			
     }
 
     private ImageView createImageView(final File imageFile) {
-        // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define
-        // The last two arguments are: preserveRatio, and use smooth (slower)
-        // resizing
 
         ImageView imageView = null;
         try {
@@ -120,45 +118,31 @@ public class OperaDetailViewCtrl implements Initializable{
             imageView = new ImageView(image);
             imageView.setFitWidth(50);
             
-//            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//
-//                @Override
-//                public void handle(MouseEvent mouseEvent) {
-//
-//                    if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-//
-//                        if(mouseEvent.getClickCount() == 2){
-//                            try {
-//                                BorderPane borderPane = new BorderPane();
-//                                ImageView imageView = new ImageView();
-//                                Image image = new Image(new FileInputStream(imageFile));
-//                                imageView.setImage(image);
-//                                imageView.setStyle("-fx-background-color: BLACK");
-//                                imageView.setFitHeight(stage.getHeight() - 10);
-//                                imageView.setPreserveRatio(true);
-//                                imageView.setSmooth(true);
-//                                imageView.setCache(true);
-//                                borderPane.setCenter(imageView);
-//                                borderPane.setStyle("-fx-background-color: BLACK");
-//                                Stage newStage = new Stage();
-//                                newStage.setWidth(stage.getWidth());
-//                                newStage.setHeight(stage.getHeight());
-//                                newStage.setTitle(imageFile.getName());
-//                                Scene scene = new Scene(borderPane,Color.BLACK);
-//                                newStage.setScene(scene);
-//                                newStage.show();
-//                            } catch (FileNotFoundException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//                    }
-//                }
-//            });
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
         return imageView;
+    }
+    
+    @FXML
+    public void showOperaSinglePage(MouseEvent event)
+    {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+        		System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - selected Image: " + imageGallery.getChildren());
+        		System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - eventSource: " + event.getSource());
+            //System.out.println("OperaListCtrl.cls - showOpera() - Opera detail requested: " + tableView.getSelectionModel().getSelectedItem().getTitolo());
+            GUIUtils guiUtils = GUIUtils.getInstance();
+            try 
+            {
+            //			String url = image instanceof LocatedImage ? ((LocatedImage) image).getURL() : null;
+	        //    	DigitalLibrary.currentOpera = operaService.getOperaById(tableView.getSelectionModel().getSelectedItem().getId());	
+	        		guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view/SinglePageView.fxml",600,500);
+			} 
+            catch (Exception e) {
+				e.printStackTrace();
+			}
+        }
     }
     
 }

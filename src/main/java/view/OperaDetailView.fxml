@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/" fx:controller="controller.OperaDetailViewCtrl" >
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.OperaDetailViewCtrl">
    <children>
       <GridPane alignment="center" hgap="10" layoutX="262.0" layoutY="8.0" prefHeight="109.0" prefWidth="313.0" style="-fx-border-color: grey;" vgap="10">
          <padding>
@@ -47,7 +48,11 @@
             <RowConstraints />
          </rowConstraints>
       </GridPane>
-      <TilePane fx:id="imageGallery" layoutX="32.0" layoutY="292.0" prefHeight="173.0" prefWidth="543.0" />
       <ImageView fx:id="operaCover" fitHeight="228.0" fitWidth="202.0" layoutX="32.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+      <ScrollPane layoutX="32.0" layoutY="287.0" prefHeight="100.0" prefWidth="543.0">
+         <content>
+            <TilePane fx:id="imageGallery" onMouseClicked="#showOperaSinglePage"  /> <!--prefHeight="170.0" prefWidth="541.0"-->
+         </content>
+      </ScrollPane>
    </children>
 </Pane>

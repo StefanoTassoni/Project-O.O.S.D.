@@ -34,7 +34,7 @@ public class OperaService {
 	public Opera getOperaById(Integer id) throws ServiceException 
 	{
 		OperaDTO operaDTO = OperaDAO.getById(id);
-		System.out.println("OperaService.cls - getOperaById() - operaDto: " + operaDTO.toString() );
+		//System.out.println("OperaService.cls - getOperaById() - operaDto: " + operaDTO.toString() );
 		return OperaMapper.toModel(operaDTO);
 	}
 	
