@@ -75,4 +75,10 @@ public class GUIUtils{
 		}
     }
 	
+	public void closePopupWindow(Scene scene){
+		System.out.println("GUIUtils.cls - closePopupWindow() - closing popup window..." );
+	    Stage stage = (Stage) scene.getWindow();
+	    stage.close();
+	}
+	
 }

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.prefs.Preferences;
 
 import org.apache.commons.lang.ArrayUtils;
 
@@ -18,7 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
-import model.service.OperaService;
 
 public class OperaDetailViewCtrl implements Initializable{
 	
@@ -39,7 +39,6 @@ public class OperaDetailViewCtrl implements Initializable{
     			operaAuthor.setText(DigitalLibrary.currentOpera.getAutore());
     			operaCategory.setText(DigitalLibrary.currentOpera.getCategoria());
     			operaLanguage.setText(DigitalLibrary.currentOpera.getLingua());
-    			//System.out.println("OperaDetailViewCtrl.cls - inizialize() - OperaPublicationDate: " + DigitalLibrary.currentOpera.getDataPublicazione());
     			operaPublicationDate.setText(StringUtils.stringToDate(DigitalLibrary.currentOpera.getDataPublicazione(), false));
 	    } 
         catch (Exception e) 
@@ -67,11 +66,8 @@ public class OperaDetailViewCtrl implements Initializable{
     	            File[] fileList = repo.listFiles();
     	               
     	             
-    	            //	Image coverImage = new Image(fileList[0].toURI().toString());
-    	            	//System.out.println("OperaDetailViewCtrl.cls - inizialize() - coverImage repo: " + fileList[0].toURI().toString());
-    	            //operaCover = new ImageView(coverImage);
     	            
-    	            //setting the available pages of the opera
+    	            /**loading the available pages of the opera**/
     	            fileList = (File[]) ArrayUtils.removeElement(fileList, 0);
     	            System.out.println("OperaDetailViewCtrl.cls - inizialize() - fileList: " + fileList.length);
     	            
@@ -79,18 +75,16 @@ public class OperaDetailViewCtrl implements Initializable{
     	            {   
     	            		if(!f.toString().contains("/cover")) 
     	            		{
-	    	            		//System.out.println("OperaDetailViewCtrl.cls - inizialize() - current file: " + f);
 	    		            ImageView imageView;
 	    	                imageView = createImageView(f);
+	    	                imageView.setId(f.toString());
 	    	                imageGallery.getChildren().addAll(imageView);
     	                }
     	            		else 
     	                {
-    	            			//setting the cover
-    	            			//System.out.println("OperaDetailViewCtrl.cls - inizialize() - current file: " + f);
-    	            			final Image image = new Image(new FileInputStream(f));//new FileInputStream(f), 50, 0, true, true
+    	            			/**setting the cover**/
+    	            			final Image image = new Image(new FileInputStream(f));
     	            			operaCover.setImage(image);
-    	            			//operaCover.setFitWidth(50);
     	                }
     	            }
     	            
@@ -129,14 +123,18 @@ public class OperaDetailViewCtrl implements Initializable{
     {
         if (event.getClickCount() == 2) //Checking double click
         {
-        		System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - selected Image: " + imageGallery.getChildren());
-        		System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - eventSource: " + event.getSource());
-            //System.out.println("OperaListCtrl.cls - showOpera() - Opera detail requested: " + tableView.getSelectionModel().getSelectedItem().getTitolo());
+        		//System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.getTarget().toString());
+        		//System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.toString());
+            
+        		Preferences userPreferences = Preferences.userRoot();
+        		String currentSelectedScan = ((ImageView) event.getTarget()).getId();
+        		userPreferences.put("currentSelectedScan", currentSelectedScan);
+        		
+        		System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - scanPath: " + currentSelectedScan);
+        		
             GUIUtils guiUtils = GUIUtils.getInstance();
             try 
-            {
-            //			String url = image instanceof LocatedImage ? ((LocatedImage) image).getURL() : null;
-	        //    	DigitalLibrary.currentOpera = operaService.getOperaById(tableView.getSelectionModel().getSelectedItem().getId());	
+            {	
 	        		guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view/SinglePageView.fxml",600,500);
 			} 
             catch (Exception e) {
