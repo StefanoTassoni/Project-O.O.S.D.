@@ -67,7 +67,7 @@ public class StringUtils {
 			DateFormat df = new SimpleDateFormat(pattern);
 			String convertedDateString = df.format(date);
 
-			System.out.println("StringUtils.cls - stringToDate() - Converted Date is: " + convertedDateString);
+			//System.out.println("StringUtils.cls - stringToDate() - Converted Date is: " + convertedDateString);
 			return convertedDateString;
 		}
 		catch(Exception e){

@@ -29,6 +29,8 @@ public class OperaDetailViewCtrl implements Initializable{
 	@FXML Text operaPublicationDate;
 	@FXML ImageView operaCover;
 	@FXML TilePane imageGallery;
+	
+	private final String IMAGEDIR = "src/main/resources/imagedir/";
     
     public void initialize(URL location, ResourceBundle resources) 
     {
@@ -50,13 +52,13 @@ public class OperaDetailViewCtrl implements Initializable{
 		/****************
 		 * image capture
 		 *****************/
-		System.out.println("OperaDetailViewCtrl.cls - inizialize() Working Directory = " + System.getProperty("user.dir") );
+		//System.out.println("OperaDetailViewCtrl.cls - inizialize() - Working Directory: " + System.getProperty("user.dir") );
     		
     		imageGallery.setPadding(new Insets(15, 15, 15, 15));
     		imageGallery.setHgap(15);
     		
     		
-        File repo = new File ("src/main/resources/imagedir/Divina Commedia");
+        File repo = new File (IMAGEDIR + DigitalLibrary.currentOpera.getId());
         System.out.println("OperaDetailViewCtrl.cls - inizialize() - repo: " + repo );
         
         if (repo.isDirectory()) 

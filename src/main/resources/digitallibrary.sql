@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Creato il: Gen 28, 2019 alle 14:01
--- Versione del server: 5.7.19
--- Versione PHP: 5.6.31
+-- Host: localhost:3307
+-- Creato il: Lug 03, 2019 alle 18:54
+-- Versione del server: 5.6.35
+-- Versione PHP: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,12 +26,9 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `assegnazione`
 --
 
-DROP TABLE IF EXISTS `assegnazione`;
-CREATE TABLE IF NOT EXISTS `assegnazione` (
+CREATE TABLE `assegnazione` (
   `IDuser` int(10) UNSIGNED NOT NULL,
-  `IDscan` int(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`IDscan`,`IDuser`),
-  KEY `user_assegnazione` (`IDuser`)
+  `IDscan` int(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -42,12 +37,9 @@ CREATE TABLE IF NOT EXISTS `assegnazione` (
 -- Struttura della tabella `dispone`
 --
 
-DROP TABLE IF EXISTS `dispone`;
-CREATE TABLE IF NOT EXISTS `dispone` (
+CREATE TABLE `dispone` (
   `IDgruppo` int(10) UNSIGNED NOT NULL,
-  `IDpermessi` int(10) UNSIGNED NOT NULL,
-  KEY `gruppo_dispone` (`IDgruppo`),
-  KEY `permessi_dispone` (`IDpermessi`)
+  `IDpermessi` int(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -56,12 +48,10 @@ CREATE TABLE IF NOT EXISTS `dispone` (
 -- Struttura della tabella `gruppo`
 --
 
-DROP TABLE IF EXISTS `gruppo`;
-CREATE TABLE IF NOT EXISTS `gruppo` (
-  `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nome` enum('supervisore','lettore','trascrittore') NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE `gruppo` (
+  `ID` int(10) UNSIGNED NOT NULL,
+  `nome` enum('supervisore','lettore','trascrittore') NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `gruppo`
@@ -78,12 +68,9 @@ INSERT INTO `gruppo` (`ID`, `nome`) VALUES
 -- Struttura della tabella `modifica`
 --
 
-DROP TABLE IF EXISTS `modifica`;
-CREATE TABLE IF NOT EXISTS `modifica` (
+CREATE TABLE `modifica` (
   `IDuser` int(10) UNSIGNED NOT NULL,
-  `IDtrascrizione` int(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`IDuser`,`IDtrascrizione`),
-  KEY `trascrizione_modifica` (`IDtrascrizione`)
+  `IDtrascrizione` int(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -92,14 +79,11 @@ CREATE TABLE IF NOT EXISTS `modifica` (
 -- Struttura della tabella `modulo`
 --
 
-DROP TABLE IF EXISTS `modulo`;
-CREATE TABLE IF NOT EXISTS `modulo` (
-  `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `modulo` (
+  `ID` int(10) UNSIGNED NOT NULL,
   `message` text NOT NULL,
-  `fk_id_user` int(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `user_modulo` (`fk_id_user`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `fk_id_user` int(10) UNSIGNED NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -107,17 +91,15 @@ CREATE TABLE IF NOT EXISTS `modulo` (
 -- Struttura della tabella `opera`
 --
 
-DROP TABLE IF EXISTS `opera`;
-CREATE TABLE IF NOT EXISTS `opera` (
-  `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `opera` (
+  `ID` int(10) UNSIGNED NOT NULL,
   `titolo` varchar(200) NOT NULL,
   `categoria` varchar(200) NOT NULL,
   `autore` varchar(200) NOT NULL,
   `lingua` varchar(200) NOT NULL,
   `date_creazione` date NOT NULL,
-  `data_publicazione` datetime NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  `data_publicazione` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `opera`
@@ -127,16 +109,8 @@ INSERT INTO `opera` (`ID`, `titolo`, `categoria`, `autore`, `lingua`, `date_crea
 (1, 'divina commedia', 'romanzo', 'dante alighieri', 'italiano volgare', '1800-01-01', '2018-05-15 00:00:00'),
 (2, 'odissea', 'poema', 'omero', 'greco antico', '1200-01-01', '2018-06-10 00:00:00'),
 (3, 'decamerone', 'raccolta di novelle', 'giovanni boccaccio', 'italiano', '1350-01-01', '2020-05-15 00:00:00'),
-(4, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(5, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(6, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(7, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(8, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(9, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(10, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(11, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(12, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(13, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00');
+(9, 'zzzz testa', '', '', '', '2018-11-12', '2018-11-06 03:15:00'),
+(10, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00');
 
 -- --------------------------------------------------------
 
@@ -144,11 +118,9 @@ INSERT INTO `opera` (`ID`, `titolo`, `categoria`, `autore`, `lingua`, `date_crea
 -- Struttura della tabella `permessi`
 --
 
-DROP TABLE IF EXISTS `permessi`;
-CREATE TABLE IF NOT EXISTS `permessi` (
-  `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nome` varchar(200) NOT NULL,
-  PRIMARY KEY (`ID`)
+CREATE TABLE `permessi` (
+  `ID` int(10) UNSIGNED NOT NULL,
+  `nome` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -157,17 +129,13 @@ CREATE TABLE IF NOT EXISTS `permessi` (
 -- Struttura della tabella `scansione`
 --
 
-DROP TABLE IF EXISTS `scansione`;
-CREATE TABLE IF NOT EXISTS `scansione` (
-  `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `scansione` (
+  `ID` int(10) UNSIGNED NOT NULL,
   `n_pagina` varchar(200) NOT NULL,
   `data_pubblicazione` datetime NOT NULL,
   `formato` char(200) NOT NULL,
   `IDopera` int(10) UNSIGNED NOT NULL,
-  `IDuser` int(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `opera_scan` (`IDopera`),
-  KEY `user_scan` (`IDuser`)
+  `IDuser` int(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -176,13 +144,10 @@ CREATE TABLE IF NOT EXISTS `scansione` (
 -- Struttura della tabella `trascrizione`
 --
 
-DROP TABLE IF EXISTS `trascrizione`;
-CREATE TABLE IF NOT EXISTS `trascrizione` (
-  `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `trascrizione` (
+  `ID` int(10) UNSIGNED NOT NULL,
   `testo` text,
-  `IDscan` int(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `scan_trascription` (`IDscan`)
+  `IDscan` int(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -191,19 +156,15 @@ CREATE TABLE IF NOT EXISTS `trascrizione` (
 -- Struttura della tabella `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `ID` int(10) UNSIGNED NOT NULL,
   `NAME` varchar(200) NOT NULL,
   `SURNAME` varchar(200) NOT NULL,
   `USERNAME` varchar(200) NOT NULL,
   `PASSWORD` varchar(200) NOT NULL,
   `MAIL` varchar(200) NOT NULL,
-  `NOME_GRUPPO` enum('supervisore','lettore','trascrittore') NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `mail` (`MAIL`),
-  UNIQUE KEY `username` (`USERNAME`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `NOME_GRUPPO` enum('supervisore','lettore','trascrittore') NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `user`
@@ -220,8 +181,7 @@ INSERT INTO `user` (`ID`, `NAME`, `SURNAME`, `USERNAME`, `PASSWORD`, `MAIL`, `NO
 -- Struttura della tabella `usergroup`
 --
 
-DROP TABLE IF EXISTS `usergroup`;
-CREATE TABLE IF NOT EXISTS `usergroup` (
+CREATE TABLE `usergroup` (
   `fk_user` int(10) NOT NULL,
   `fk_group` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -234,8 +194,119 @@ INSERT INTO `usergroup` (`fk_user`, `fk_group`) VALUES
 (1, 1),
 (2, 3),
 (3, 2);
-COMMIT;
 
+--
+-- Indici per le tabelle scaricate
+--
+
+--
+-- Indici per le tabelle `assegnazione`
+--
+ALTER TABLE `assegnazione`
+  ADD PRIMARY KEY (`IDscan`,`IDuser`),
+  ADD KEY `user_assegnazione` (`IDuser`);
+
+--
+-- Indici per le tabelle `dispone`
+--
+ALTER TABLE `dispone`
+  ADD KEY `gruppo_dispone` (`IDgruppo`),
+  ADD KEY `permessi_dispone` (`IDpermessi`);
+
+--
+-- Indici per le tabelle `gruppo`
+--
+ALTER TABLE `gruppo`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indici per le tabelle `modifica`
+--
+ALTER TABLE `modifica`
+  ADD PRIMARY KEY (`IDuser`,`IDtrascrizione`),
+  ADD KEY `trascrizione_modifica` (`IDtrascrizione`);
+
+--
+-- Indici per le tabelle `modulo`
+--
+ALTER TABLE `modulo`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `user_modulo` (`fk_id_user`);
+
+--
+-- Indici per le tabelle `opera`
+--
+ALTER TABLE `opera`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indici per le tabelle `permessi`
+--
+ALTER TABLE `permessi`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indici per le tabelle `scansione`
+--
+ALTER TABLE `scansione`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `opera_scan` (`IDopera`),
+  ADD KEY `user_scan` (`IDuser`);
+
+--
+-- Indici per le tabelle `trascrizione`
+--
+ALTER TABLE `trascrizione`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `scan_trascription` (`IDscan`);
+
+--
+-- Indici per le tabelle `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `mail` (`MAIL`),
+  ADD UNIQUE KEY `username` (`USERNAME`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `gruppo`
+--
+ALTER TABLE `gruppo`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT per la tabella `modulo`
+--
+ALTER TABLE `modulo`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT per la tabella `opera`
+--
+ALTER TABLE `opera`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT per la tabella `permessi`
+--
+ALTER TABLE `permessi`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT per la tabella `scansione`
+--
+ALTER TABLE `scansione`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT per la tabella `trascrizione`
+--
+ALTER TABLE `trascrizione`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT per la tabella `user`
+--
+ALTER TABLE `user`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
