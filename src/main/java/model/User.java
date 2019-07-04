@@ -7,6 +7,7 @@ public class User {
 	private String surname;
 	private String username;
 	private String password;
+	private String mail;
 	private String nome_gruppo;
 	
 	
@@ -27,6 +28,12 @@ public class User {
 	}
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 	public String getUsername() {
 		return username;
@@ -49,7 +56,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", username=" + username + ", password="
+		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", mail=" + mail+ ", username=" + username + ", password="
 				+ password + ", nome gruppo=" + nome_gruppo +"]";
 	}
 	

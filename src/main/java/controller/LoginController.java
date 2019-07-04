@@ -4,6 +4,7 @@ import java.util.prefs.Preferences;
 
 import controller.exception.ServiceException;
 import controller.utils.GUIUtils;
+import controller.utils.StringUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,7 +20,7 @@ public class LoginController
     @FXML TextField usernameField;
     @FXML TextField passwordField;
     @FXML Button signInButton;
-    @FXML Text errorText;
+    @FXML Text loginErrorText;
     
     /***REGISTER***/
     @FXML TextField registerNameField;
@@ -60,7 +61,8 @@ public class LoginController
 					}
 					else 
 					{
-						errorText.setText("Sorry, something went wrong...Retry!");	
+						loginErrorText.setText("Sorry, something went wrong...Retry!");
+						loginErrorText.setVisible(true);
 					}
 				} catch (ServiceException e) {
 					e.printStackTrace();
@@ -75,8 +77,6 @@ public class LoginController
     }
     
     @FXML protected void handleRegistrationButton(ActionEvent event) throws Exception {
-    	
-		GUIUtils guiUtils = GUIUtils.getInstance();
 		
 		if(!registerNameField.getText().isEmpty() && !registerSurnameField.getText().isEmpty() 
 				&& !registerUsernameField.getText().isEmpty() && !registerPasswordField.getText().isEmpty() 
@@ -87,33 +87,38 @@ public class LoginController
 			System.out.println("LoginController.cls - handleRegistrationButton() - username: " + registerUsernameField.getText());
 			System.out.println("LoginController.cls - handleRegistrationButton() - Pass: " + registerPasswordField.getText());
 			System.out.println("LoginController.cls - handleRegistrationButton() - email: " + registerEmailField.getText());
-//			LoginService logService = LoginService.getInstance();
-//			try {
-//				User u = new User();
-//				u = logService.login((String)usernameField.getText(),(String)passwordField.getText());
-//				if(u != null) 
-//				{
-//					Map<String, Object> objectMap = new HashMap<String, Object>();
-//					objectMap.put("Username", u.getUsername());
-//					DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/welcomePage.fxml");
-//					//loginWindow.setScene(sceneHandler("successLogin", objectMap));		
-//				}
-//				else 
-//				{
-//					errorText.setText("Sorry, something went wrong...Retry!");
-//					//loginWindow.setScene(sceneHandler("successLogin", null));	
-//				}
-//			} catch (ServiceException e) {
-//				e.printStackTrace();
-//			}
+			LoginService logService = LoginService.getInstance();
+			try {
+				User u = new User();
+				u.setName(registerNameField.getText());
+				u.setSurname(registerSurnameField.getText());
+				u.setUsername(registerUsernameField.getText());
+				u.setMail(registerEmailField.getText());
+				u.setPassword(StringUtils.crypt(registerPasswordField.getText()));
+				Boolean isCreated = logService.register(u);
+				if(isCreated) 
+				{
+					registerErrorText.setText("Grazie, ora effettua il login!");
+					registerErrorText.visibleProperty().set(true);
+				}
+				else 
+				{
+					registerErrorText.setText("Attenzione, username esistente!");
+					registerErrorText.visibleProperty().set(true);
+				}
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		else 
 		{
-			System.out.println("LoginController.cls - handleRegistrationButton() - username already exist");
+			System.out.println("LoginController.cls - handleRegistrationButton() - campi non compilati");
+			registerErrorText.setText("Attenzione, compila tutti i campi per completare la registrazione!");
+			registerErrorText.visibleProperty().set(true);
 		}
     
-}
+    }
     
     
 }

@@ -1,9 +1,6 @@
 package db.dao;
 
-import db.dto.OperaDTO;
 import db.dto.UserDTO;
-
-import java.util.List;
 
 import controller.exception.ServiceException;
 

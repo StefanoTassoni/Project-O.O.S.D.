@@ -47,14 +47,21 @@ public class DigitalLibrary extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception 
 	{
-		stage = primaryStage;
-		root = FXMLLoader.load(getClass().getClassLoader().getResource("view/LoginPage.fxml"));
-        Scene scene = new Scene(root, xDim, yDim);
-        stage = new Stage();
-        stage.setTitle(TITLE);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+		try{
+			stage = primaryStage;
+			root = FXMLLoader.load(getClass().getClassLoader().getResource("view/LoginPage.fxml"));
+	        Scene scene = new Scene(root, xDim, yDim);
+	        stage = new Stage();
+	        stage.setTitle(TITLE);
+	        stage.setScene(scene);
+	        stage.setResizable(false);
+	        stage.show();
+        }
+		catch (Exception e) 
+		{
+			System.out.println("DigitalLibrary.cls - start() - exception: " + e.getMessage());
+    			e.printStackTrace();
+		}
 
 	}
 	

@@ -7,6 +7,7 @@ public class UserDTO extends BaseDTO{
 	private String surname;
 	private String username;
 	private String password;
+	private String mail;
 	private String nome_gruppo;
 
 	
@@ -27,6 +28,12 @@ public class UserDTO extends BaseDTO{
 	}
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 	public String getUsername() {
 		return username;

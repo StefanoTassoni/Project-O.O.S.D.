@@ -15,11 +15,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns:fx="http://javafx.com/fxml" fx:controller="controller.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.LoginController">
    <children>
       <Separator layoutX="293.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="15.0" />
-      <GridPane alignment="center" hgap="10" layoutY="62.0" prefHeight="338.0" prefWidth="300.0" vgap="10">
+      <GridPane alignment="center" hgap="10" layoutY="88.0" prefHeight="238.0" prefWidth="300.0" vgap="10">
          <padding>
             <Insets bottom="10" left="25" right="25" top="25" />
          </padding>
@@ -33,14 +32,12 @@
                   <Button fx:id="signInButton" onAction="#handleLoginButton" text="Log In" />
                </children>
             </HBox>
-            <Text fx:id="errorText" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
          <columnConstraints>
             <ColumnConstraints />
             <ColumnConstraints />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
@@ -54,8 +51,8 @@
             <Insets bottom="10" left="25" right="25" top="25" />
          </padding>
          <children>
-            <Label text="Nome:"  GridPane.rowIndex="1" />
-            <TextField fx:id="registerNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Label text="Nome:" GridPane.rowIndex="1" />
+            <TextField fx:id="registerNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Cognome:" GridPane.rowIndex="2" />
             <TextField fx:id="registerSurnameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Username:" GridPane.rowIndex="3" />
@@ -69,6 +66,7 @@
                   <Button fx:id="registerButton" onAction="#handleRegistrationButton" text="Registrati" />
                </children>
             </HBox>
+            <Text visible="false" fx:id="registerErrorText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="166.9999946281314" GridPane.columnIndex="1" GridPane.rowIndex="9" /><!-- wrapText="true" -->
          </children>
          <columnConstraints>
             <ColumnConstraints />
@@ -78,6 +76,7 @@
             <RowConstraints />
             <RowConstraints minHeight="10.0" prefHeight="30.0" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
@@ -114,5 +113,6 @@
             </Label>
          </children>
       </AnchorPane>
+      <Text visible="false" fx:id="loginErrorText" layoutX="29.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="240.9999946281314" />
    </children>
 </Pane>
