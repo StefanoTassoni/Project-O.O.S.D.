@@ -86,15 +86,16 @@ public class UserService{
 		userGroupDAO.insert(userGroupDTO);
 		return true;
 	}
-//	
-//	public void updateUser(User user, String username) throws ServiceException {
-//		UserDTO userDTO = UserMapper.toDTO(user);
-//		User condition = new User();
-//		condition.setUsername(username);
-//		UserDTO DTOCondition = UserMapper.toDTO(condition);
-//		userDAO.update(userDTO, DTOCondition);
-//	}
-//	
+	
+	public Boolean updateUser(User user, String username) throws ServiceException {
+		UserDTO userDTO = UserMapper.toDTO(user);
+		User condition = new User();
+		condition.setUsername(username);
+		UserDTO DTOCondition = UserMapper.toDTO(condition);
+		userDAO.update(userDTO, DTOCondition);
+		return true;
+	}
+	
 //	public void deleteUser(String userId, String user) throws ServiceException {
 //		UserDTO userDTO = new UserDTO();
 //		userDTO.setId(Integer.valueOf(userId));

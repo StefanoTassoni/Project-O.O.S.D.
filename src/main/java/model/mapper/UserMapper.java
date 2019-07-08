@@ -15,6 +15,8 @@ public class UserMapper {
 		dto.setSurname(model.getSurname());
 		dto.setUsername(model.getUsername());
 		dto.setMail(model.getMail());
+		dto.setPhone(model.getPhone());
+		dto.setAddress(model.getAddress());
 		dto.setPassword(model.getPassword());
 		dto.setNomeGruppo(model.getNomeGruppo());
 		return dto;
@@ -27,6 +29,8 @@ public class UserMapper {
 		model.setSurname(dto.getSurname());
 		model.setUsername(dto.getUsername());
 		model.setMail(dto.getMail());
+		model.setPhone(dto.getPhone());
+		model.setAddress(dto.getAddress());
 		model.setPassword(dto.getPassword());
 		model.setNomeGruppo(dto.getNomeGruppo());
 		return model;

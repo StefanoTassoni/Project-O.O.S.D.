@@ -87,6 +87,7 @@ public class SideBarCtrl implements Initializable{
 		}
     }
     
+    
     @FXML protected void gotoModuleCompiling() throws Exception 
     {	
     		System.out.println("SideBarCtrl.cls - gotoModuleCompiling()");

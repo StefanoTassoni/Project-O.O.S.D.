@@ -23,5 +23,7 @@
 	</CardPane>
 	<CardPane fx:id="CardPaneTranscriptor" prefHeight="500.0" prefWidth="222.0">
 	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
+	    <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
+	    <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
 	</CardPane>
 </Pane>

@@ -4,6 +4,7 @@ public class ModuloDTO extends BaseDTO {
 	
 	private Integer id;
 	private String message;
+	private String qualifica;
 	private Integer fk_id_user;
 	
 	public Integer getId() {
@@ -20,6 +21,13 @@ public class ModuloDTO extends BaseDTO {
 		this.message = message;
 	}
 	
+	public String getQualifica() {
+		return qualifica;
+	}
+	public void setQualifica(String qualifica) {
+		this.qualifica = qualifica;
+	}
+	
 	public Integer getFkIdUser() {
 		return fk_id_user;
 	}
@@ -29,7 +37,7 @@ public class ModuloDTO extends BaseDTO {
 	
 	@Override
 	public String toString() {
-		return "Modulo [id=" + id + ", message=" + message + ", idUser=" + fk_id_user +"]";	
+		return "Modulo [id=" + id + ", message=" + message + ", idUser=" + fk_id_user + ", qualifica=" + qualifica + "]";	
 	}
 
 }

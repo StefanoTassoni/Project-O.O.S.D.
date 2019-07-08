@@ -68,6 +68,7 @@ public class Database {
 	}
 
 	public static void insert(String query) throws SQLException {
+		System.out.println("Database.cls - insert() - query insert: " + query);
 		Database.updateQuery(query);
 	}
 
@@ -150,6 +151,7 @@ public class Database {
 	public static void update(String table, Map<String, Object> data, Map<String, Object> condition) throws SQLException {
 		// Generazione query
 		String query = "UPDATE " + table + " SET " + concatMapWithSeparator(data, ",") + " WHERE " + concatMapWithSeparator(condition, "AND") + ";";
+		System.out.println("Database.cls - update() - update query: " + query);
 		// Esecuzione query
 		Database.update(query);
 	}

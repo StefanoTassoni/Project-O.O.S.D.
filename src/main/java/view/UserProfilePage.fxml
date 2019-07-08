@@ -29,17 +29,17 @@
          </padding>
          <children>
             <Label text="Nome" GridPane.rowIndex="1" />
-            <Text fx:id="firstName" strokeType="OUTSIDE" strokeWidth="0.0"  wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text fx:id="firstNameField" strokeType="OUTSIDE" strokeWidth="0.0"  wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Cognome" GridPane.rowIndex="2" />
-            <Text fx:id="surname" strokeType="OUTSIDE" strokeWidth="0.0"  wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text fx:id="surnameField" strokeType="OUTSIDE" strokeWidth="0.0"  wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Indirizzo" GridPane.rowIndex="3" />
-            <Text fx:id="address" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text fx:id="addressField" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Mail" GridPane.rowIndex="4" />
-            <Text fx:id="mail" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text fx:id="mailField" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Telefono" GridPane.rowIndex="5" />
-            <Text fx:id="phone" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Text fx:id="phoneField" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Username" GridPane.rowIndex="6" />
-            <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Text fx:id="usernameField" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="150.9830722808838" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button fx:id="editProfile" mnemonicParsing="false" onAction="#gotoEditProfile" prefHeight="38.0" prefWidth="78.0" text="Modifica" GridPane.rowIndex="12" />
             <Button fx:id="editPassword" mnemonicParsing="false" onAction="#gotoEditPassword" prefHeight="38.0" prefWidth="132.0" text="Cambia Password" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
          </children>

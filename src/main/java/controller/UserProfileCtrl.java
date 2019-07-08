@@ -4,15 +4,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
+import controller.exception.ServiceException;
 import controller.utils.GUIUtils;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
+//import javafx.scene.image.Image;
+//import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import model.User;
+import model.service.UserService;
 
 
 public class UserProfileCtrl implements Initializable{
@@ -20,27 +23,49 @@ public class UserProfileCtrl implements Initializable{
 	@FXML Button editProfile;
 	@FXML Button editPassword;
 	
-	@FXML Text firstName;
-	@FXML Text surname;
-	@FXML Text address;
-	@FXML Text mail;
-	@FXML Text phone;
-	@FXML Text username;
+	@FXML Text firstNameField;
+	@FXML Text surnameField;
+	@FXML Text addressField;
+	@FXML Text mailField;
+	@FXML Text phoneField;
+	@FXML Text usernameField;
 	@FXML Circle avatar;
 	
 
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-		System.out.println("UserProfileCtrl.cls - constructor()");
-		firstName.setText("ciao");
-		surname.setText("ciao");
-		address.setText("ciao");
-		mail.setText("ciao");
-		phone.setText("ciao");
-		username.setText("ciao");
-//		Image image = new Image("../../resources/avatar.png");
-//		ImagePattern imagePattern = new ImagePattern(image);
-//		avatar.setFill(imagePattern);
+		System.out.println("UserProfileCtrl.cls - initialize()");
+		Preferences session = Preferences.userRoot();
+		String username = session.get("username", null);
+		if( !username.equals(null)) 
+		{
+			UserService userService = UserService.getInstance();
+			try 
+			{
+				User u = userService.getByUsername(username);
+			
+				if (u != null) 
+				{
+					System.out.println("UserProfileCtrl.cls - initialize() - user info: " + u.toString());
+					usernameField.setText(u.getUsername());	
+					firstNameField.setText(u.getName());
+					surnameField.setText(u.getSurname());
+					addressField.setText(u.getAddress());
+					mailField.setText(u.getMail());
+					phoneField.setText(u.getPhone());	
+				}
+			} 
+			catch (ServiceException e) 
+			{
+			
+				e.printStackTrace();
+			}
+		}
+		else 
+		{
+			System.out.println("UserProfileCtrl.cls - initialize() - errore cattura user");
+		}
+		
     }
 
 

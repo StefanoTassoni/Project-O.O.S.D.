@@ -3,9 +3,12 @@ package model.service;
 import java.util.prefs.Preferences;
 import db.dao.ModuloDAO;
 import db.dto.ModuloDTO;
+import db.dto.UserDTO;
+import db.dto.UserGroupDTO;
 import model.mapper.ModuloMapper;
+import model.mapper.UserMapper;
 import model.Modulo;
-
+import model.User;
 
 import java.util.List;
 import java.util.prefs.Preferences;
@@ -42,15 +45,16 @@ public class ModuloService {
 		return ModuloMapper.toModel(moduloDTO);
 	}
 	
-	/*public Modulo getByUsername(String modUsername) throws ServiceException{
+	/*public Modulo getModuleByUsername(String modUsername) throws ServiceException{
 		DA COMPLETARE!!!
 	}*/
 	
-	public void insertModulo(String msg) throws ServiceException{
+	public void insertModulo(Modulo module) throws ServiceException{
 		Preferences userPreferences = Preferences.userRoot();
 		ModuloDTO moduloDTO = new ModuloDTO();
-		moduloDTO.setFkIdUser(Integer.valueOf(userPreferences.get("userId",null)));
-		moduloDTO.setMessage(msg);
+		moduloDTO.setFkIdUser(module.getFkIdUser());
+		moduloDTO.setMessage(module.getMessage());
+		moduloDTO.setQualifica(module.getQualifica());
 		moduloDAO.insert(moduloDTO);
 	}
 	

@@ -1,22 +1,19 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
 import controller.utils.GUIUtils;
+import controller.utils.StringUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
+import model.User;
+import model.service.UserService;
 
 
-public class EditUserPasswordCtrl {
+
+public class EditUserPasswordCtrl{
 
 	@FXML TextField newPass;
 	@FXML TextField oldPass;
@@ -28,33 +25,52 @@ public class EditUserPasswordCtrl {
 	@FXML protected void saveNewPassword(ActionEvent event) throws Exception 
     {	
     		GUIUtils guiUtils = GUIUtils.getInstance();
+    		UserService uService = UserService.getInstance();
     		
-    		if(!newPass.getText().isEmpty() && !oldPass.getText().isEmpty() &&
-    				!confirmPass.getText().isEmpty()) 
+    		
+    		if(!newPass.getText().isEmpty() && !oldPass.getText().isEmpty() && !confirmPass.getText().isEmpty()) 
 		{
-			try 
-			{
-				System.out.println("EditUserPasswordCtrl.cls - saveNewPassword() - newPass: " + newPass.getText());
-				System.out.println("EditUserPasswordCtrl.cls - saveNewPassword() - oldPass: " + oldPass.getText());
-				System.out.println("EditUserPasswordCtrl.cls - saveNewPassword() - confirmPass: " + confirmPass.getText());
+			System.out.println("EditUserPasswordCtrl.cls - saveNewPassword() - newPass: " + newPass.getText());
+			System.out.println("EditUserPasswordCtrl.cls - saveNewPassword() - oldPass: " + oldPass.getText());
+			System.out.println("EditUserPasswordCtrl.cls - saveNewPassword() - confirmPass: " + confirmPass.getText());
 			
-			} 
-			catch (Exception e) 
-			{
-				e.printStackTrace();
-			}
-			finally 
-			{
-				DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
-			}
+    			if(confirmPass.getText().equals(newPass.getText())) 
+    			{
+    				try 
+    				{
+    					Preferences session = Preferences.userRoot();
+    					String username = session.get("username", null);
+    					User tempUser = uService.getByUsername(username);
+    					if(tempUser.getPassword().equals(StringUtils.crypt(oldPass.getText()))) 
+    					{
+	    					User u = new User();
+	    					u.setPassword(StringUtils.crypt(newPass.getText()));
+	    					uService.updateUser(u, username);
+	    					System.out.println("EditUserProfileCtrl.cls - saveNewProfile() - pass aggiornata");
+    					}
+    					else 
+    					{
+    						System.out.println("EditUserProfileCtrl.cls - saveNewProfile() - OLD pass is different");
+    					}
+    				} 
+    				catch (Exception e) 
+    				{
+    					e.printStackTrace();
+    				}
+    			}
+    			else 
+    			{
+    				System.out.println("EditUserProfileCtrl.cls - saveNewProfile() - NEW pass are different");
+    			}
+			
 		}
 		else 
 		{
 			System.out.println("EditUserProfileCtrl.cls - saveNewProfile() - username empty");
 		}
+    		DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
     
     }
-	
 	
 	
 }

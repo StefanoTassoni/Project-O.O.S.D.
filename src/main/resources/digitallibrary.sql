@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Creato il: Lug 03, 2019 alle 18:54
+-- Creato il: Lug 09, 2019 alle 00:25
 -- Versione del server: 5.6.35
 -- Versione PHP: 7.1.8
 
@@ -82,8 +82,16 @@ CREATE TABLE `modifica` (
 CREATE TABLE `modulo` (
   `ID` int(10) UNSIGNED NOT NULL,
   `message` text NOT NULL,
-  `fk_id_user` int(10) UNSIGNED NOT NULL
+  `fk_id_user` int(10) UNSIGNED NOT NULL,
+  `qualifica` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `modulo`
+--
+
+INSERT INTO `modulo` (`ID`, `message`, `fk_id_user`, `qualifica`) VALUES
+(2, 'adafboau', 4, 'test qualifica');
 
 -- --------------------------------------------------------
 
@@ -163,17 +171,21 @@ CREATE TABLE `user` (
   `USERNAME` varchar(200) NOT NULL,
   `PASSWORD` varchar(200) NOT NULL,
   `MAIL` varchar(200) NOT NULL,
-  `NOME_GRUPPO` enum('supervisore','lettore','trascrittore') NOT NULL
+  `NOME_GRUPPO` enum('supervisore','lettore','trascrittore') NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `phone` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `user`
 --
 
-INSERT INTO `user` (`ID`, `NAME`, `SURNAME`, `USERNAME`, `PASSWORD`, `MAIL`, `NOME_GRUPPO`) VALUES
-(1, 'FEDERICO', 'ANGELINI', 'fede', 'fede', 'fede@gmail.com', 'supervisore'),
-(2, 'gino', 'paoli', 'paolino', 'daipaolo', 'gino@gmail.com', 'lettore'),
-(3, 'rocco', 'papaleo', 'rocchetta', 'pappa', 'rocco@gmail.com', 'trascrittore');
+INSERT INTO `user` (`ID`, `NAME`, `SURNAME`, `USERNAME`, `PASSWORD`, `MAIL`, `NOME_GRUPPO`, `address`, `phone`) VALUES
+(1, 'FEDERICO', 'ANGELINI', 'fede', '5d942a1d73fd8f28d71e6b3d2e42f44721db94b734c2edcfe6fcd48b76a74f9', 'fede@gmail.com', 'supervisore', '', ''),
+(2, 'gino', 'paoli', 'paolino', 'daipaolo', 'gino@gmail.com', 'lettore', '', ''),
+(3, 'rocco', 'papaleo', 'rocchetta', 'pappa', 'rocco@gmail.com', 'trascrittore', '', ''),
+(4, 'feffo', 'feffo', 'feffo', '51fa5adfd09d64475ee75ed58b40c75c28d5323f8f18167662057f76aef25a6', 'feffo@feffo.it', 'supervisore', 'via da qui', '+393453453333'),
+(5, 'fico', 'fico', 'fico@fico.it', '5d942a1d73fd8f28d71e6b3d2e42f44721db94b734c2edcfe6fcd48b76a74f9', 'fico@fico.it', 'supervisore', '', '');
 
 -- --------------------------------------------------------
 
@@ -193,7 +205,9 @@ CREATE TABLE `usergroup` (
 INSERT INTO `usergroup` (`fk_user`, `fk_group`) VALUES
 (1, 1),
 (2, 3),
-(3, 2);
+(3, 2),
+(4, 3),
+(5, 3);
 
 --
 -- Indici per le tabelle scaricate
@@ -281,7 +295,7 @@ ALTER TABLE `gruppo`
 -- AUTO_INCREMENT per la tabella `modulo`
 --
 ALTER TABLE `modulo`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT per la tabella `opera`
 --
@@ -306,7 +320,7 @@ ALTER TABLE `trascrizione`
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

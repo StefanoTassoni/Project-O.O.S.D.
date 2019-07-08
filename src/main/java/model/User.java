@@ -8,6 +8,8 @@ public class User {
 	private String username;
 	private String password;
 	private String mail;
+	private String phone;
+	private String address;
 	private String nome_gruppo;
 	
 	
@@ -47,6 +49,18 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getNomeGruppo() {
 		return nome_gruppo;
 	}
@@ -57,7 +71,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", mail=" + mail+ ", username=" + username + ", password="
-				+ password + ", nome gruppo=" + nome_gruppo +"]";
+				+ password + ", nome gruppo=" + nome_gruppo + ", Phone=" + phone + ", address=" + address +"]";
 	}
 	
 }
