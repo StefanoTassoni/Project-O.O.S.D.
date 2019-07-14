@@ -23,8 +23,8 @@ public abstract class BaseDTO {
 		Map<Object, Object> beanMap = new BeanMap(this);
 		for(Object key: beanMap.keySet()) {
 			Object value =  beanMap.get(key);
-			System.out.println("toMap key: " + key);
-			System.out.println("toMap value: " + value);
+			//System.out.println("toMap key: " + key);
+			//System.out.println("toMap value: " + value);
 			if (value != null && !key.equals("class")) {
 				hashSnakelize.put(StringUtils.snakelize(CaseFormat.LOWER_CAMEL, key.toString()), beanMap.get(key));
 			}
@@ -46,8 +46,8 @@ public abstract class BaseDTO {
 		Map<String, Object> mapCamelize = new HashMap<String, Object>();
 		for(Object key: map.keySet()) {
 			Object value =  map.get(key);
-			System.out.println("fillFromMap key: " + key);
-			System.out.println("fillFromMap value: " + value);
+			//System.out.println("fillFromMap key: " + key);
+			//System.out.println("fillFromMap value: " + value);
 			if (value != null) {
 				mapCamelize.put(StringUtils.camelize(CaseFormat.UPPER_UNDERSCORE, key.toString()), map.get(key));
 			}

@@ -1,0 +1,26 @@
+
+È stato utilizzato l’oggetto Preferences, oggetto standard di JAVA, come un collettore di dati della sessione dell’utente.
+
+Per recuperare le info scrivere il seguente statement:
+
+	Preferences userPreferences = Preferences.userRoot();
+
+Sono state salvate le seguenti info di sessione:
+
+	userId : user id
+	username : user username
+	groupId : user group
+	currentSelectedScan: ultima scansione cliccata
+
+________________________________________________________________________________
+
+Le variabili di sistema sono create all’interno della classe che contiene il metodo mail: DigitalLibrary.
+Le variabili sono:
+
+	root : root a cui assegnare nuove view tramite la classe GuiUtils
+	xDim : dimensione x della finestra dell’app
+	yDim : dimensione y della finestra dell’app
+	currentOpera: Opera appena ricercata
+	currentResearch: ricercata effettuata 
+
+	

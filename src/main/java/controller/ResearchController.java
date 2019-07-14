@@ -29,11 +29,11 @@ public class ResearchController {
 		{
 			try 
 			{
-				System.out.println("ResearchController.cls - searchOpera() - operaName: " + operaName.getText());
-				System.out.println("ResearchController.cls - searchOpera() - operaCategory: " + operaCategory.getText());
-				System.out.println("ResearchController.cls - searchOpera() - operaAuthor: " + operaAuthor.getText());
-				System.out.println("ResearchController.cls - searchOpera() - operaLanguage: " + operaLanguage.getText());
-				System.out.println("ResearchController.cls - searchOpera() - operaYear: " + operaYear.getText());
+//				System.out.println("ResearchController.cls - searchOpera() - operaName: " + operaName.getText());
+//				System.out.println("ResearchController.cls - searchOpera() - operaCategory: " + operaCategory.getText());
+//				System.out.println("ResearchController.cls - searchOpera() - operaAuthor: " + operaAuthor.getText());
+//				System.out.println("ResearchController.cls - searchOpera() - operaLanguage: " + operaLanguage.getText());
+//				System.out.println("ResearchController.cls - searchOpera() - operaYear: " + operaYear.getText());
 				
 				if (operaCategory.getText().isEmpty() && operaAuthor.getText().isEmpty() 
 						&& operaLanguage.getText().isEmpty() && operaYear.getText().isEmpty()) 

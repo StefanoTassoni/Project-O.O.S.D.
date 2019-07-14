@@ -139,7 +139,7 @@ public class SideBarCtrl implements Initializable{
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/ImageAcquisitionHome.fxml");
+			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/ImageAcquisitionHome.fxml", 600, 500);
 		} 
 		catch (Exception e) 
 		{

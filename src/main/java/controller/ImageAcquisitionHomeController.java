@@ -1,11 +1,9 @@
 package controller;
 
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -17,20 +15,19 @@ import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import com.gluonhq.charm.glisten.control.CardPane;
 
 import model.Opera;
+import model.Scansione;
 import model.service.OperaService;
+import model.service.ScansioneService;
  
 public class ImageAcquisitionHomeController implements Initializable, ObservableList<Opera>{
     
@@ -46,9 +43,6 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
     
     
     /***Sidebar START***/
-    @FXML CardPane CardPaneAdmin;
-    @FXML CardPane CardPaneUser;
-    @FXML CardPane CardPaneTranscriptor;
     
     
     public void initialize(URL location, ResourceBundle resources) 
@@ -58,6 +52,14 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 	    {
 	    		//TODO if profile = user delete following tab
 	    		System.out.println("ImageAcquisitionHomeController.cls - initialize()");
+	    		ScansioneService scanService = ScansioneService.getInstance();
+	    		
+	    		ArrayList<Scansione> tempScans = (ArrayList<Scansione>) scanService.getAllScans();
+	    		for (Scansione scansione : tempScans) 
+	    		{
+				System.out.println("ImageAcquisitionHomeController.cls - initialize() - scansione: " + scansione.toString());	
+	    		}
+	    		
 	    		Preferences userPreferences = Preferences.userRoot();
 	    			
     			Boolean isFiltered = userPreferences.getBoolean("isFiltered", false);
@@ -111,6 +113,26 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 		{
 			e.printStackTrace();
 		}
+    }
+    
+    
+    @FXML
+    public void showOpera(MouseEvent event)
+    {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+            System.out.println("ImageAcquisitionHomeController.cls - showOpera() - Opera detail requested: " + AllOperaView.getSelectionModel().getSelectedItem().getTitolo());
+            GUIUtils guiUtils = GUIUtils.getInstance();
+            OperaService operaService = OperaService.getInstance();
+            try 
+            {
+	            	DigitalLibrary.currentOpera = operaService.getOperaById(AllOperaView.getSelectionModel().getSelectedItem().getId());	
+	            	guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view/OperaImageAcquisitionDetailView.fxml", 600, 500);
+			} 
+            catch (Exception e) {
+				e.printStackTrace();
+			}
+        }
     }
     
   

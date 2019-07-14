@@ -14,13 +14,14 @@ import controller.utils.StringUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
-public class OperaDetailViewCtrl implements Initializable{
+public class OperaImageAcquisitionDetailViewCtrl implements Initializable{
 	
 	@FXML Text operaTitle;
 	@FXML Text operaAuthor;
@@ -29,12 +30,13 @@ public class OperaDetailViewCtrl implements Initializable{
 	@FXML Text operaPublicationDate;
 	@FXML ImageView operaCover;
 	@FXML TilePane imageGallery;
+	@FXML Button uploadImage;
 	
 	private final String IMAGEDIR = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "imagedir" + File.separator + "";
     
     public void initialize(URL location, ResourceBundle resources) 
     {
-    		System.out.println("OperaDetailViewCtrl.cls - inizialize() - Opera: " + DigitalLibrary.currentOpera.toString());
+    		System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - inizialize() - Opera: " + DigitalLibrary.currentOpera.toString());
     		try 
 	    {
     			operaTitle.setText(DigitalLibrary.currentOpera.getTitolo());
@@ -45,21 +47,21 @@ public class OperaDetailViewCtrl implements Initializable{
 	    } 
         catch (Exception e) 
         {
-        		System.out.println("OperaDetailViewCtrl.cls - inizialize() - opera detail exception: " + e.getMessage());
+        		System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - inizialize() - opera detail exception: " + e.getMessage());
     			e.printStackTrace();
     		}
     			
 		/****************
 		 * image capture
 		 *****************/
-		//System.out.println("OperaDetailViewCtrl.cls - inizialize() - Working Directory: " + System.getProperty("user.dir") );
+		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - inizialize() - Working Directory: " + System.getProperty("user.dir") );
     		
     		imageGallery.setPadding(new Insets(15, 15, 15, 15));
     		imageGallery.setHgap(15);
     		
     		
         File repo = new File (IMAGEDIR + DigitalLibrary.currentOpera.getId());
-        System.out.println("OperaDetailViewCtrl.cls - inizialize() - repo: " + repo );
+        System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - inizialize() - repo: " + repo );
         
         if (repo.isDirectory()) 
         {
@@ -71,7 +73,7 @@ public class OperaDetailViewCtrl implements Initializable{
     	            
     	            /**loading the available pages of the opera**/
     	            fileList = (File[]) ArrayUtils.removeElement(fileList, 0);
-    	            System.out.println("OperaDetailViewCtrl.cls - inizialize() - fileList: " + fileList.length);
+    	            System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - inizialize() - fileList: " + fileList.length);
     	            
     	            for (File f : fileList) 
     	            {   
@@ -94,14 +96,14 @@ public class OperaDetailViewCtrl implements Initializable{
         		}
         		catch (Exception e) 
         		{
-        			System.out.println("OperaDetailViewCtrl.cls - inizialize() - opera images exception: " + e.getMessage());
+        			System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - inizialize() - opera images exception: " + e.getMessage());
             		e.printStackTrace();
         		}
         		
         }/****Check isADirectory****/
         else 
         {
-        		System.out.println("OperaDetailViewCtrl.cls - photo() - repo is not a folder ");
+        		System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - photo() - repo is not a folder ");
         }
     			
     }
@@ -125,14 +127,14 @@ public class OperaDetailViewCtrl implements Initializable{
     {
         if (event.getClickCount() == 2) //Checking double click
         {
-        		//System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.getTarget().toString());
-        		//System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.toString());
+        		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.getTarget().toString());
+        		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.toString());
             
         		Preferences userPreferences = Preferences.userRoot();
         		String currentSelectedScan = ((ImageView) event.getTarget()).getId();
         		userPreferences.put("currentSelectedScan", currentSelectedScan);
         		
-        		System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - scanPath: " + currentSelectedScan);
+        		System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - scanPath: " + currentSelectedScan);
         		
             GUIUtils guiUtils = GUIUtils.getInstance();
             try 
@@ -143,6 +145,24 @@ public class OperaDetailViewCtrl implements Initializable{
 				e.printStackTrace();
 			}
         }
+    }
+    
+    @FXML
+    public void uploadImage(MouseEvent event)
+    {
+        
+    		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.getTarget().toString());
+    		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.toString());
+    		
+        GUIUtils guiUtils = GUIUtils.getInstance();
+        try 
+        {	
+        		guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view" + File.separator + "UploadOperaScan.fxml", 400 , 300);
+		} 
+        catch (Exception e) {
+        		System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - inizialize() - uploadImage exception: " + e.getMessage());
+			e.printStackTrace();
+		}
     }
     
 }

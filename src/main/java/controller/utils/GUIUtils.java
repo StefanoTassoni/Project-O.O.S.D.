@@ -42,6 +42,7 @@ public class GUIUtils{
 		try 
 		{
 			final Stage dialog = new Stage();
+			dialog.setResizable(false);
 	        dialog.initOwner(DigitalLibrary.stage);
 	        root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
 	        dialog.setResizable(true);
@@ -61,6 +62,7 @@ public class GUIUtils{
 		try 
 		{
 			final Stage dialog = new Stage();
+			dialog.setResizable(false);
 	        dialog.initOwner(DigitalLibrary.stage);
 	        root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
 	        dialog.setResizable(true);
