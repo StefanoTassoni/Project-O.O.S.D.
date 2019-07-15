@@ -10,7 +10,7 @@
 	    <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
 	    <!-- <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" /> -->
 	    <Label onMouseClicked="#temp" style="-fx-padding:10;" text="Test" />
-	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Consulta Moduli" />
+	    <Label onMouseClicked="#gotoSeeModule" style="-fx-padding:10;" text="Consulta Moduli" />
 	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Validazione Trascrizioni" />
 	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Assegnazione Immagini" />
 	    <Label onMouseClicked="#gotoImageAcquisition" style="-fx-padding:10;" text="Acquisizione Immagini" />

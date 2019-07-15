@@ -25,9 +25,8 @@ import javafx.scene.control.TableView;
 
 
 import model.Opera;
-import model.Scansione;
 import model.service.OperaService;
-import model.service.ScansioneService;
+
  
 public class ImageAcquisitionHomeController implements Initializable, ObservableList<Opera>{
     
@@ -40,6 +39,8 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
     
     @FXML private TableView<Opera> AllOperaView;
     @FXML private TableColumn<Opera, String> operaTitle;
+    @FXML private TableColumn<Opera, String> operaAuthor;
+    @FXML private TableColumn<Opera, String> operaCategory;
     
     
     /***Sidebar START***/
@@ -52,13 +53,6 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 	    {
 	    		//TODO if profile = user delete following tab
 	    		System.out.println("ImageAcquisitionHomeController.cls - initialize()");
-	    		ScansioneService scanService = ScansioneService.getInstance();
-	    		
-	    		ArrayList<Scansione> tempScans = (ArrayList<Scansione>) scanService.getAllScans();
-	    		for (Scansione scansione : tempScans) 
-	    		{
-				System.out.println("ImageAcquisitionHomeController.cls - initialize() - scansione: " + scansione.toString());	
-	    		}
 	    		
 	    		Preferences userPreferences = Preferences.userRoot();
 	    			
@@ -85,6 +79,8 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 			}
         
 	    		operaTitle.setCellValueFactory(new PropertyValueFactory<Opera, String>("titolo"));
+	    		operaAuthor.setCellValueFactory(new PropertyValueFactory<Opera, String>("autore"));
+	    		operaCategory.setCellValueFactory(new PropertyValueFactory<Opera, String>("categoria"));
     			
     			AllOperaView.setItems(tableRow);
 	    		
@@ -107,7 +103,7 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
 			String filter = (!(AllOperaFilter.getText().isEmpty()) ? AllOperaFilter.getText() : "");
 			OperaService opService = OperaService.getInstance();
 			DigitalLibrary.currentResearch = opService.getByTitle(filter);
-			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/ImageAcquisitionHome.fxml");
+			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/ImageAcquisitionHome.fxml",600,500);
 		} 
 		catch (Exception e) 
 		{

@@ -1,17 +1,12 @@
 package model.service;
 
-import java.util.prefs.Preferences;
 import db.dao.ModuloDAO;
 import db.dto.ModuloDTO;
-import db.dto.UserDTO;
-import db.dto.UserGroupDTO;
 import model.mapper.ModuloMapper;
-import model.mapper.UserMapper;
 import model.Modulo;
-import model.User;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
 
 import controller.exception.ServiceException;
 import controller.exception.enums.ErrorCode;
@@ -32,7 +27,7 @@ public class ModuloService {
 		return instance;
 	}
 	
-	public List<Modulo> getAllMolule() throws ServiceException{
+	public List<Modulo> getAllModule() throws ServiceException{
 		List<ModuloDTO> moduloDTOlist = moduloDAO.selectAll();
 		return ModuloMapper.toModel(moduloDTOlist);
 	}
@@ -45,12 +40,16 @@ public class ModuloService {
 		return ModuloMapper.toModel(moduloDTO);
 	}
 	
-	/*public Modulo getModuleByUsername(String modUsername) throws ServiceException{
-		DA COMPLETARE!!!
-	}*/
+	public Modulo getModulesByUsername(String username) throws ServiceException{
+		ArrayList<ModuloDTO> moduleDTO = (ArrayList<ModuloDTO>) moduloDAO.getByUsername(username);
+		if(!ModuloMapper.toModel(moduleDTO).isEmpty())
+			return ModuloMapper.toModel(moduleDTO).get(0);
+		else {
+			return null;
+		}
+	}
 	
 	public void insertModulo(Modulo module) throws ServiceException{
-		Preferences userPreferences = Preferences.userRoot();
 		ModuloDTO moduloDTO = new ModuloDTO();
 		moduloDTO.setFkIdUser(module.getFkIdUser());
 		moduloDTO.setMessage(module.getMessage());

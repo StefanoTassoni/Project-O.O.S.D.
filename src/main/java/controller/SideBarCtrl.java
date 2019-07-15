@@ -109,7 +109,7 @@ public class SideBarCtrl implements Initializable{
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
-			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/SeeModule.fxml", 600, 500);
+			DigitalLibrary.root = guiUtils.replaceSceneContent(DigitalLibrary.root, "view/SeeModule.fxml");
 		}
 		catch (Exception e)
 		{

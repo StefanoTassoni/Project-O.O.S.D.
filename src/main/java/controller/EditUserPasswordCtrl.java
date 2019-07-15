@@ -7,7 +7,7 @@ import controller.utils.StringUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import model.User;
 import model.service.UserService;
 
@@ -15,9 +15,9 @@ import model.service.UserService;
 
 public class EditUserPasswordCtrl{
 
-	@FXML TextField newPass;
-	@FXML TextField oldPass;
-	@FXML TextField confirmPass;
+	@FXML PasswordField newPass;
+	@FXML PasswordField oldPass;
+	@FXML PasswordField confirmPass;
 	
 	@FXML Button saveNewPassword;
 	
