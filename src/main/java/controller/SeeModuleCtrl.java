@@ -18,7 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -133,6 +133,27 @@ public class SeeModuleCtrl implements Initializable, ObservableList<ModuleJoin>{
     }
 
 
+    @FXML
+    public void showModule(MouseEvent event)
+    {
+    		if (event.getClickCount() == 2) //Checking double click
+        {
+	        System.out.println("SeeModuleCtrl.cls - showModule() - user clicked detail: " + AllModuleView.getSelectionModel().getSelectedItem());
+	        GUIUtils guiUtils = GUIUtils.getInstance();
+	        try 
+	        {
+		        	Preferences userPreferences = Preferences.userRoot();
+		        	userPreferences.put("currentSelectedModuleUsername", AllModuleView.getSelectionModel().getSelectedItem().getUsername());	
+	            	guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view/SingleModuleView.fxml",400,400);
+			} 
+	        catch (Exception e) {
+				e.printStackTrace();
+			}
+        }
+        
+    }
+    
+    
 	public int size() {
 		// TODO Auto-generated method stub
 		return 0;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Creato il: Lug 09, 2019 alle 00:25
+-- Creato il: Lug 18, 2019 alle 20:19
 -- Versione del server: 5.6.35
 -- Versione PHP: 7.1.8
 
@@ -91,7 +91,8 @@ CREATE TABLE `modulo` (
 --
 
 INSERT INTO `modulo` (`ID`, `message`, `fk_id_user`, `qualifica`) VALUES
-(2, 'adafboau', 4, 'test qualifica');
+(4, 'Vorrei far parte della biblioteca', 6, 'laurea in matematica'),
+(3, 'Vorrei entrare a far parte del progetto digital library', 4, 'Laurea magistrale in lettere');
 
 -- --------------------------------------------------------
 
@@ -139,12 +140,21 @@ CREATE TABLE `permessi` (
 
 CREATE TABLE `scansione` (
   `ID` int(10) UNSIGNED NOT NULL,
-  `n_pagina` varchar(200) NOT NULL,
+  `pagina` varchar(200) NOT NULL,
   `data_pubblicazione` datetime NOT NULL,
   `formato` char(200) NOT NULL,
-  `IDopera` int(10) UNSIGNED NOT NULL,
-  `IDuser` int(10) UNSIGNED NOT NULL
+  `ID_opera` int(10) UNSIGNED NOT NULL,
+  `ID_user` int(10) UNSIGNED NOT NULL,
+  `path` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `scansione`
+--
+
+INSERT INTO `scansione` (`ID`, `pagina`, `data_pubblicazione`, `formato`, `ID_opera`, `ID_user`, `path`) VALUES
+(5, '22', '2019-07-14 00:00:00', 'jpg', 1, 1, 'src/main/resources/imagedir/1/22.jpg'),
+(4, '10', '2019-07-14 00:00:00', 'jpg', 1, 1, 'src/main/resources/imagedir/1/10.jpg');
 
 -- --------------------------------------------------------
 
@@ -181,11 +191,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `NAME`, `SURNAME`, `USERNAME`, `PASSWORD`, `MAIL`, `NOME_GRUPPO`, `address`, `phone`) VALUES
-(1, 'FEDERICO', 'ANGELINI', 'fede', '5d942a1d73fd8f28d71e6b3d2e42f44721db94b734c2edcfe6fcd48b76a74f9', 'fede@gmail.com', 'supervisore', '', ''),
+(1, 'FEDERICO', 'ANGELINI', 'f', '252f10c83610ebca1a59cbae8255eba2f95be4d1d7bcfa89d7248a82d9f111', 'fede@gmail.com', 'supervisore', 'via de', ''),
 (2, 'gino', 'paoli', 'paolino', 'daipaolo', 'gino@gmail.com', 'lettore', '', ''),
 (3, 'rocco', 'papaleo', 'rocchetta', 'pappa', 'rocco@gmail.com', 'trascrittore', '', ''),
 (4, 'feffo', 'feffo', 'feffo', '51fa5adfd09d64475ee75ed58b40c75c28d5323f8f18167662057f76aef25a6', 'feffo@feffo.it', 'supervisore', 'via da qui', '+393453453333'),
-(5, 'fico', 'fico', 'fico@fico.it', '5d942a1d73fd8f28d71e6b3d2e42f44721db94b734c2edcfe6fcd48b76a74f9', 'fico@fico.it', 'supervisore', '', '');
+(5, 'fico', 'fico', 'fico@fico.it', '5d942a1d73fd8f28d71e6b3d2e42f44721db94b734c2edcfe6fcd48b76a74f9', 'fico@fico.it', 'supervisore', '', ''),
+(6, 'ste', 'ste', 'stef', '7aacb6d011d8d98c2caa91c132e5a3cdeb346b143a871a4a223b79ea922487', 'ste@ste.it', 'supervisore', '', '');
 
 -- --------------------------------------------------------
 
@@ -206,8 +217,9 @@ INSERT INTO `usergroup` (`fk_user`, `fk_group`) VALUES
 (1, 1),
 (2, 3),
 (3, 2),
-(4, 3),
-(5, 3);
+(5, 3),
+(6, 3),
+(4, 2);
 
 --
 -- Indici per le tabelle scaricate
@@ -264,8 +276,8 @@ ALTER TABLE `permessi`
 --
 ALTER TABLE `scansione`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `opera_scan` (`IDopera`),
-  ADD KEY `user_scan` (`IDuser`);
+  ADD KEY `opera_scan` (`ID_opera`),
+  ADD KEY `user_scan` (`ID_user`);
 
 --
 -- Indici per le tabelle `trascrizione`
@@ -295,7 +307,7 @@ ALTER TABLE `gruppo`
 -- AUTO_INCREMENT per la tabella `modulo`
 --
 ALTER TABLE `modulo`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT per la tabella `opera`
 --
@@ -310,7 +322,7 @@ ALTER TABLE `permessi`
 -- AUTO_INCREMENT per la tabella `scansione`
 --
 ALTER TABLE `scansione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT per la tabella `trascrizione`
 --
@@ -320,7 +332,7 @@ ALTER TABLE `trascrizione`
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

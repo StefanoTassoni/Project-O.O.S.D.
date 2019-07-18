@@ -94,6 +94,8 @@ public class LoginController
 				u.setSurname(registerSurnameField.getText());
 				u.setUsername(registerUsernameField.getText());
 				u.setMail(registerEmailField.getText());
+				u.setAddress("");
+				u.setPhone("");
 				u.setPassword(StringUtils.crypt(registerPasswordField.getText()));
 				Boolean isCreated = logService.register(u);
 				if(isCreated) 

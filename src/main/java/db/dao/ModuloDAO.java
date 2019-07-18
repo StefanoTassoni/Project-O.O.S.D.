@@ -24,7 +24,7 @@ public class ModuloDAO extends BaseDAO<ModuloDTO>{
 //			+ "WHERE fk_id_user = {0}";
 	
 	private static final String SELECT_SINGLE_MODULE_WITH_USERNAME =
-			"SELECT DISTINCT u.name, u.username, m.fk_id_user, m.qualifica "
+			"SELECT DISTINCT u.name, u.username, m.message,m.fk_id_user, m.qualifica "
 			+ "FROM modulo m  "
 			+ "JOIN user u "
 			+ "ON u.id = m.fk_id_user "

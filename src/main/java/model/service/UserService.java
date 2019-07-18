@@ -96,6 +96,20 @@ public class UserService{
 		return true;
 	}
 	
+	
+	public Boolean updateUserGroup(Integer userId) throws ServiceException {
+		UserGroup condition = new UserGroup();
+		condition.setFkUser(userId);
+		UserGroupDTO deleteDTOCondition = UserGroupMapper.toDTO(condition);
+		userGroupDAO.delete(deleteDTOCondition);
+		condition.setFkGroup(2);
+		UserGroupDTO DTOCondition = UserGroupMapper.toDTO(condition);
+		userGroupDAO.insert(DTOCondition);
+		return true;
+	}
+	
+	
+	
 //	public void deleteUser(String userId, String user) throws ServiceException {
 //		UserDTO userDTO = new UserDTO();
 //		userDTO.setId(Integer.valueOf(userId));

@@ -11,6 +11,7 @@ Sono state salvate le seguenti info di sessione:
 	username : user username
 	groupId : user group
 	currentSelectedScan: ultima scansione cliccata
+	currentSelectedModuleUsername: ultimo modulo cliccato
 
 ________________________________________________________________________________
 
