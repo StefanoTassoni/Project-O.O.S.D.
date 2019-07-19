@@ -63,9 +63,11 @@ public class SingleModuleViewCtrl implements Initializable{
     		System.out.println("SingleModuleViewCtrl.cls - approveModule() - Approvazione Modulo: " );
     		
     		UserService uService = UserService.getInstance();
+    		ModuloService mService = ModuloService.getInstance();
     		try 
     		{
 			uService.updateUserGroup(Integer.valueOf(hiddenUserId.getText()));
+			mService.deleteModulo(Integer.valueOf(hiddenUserId.getText()));
 		}
     		catch (Exception e) 
     		{

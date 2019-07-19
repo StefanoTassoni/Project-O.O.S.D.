@@ -41,7 +41,7 @@ public class GUIUtils{
 	public void popUpNewSceneContent(Parent root, String fxml) throws Exception {
 		try 
 		{
-			final Stage dialog = new Stage();
+			Stage dialog = new Stage();
 			dialog.setResizable(false);
 	        dialog.initOwner(DigitalLibrary.stage);
 	        root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
@@ -61,7 +61,7 @@ public class GUIUtils{
 	public void popUpNewResizeSceneContent(Parent root, String fxml, Integer xdim , Integer ydim) throws Exception {
 		try 
 		{
-			final Stage dialog = new Stage();
+			Stage dialog = new Stage();
 			dialog.setResizable(false);
 	        dialog.initOwner(DigitalLibrary.stage);
 	        root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));

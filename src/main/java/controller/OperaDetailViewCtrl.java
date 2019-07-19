@@ -123,7 +123,7 @@ public class OperaDetailViewCtrl implements Initializable{
     @FXML
     public void showOperaSinglePage(MouseEvent event)
     {
-        if (event.getClickCount() == 2) //Checking double click
+        if (event.getClickCount() == 2)
         {
         		//System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.getTarget().toString());
         		//System.out.println("OperaDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.toString());
@@ -137,7 +137,7 @@ public class OperaDetailViewCtrl implements Initializable{
             GUIUtils guiUtils = GUIUtils.getInstance();
             try 
             {	
-	        		guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view" + File.separator + "SinglePageView.fxml",600,500);
+	        		guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view" + File.separator + "SinglePageView.fxml",900,500);
 			} 
             catch (Exception e) {
 				e.printStackTrace();

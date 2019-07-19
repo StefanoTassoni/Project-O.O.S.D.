@@ -57,6 +57,12 @@ public class ModuloService {
 		moduloDAO.insert(moduloDTO);
 	}
 	
+	public void deleteModulo(Integer userId) throws ServiceException{
+		ModuloDTO moduloDTO = new ModuloDTO();
+		moduloDTO.setFkIdUser(userId);
+		moduloDAO.delete(moduloDTO);
+	}
+	
 }
 	
 
