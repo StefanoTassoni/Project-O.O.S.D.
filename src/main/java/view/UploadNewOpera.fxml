@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.UploadNewOperaCtrl"><!-- prefHeight="500.0" prefWidth="600.0" -->
+   <children>
+      <GridPane alignment="center" hgap="10" layoutX="262.0" layoutY="8.0" prefHeight="109.0" prefWidth="313.0" style="-fx-border-color: grey;" vgap="10">
+         <padding>
+            <Insets bottom="10" left="25" right="25" top="25" />
+         </padding>
+         <children>
+            <Label prefHeight="17.0" prefWidth="57.0" text="Titolo" GridPane.rowIndex="1" />
+            <TextField fx:id="operaTitle"   GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label prefHeight="17.0" prefWidth="53.0" text="Autore" GridPane.rowIndex="2" />
+            <TextField fx:id="operaAuthor"   GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Categoria" GridPane.rowIndex="3" />
+            <TextField fx:id="operaCategory"   GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Lingua" GridPane.rowIndex="4" />
+            <TextField fx:id="operaLanguage"   GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label prefHeight="34.0" prefWidth="87.0" text="Data &#10;Pubblicazione" GridPane.rowIndex="5" />
+            <DatePicker fx:id="operaPublicationDate"   GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label prefHeight="34.0" prefWidth="87.0" text="Data &#10;Creazione" GridPane.rowIndex="6" />
+            <DatePicker fx:id="operaCreationDate"   GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+      <Button fx:id="uploadOpera" layoutX="262.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#uploadNewOpera" text="Carica Opera" />
+      <ImageView fx:id="operaCover" fitHeight="228.0" fitWidth="202.0" layoutX="32.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</Pane>

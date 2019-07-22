@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Creato il: Lug 18, 2019 alle 20:19
+-- Creato il: Lug 22, 2019 alle 20:31
 -- Versione del server: 5.6.35
 -- Versione PHP: 7.1.8
 
@@ -91,8 +91,7 @@ CREATE TABLE `modulo` (
 --
 
 INSERT INTO `modulo` (`ID`, `message`, `fk_id_user`, `qualifica`) VALUES
-(4, 'Vorrei far parte della biblioteca', 6, 'laurea in matematica'),
-(3, 'Vorrei entrare a far parte del progetto digital library', 4, 'Laurea magistrale in lettere');
+(4, 'Vorrei far parte della biblioteca', 6, 'laurea in matematica');
 
 -- --------------------------------------------------------
 
@@ -119,7 +118,9 @@ INSERT INTO `opera` (`ID`, `titolo`, `categoria`, `autore`, `lingua`, `date_crea
 (2, 'odissea', 'poema', 'omero', 'greco antico', '1200-01-01', '2018-06-10 00:00:00'),
 (3, 'decamerone', 'raccolta di novelle', 'giovanni boccaccio', 'italiano', '1350-01-01', '2020-05-15 00:00:00'),
 (9, 'zzzz testa', '', '', '', '2018-11-12', '2018-11-06 03:15:00'),
-(10, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00');
+(10, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
+(15, 'test', 'test', 'test', 'test', '2019-07-15', '2019-07-15 00:00:00'),
+(14, 'test', 'test', 'test', 'test', '2019-07-15', '2019-07-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -165,8 +166,16 @@ INSERT INTO `scansione` (`ID`, `pagina`, `data_pubblicazione`, `formato`, `ID_op
 CREATE TABLE `trascrizione` (
   `ID` int(10) UNSIGNED NOT NULL,
   `testo` text,
-  `IDscan` int(10) UNSIGNED NOT NULL
+  `ID_scan` int(10) UNSIGNED NOT NULL,
+  `validata` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `trascrizione`
+--
+
+INSERT INTO `trascrizione` (`ID`, `testo`, `ID_scan`, `validata`) VALUES
+(1, 'prova', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -284,7 +293,7 @@ ALTER TABLE `scansione`
 --
 ALTER TABLE `trascrizione`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `scan_trascription` (`IDscan`);
+  ADD KEY `scan_trascription` (`ID_scan`);
 
 --
 -- Indici per le tabelle `user`
@@ -312,7 +321,7 @@ ALTER TABLE `modulo`
 -- AUTO_INCREMENT per la tabella `opera`
 --
 ALTER TABLE `opera`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT per la tabella `permessi`
 --
@@ -327,7 +336,7 @@ ALTER TABLE `scansione`
 -- AUTO_INCREMENT per la tabella `trascrizione`
 --
 ALTER TABLE `trascrizione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT per la tabella `user`
 --

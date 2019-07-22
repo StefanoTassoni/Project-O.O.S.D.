@@ -1,16 +1,11 @@
 package model.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import db.dao.OperaDAO;
 import db.dto.OperaDTO;
 import model.mapper.OperaMapper;
 import model.Opera;
-
 import controller.exception.ServiceException;
 
 public class OperaService {
@@ -60,6 +55,12 @@ public class OperaService {
 		queryString = queryString.substring(0, queryString.length() - 4);
 		List<OperaDTO> operaDTOList = OperaDAO.getOperaByResearchField(queryString);
 		return OperaMapper.toModel(operaDTOList);
+	}
+	
+	public Boolean saveOpera(Opera opera) throws ServiceException {
+		OperaDTO operaDTO = OperaMapper.toDTO(opera); 
+		OperaDAO.insert(operaDTO);
+		return true;
 	}
 	
 }

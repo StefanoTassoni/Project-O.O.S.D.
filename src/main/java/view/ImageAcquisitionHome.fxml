@@ -32,6 +32,6 @@
       </StackPane>
       <TextField fx:id="AllOperaFilter" layoutX="338.0" layoutY="27.0" promptText="Titolo Opera" />
       <Button layoutX="515.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#filterOperas" text="Filtra" />
-      <Button layoutX="372.0" layoutY="387.0" mnemonicParsing="false" text="Nuova Opera" />
+      <Button layoutX="372.0" layoutY="387.0" mnemonicParsing="false" text="Nuova Opera" onMouseClicked="#uploadNewOpera"/>
    </children>
 </Pane>

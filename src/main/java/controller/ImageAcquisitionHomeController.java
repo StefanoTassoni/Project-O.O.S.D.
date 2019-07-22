@@ -1,15 +1,23 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
+import controller.exception.ServiceException;
 import controller.utils.GUIUtils;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
@@ -20,12 +28,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
 import model.Opera;
+import model.Scansione;
 import model.service.OperaService;
+import model.service.ScansioneService;
 
  
 public class ImageAcquisitionHomeController implements Initializable, ObservableList<Opera>{
@@ -131,7 +142,18 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
         }
     }
     
-  
+    @FXML
+    public void uploadNewOpera(MouseEvent event)
+    {
+    		System.out.println("ImageAcquisitionHomeController.cls - uploadNewOpera()");
+    		GUIUtils guiUtils = GUIUtils.getInstance();
+    		try {
+			guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view/UploadNewOpera.fxml", 600, 500);
+		} catch (Exception e) {
+			System.out.println("UploadOperaScanCtrl.cls - uploadImageScan() - insert exception: " + e.getMessage());
+			e.printStackTrace();
+		}
+    }
 
 	public int size() {
 		// TODO Auto-generated method stub
