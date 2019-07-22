@@ -148,7 +148,7 @@ public class ImageAcquisitionHomeController implements Initializable, Observable
     		System.out.println("ImageAcquisitionHomeController.cls - uploadNewOpera()");
     		GUIUtils guiUtils = GUIUtils.getInstance();
     		try {
-			guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view/UploadNewOpera.fxml", 600, 500);
+			guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view/UploadNewOpera.fxml", 369, 415);
 		} catch (Exception e) {
 			System.out.println("UploadOperaScanCtrl.cls - uploadImageScan() - insert exception: " + e.getMessage());
 			e.printStackTrace();

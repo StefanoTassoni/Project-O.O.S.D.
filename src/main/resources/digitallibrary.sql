@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Creato il: Lug 22, 2019 alle 20:31
+-- Creato il: Lug 22, 2019 alle 23:56
 -- Versione del server: 5.6.35
 -- Versione PHP: 7.1.8
 
@@ -114,13 +114,7 @@ CREATE TABLE `opera` (
 --
 
 INSERT INTO `opera` (`ID`, `titolo`, `categoria`, `autore`, `lingua`, `date_creazione`, `data_publicazione`) VALUES
-(1, 'divina commedia', 'romanzo', 'dante alighieri', 'italiano volgare', '1800-01-01', '2018-05-15 00:00:00'),
-(2, 'odissea', 'poema', 'omero', 'greco antico', '1200-01-01', '2018-06-10 00:00:00'),
-(3, 'decamerone', 'raccolta di novelle', 'giovanni boccaccio', 'italiano', '1350-01-01', '2020-05-15 00:00:00'),
-(9, 'zzzz testa', '', '', '', '2018-11-12', '2018-11-06 03:15:00'),
-(10, 'test a', 'test a', 'test a', 'test a', '2018-11-12', '2018-11-06 03:15:00'),
-(15, 'test', 'test', 'test', 'test', '2019-07-15', '2019-07-15 00:00:00'),
-(14, 'test', 'test', 'test', 'test', '2019-07-15', '2019-07-08 00:00:00');
+(23, 'Divina Commedia', 'Romanzo', 'Dante Alighieri', 'Italiana', '1304-06-27', '1304-06-27 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -154,8 +148,10 @@ CREATE TABLE `scansione` (
 --
 
 INSERT INTO `scansione` (`ID`, `pagina`, `data_pubblicazione`, `formato`, `ID_opera`, `ID_user`, `path`) VALUES
-(5, '22', '2019-07-14 00:00:00', 'jpg', 1, 1, 'src/main/resources/imagedir/1/22.jpg'),
-(4, '10', '2019-07-14 00:00:00', 'jpg', 1, 1, 'src/main/resources/imagedir/1/10.jpg');
+(6, '1', '2019-07-22 00:00:00', 'jpg', 23, 1, 'src/main/resources/imagedir/23/1.jpg'),
+(7, '2', '2019-07-22 00:00:00', 'jpg', 23, 1, 'src/main/resources/imagedir/23/2.jpg'),
+(8, '3', '2019-07-22 00:00:00', 'jpg', 23, 1, 'src/main/resources/imagedir/23/3.jpg'),
+(9, '4', '2019-07-22 00:00:00', 'jpg', 23, 1, 'src/main/resources/imagedir/23/4.jpg');
 
 -- --------------------------------------------------------
 
@@ -321,7 +317,7 @@ ALTER TABLE `modulo`
 -- AUTO_INCREMENT per la tabella `opera`
 --
 ALTER TABLE `opera`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT per la tabella `permessi`
 --
@@ -331,7 +327,7 @@ ALTER TABLE `permessi`
 -- AUTO_INCREMENT per la tabella `scansione`
 --
 ALTER TABLE `scansione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT per la tabella `trascrizione`
 --

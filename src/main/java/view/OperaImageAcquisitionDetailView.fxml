@@ -53,7 +53,7 @@
       <ImageView fx:id="operaCover" fitHeight="228.0" fitWidth="202.0" layoutX="32.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
       <ScrollPane layoutX="32.0" layoutY="287.0" prefHeight="100.0" prefWidth="543.0">
          <content>
-            <TilePane fx:id="imageGallery" onMouseClicked="#showOperaSinglePage"  /> <!--prefHeight="170.0" prefWidth="541.0"-->
+            <TilePane fx:id="imageGallery" /> <!--prefHeight="170.0" prefWidth="541.0" onMouseClicked="#showOperaSinglePage"-->
          </content>
       </ScrollPane>
    </children>

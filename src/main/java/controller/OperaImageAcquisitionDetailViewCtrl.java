@@ -122,30 +122,30 @@ public class OperaImageAcquisitionDetailViewCtrl implements Initializable{
         return imageView;
     }
     
-    @FXML
-    public void showOperaSinglePage(MouseEvent event)
-    {
-        if (event.getClickCount() == 2) //Checking double click
-        {
-        		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.getTarget().toString());
-        		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.toString());
-            
-        		Preferences userPreferences = Preferences.userRoot();
-        		String currentSelectedScan = ((ImageView) event.getTarget()).getId();
-        		userPreferences.put("currentSelectedScan", currentSelectedScan);
-        		
-        		System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - scanPath: " + currentSelectedScan);
-        		
-            GUIUtils guiUtils = GUIUtils.getInstance();
-            try 
-            {	
-	        		guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view" + File.separator + "SinglePageView.fxml",600,500);
-			} 
-            catch (Exception e) {
-				e.printStackTrace();
-			}
-        }
-    }
+//    @FXML
+//    public void showOperaSinglePage(MouseEvent event)
+//    {
+//        if (event.getClickCount() == 2) //Checking double click
+//        {
+//        		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.getTarget().toString());
+//        		//System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - eventTarget: " + event.toString());
+//            
+//        		Preferences userPreferences = Preferences.userRoot();
+//        		String currentSelectedScan = ((ImageView) event.getTarget()).getId();
+//        		userPreferences.put("currentSelectedScan", currentSelectedScan);
+//        		
+//        		System.out.println("OperaImageAcquisitionDetailViewCtrl.cls - showOperaSinglePage() - scanPath: " + currentSelectedScan);
+//        		
+//            GUIUtils guiUtils = GUIUtils.getInstance();
+//            try 
+//            {	
+//	        		guiUtils.popUpNewResizeSceneContent(DigitalLibrary.root,"view" + File.separator + "SinglePageView.fxml",600,500);
+//			} 
+//            catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//        }
+//    }
     
     @FXML
     public void uploadImage(MouseEvent event)

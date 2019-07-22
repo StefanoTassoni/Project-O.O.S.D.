@@ -2,6 +2,10 @@ package controller;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.time.ZoneId;
 //import java.util.Date;
@@ -16,6 +20,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
+import javafx.stage.FileChooser;
 import model.Opera;
 import model.service.OperaService;
 
@@ -63,6 +68,7 @@ public class UploadNewOperaCtrl  implements Initializable{
     				
     				if(oService.saveOpera(newOpera)) {
     					guiUtils.closePopupWindow(uploadOpera.getScene());
+    					operaSaved = true;
     				}
     				
     			}
@@ -85,19 +91,45 @@ public class UploadNewOperaCtrl  implements Initializable{
         		try 
         		{
 		        Opera tempOpera = oService.getByTitle(newOpera.getTitolo()).get(0);
-		        boolean success = ( new File(String.valueOf(tempOpera.getId()))).mkdir();
+		        boolean success = ( new File(repo,String.valueOf(tempOpera.getId()))).mkdir();
 		        
 		        if (success) 
 		        { 
 		        		System.out.println("UploadNewOperaCtrl.cls - inizialize() - Directory: " + IMAGEDIR + String.valueOf(tempOpera.getId()) + " created");
+		        		File repoCover = new File (IMAGEDIR + String.valueOf(tempOpera.getId()) + File.separator);
+		    	        Path newImagePath = Paths.get(repoCover.toString() + File.separator + "cover" + ".jpg"  );
+		    	        System.out.println("UploadOperaScanCtrl.cls - uploadImageScan() - repo: " + repo );
+		    	        try 
+		    	        {
+		    		        FileChooser fileChooser = new FileChooser();
+		    		        fileChooser.setTitle("Open Resource File");
+		    		       
+		    		        File selectedImage = fileChooser.showOpenDialog(DigitalLibrary.stage);
+		    		        if (selectedImage != null) 
+		    		        {
+		    		        		System.out.println("UploadNewOperaCtrl.cls - uploadNewOpera() - selectedImage Path: " + selectedImage.toPath());
+		    		        		System.out.println("UploadNewOperaCtrl.cls - uploadNewOpera() - newImagePath absolutePath: " + newImagePath.toAbsolutePath());
+		    		        		System.out.println("UploadNewOperaCtrl.cls - uploadNewOpera() - newImagePath Path: " + newImagePath);
+		    		        		
+		    					Files.copy(selectedImage.toPath(), newImagePath , StandardCopyOption.REPLACE_EXISTING);
+		    		        		
+		    		        }	
+		    	        } 
+		    	        catch (Exception e) 
+		    	        {
+		    	        		System.out.println("UploadNewOperaCtrl.cls - uploadNewOpera() - opera cover exception: " + e.getMessage());
+		    				e.printStackTrace();
+		    			}
 		        }        
         		}
         		catch (Exception e) 
         		{
-        			System.out.println("UploadNewOperaCtrl.cls - inizialize() - opera images exception: " + e.getMessage());
+        			System.out.println("UploadNewOperaCtrl.cls - inizialize() - opera folder exception: " + e.getMessage());
             		e.printStackTrace();
         		}
         		
         }
+        
+        
     }
 }
