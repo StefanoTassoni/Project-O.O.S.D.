@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
@@ -79,7 +80,7 @@ public class SideBarCtrl implements Initializable{
     		GUIUtils guiUtils = GUIUtils.getInstance();
 		try 
 		{
-			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view/UserProfilePage.fxml", 600, 500);
+			DigitalLibrary.root = guiUtils.replaceResizeSceneContent(DigitalLibrary.root, "view" + File.separator + "UserProfilePage.fxml", 600, 500);
 		} 
 		catch (Exception e) 
 		{
