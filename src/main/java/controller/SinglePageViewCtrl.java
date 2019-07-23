@@ -25,6 +25,7 @@ public class SinglePageViewCtrl implements Initializable{
 	@FXML ImageView pageScan;
 	@FXML HTMLEditor pageTranscription;
 	@FXML Text scanId;
+	@FXML Button saveButton;
 	@FXML Button validateButton;
 	@FXML Button assignmentButton;
     
@@ -32,7 +33,7 @@ public class SinglePageViewCtrl implements Initializable{
     {	
     		Preferences userPreferences = Preferences.userRoot();
     		System.out.println("SinglePageViewCtrl.cls - inizialize() - currentSelectedScan: " + userPreferences.get("currentSelectedScan", null));
-        
+    		
         try 
         {
     			File file = new File (userPreferences.get("currentSelectedScan", null));
@@ -51,6 +52,11 @@ public class SinglePageViewCtrl implements Initializable{
     			String replacedHtmlString = tempTrascr.getTesto().replace("<apx>", "\"");
     			
     			pageTranscription.setHtmlText(replacedHtmlString);
+    			
+    			if(tempTrascr.getValidata() == 1) {
+    				validateButton.setDisable(true);
+    			}
+    			
     	           
     		}
     		catch (Exception e) 
@@ -58,7 +64,22 @@ public class SinglePageViewCtrl implements Initializable{
     			System.out.println("SinglePageViewCtrl.cls - inizialize() - exception: " + e.getMessage());
         		e.printStackTrace();
     		}
-
+        
+        System.out.println("SinglePageViewCtrl.cls - inizialize() - groupId: " + userPreferences.get("groupId", null));
+		if(userPreferences.get("groupId",null) != null && userPreferences.get("groupId",null).equals("3")) 
+		{
+			pageTranscription.setDisable(true);
+			validateButton.setVisible(false);
+			saveButton.setVisible(false);
+			assignmentButton.setVisible(false);
+		}
+		else if(userPreferences.get("groupId",null) != null && userPreferences.get("groupId",null).equals("2"))
+		{
+			pageTranscription.setDisable(false);
+			validateButton.setVisible(false);
+			saveButton.setVisible(true);
+			assignmentButton.setVisible(false);
+		}
     			
     }
     
@@ -80,7 +101,8 @@ public class SinglePageViewCtrl implements Initializable{
     	        transcription.setValidata(0);
     	        TrascrizioneService tService = TrascrizioneService.getInstance();
     	        tService.saveTranscription(transcription);
-    	        guiUtils.closePopupWindow(validateButton.getScene());	
+    	        validateButton.setDisable(false);
+    	        guiUtils.closePopupWindow(saveButton.getScene());	
     		}
     		catch (Exception e) 
     		{
@@ -88,7 +110,34 @@ public class SinglePageViewCtrl implements Initializable{
         		e.printStackTrace();
 		}
            
-    } 
+    }
+    
+    
+    @FXML protected void validateTranscription(ActionEvent event) throws Exception 
+    {
+    		try 
+    		{
+    	        System.out.println("SinglePageViewCtrl.cls - validateTranscription() - scanId: " + scanId.getText());
+    	        ScansioneService scanService = ScansioneService.getInstance();
+    	        Scansione scan = scanService.getScanByPath(scanId.getText());
+    	        System.out.println("SinglePageViewCtrl.cls - validateTranscription() - pageTranscription: " + scan.toString());
+    	        
+    	        Trascrizione transcription = new Trascrizione();
+    	        transcription.setIdScan(scan.getId());
+    	        String replaceHTMLString = pageTranscription.getHtmlText().replace("\"","<apx>");;
+    	        transcription.setTesto(replaceHTMLString);
+    	        transcription.setValidata(0);
+    	        TrascrizioneService tService = TrascrizioneService.getInstance();
+    	        tService.validateTranscription(transcription);
+    	        validateButton.setDisable(true);	
+    		}
+    		catch (Exception e) 
+    		{
+    			System.out.println("SinglePageViewCtrl.cls - validateTranscription() - exception: " + e.getMessage());
+        		e.printStackTrace();
+		}
+           
+    }
 
 
     

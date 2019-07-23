@@ -15,7 +15,8 @@
             <ImageView fx:id="pageScan" fitHeight="507.0" fitWidth="368.0" pickOnBounds="true" preserveRatio="true" />
          </content>
       </ScrollPane>
-      <Button fx:id="validateButton" layoutX="391.0" layoutY="448.0" mnemonicParsing="false" onAction="#saveTranscription" text="Valida" />
+      <Button fx:id="saveButton" layoutX="391.0" layoutY="448.0" mnemonicParsing="false" onAction="#saveTranscription" text="Salva" />
+      <Button fx:id="validateButton" layoutX="751.0" layoutY="448.0" mnemonicParsing="false" onAction="#validateTranscription" text="Valida" />
       <HTMLEditor fx:id="pageTranscription" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="314.0" layoutY="39.0" prefHeight="388.0" prefWidth="559.0" />
       <Button fx:id="assignmentButton" layoutX="558.0" layoutY="448.0" mnemonicParsing="false" onAction="#saveTranscription" text="Assegna" />
    </children>

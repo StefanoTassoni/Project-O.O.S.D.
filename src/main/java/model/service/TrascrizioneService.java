@@ -52,6 +52,15 @@ public class TrascrizioneService {
 		return true;
 	}
 	
+	public Boolean validateTranscription(Trascrizione tras) throws ServiceException {
+		TrascrizioneDTO conditionDTO = new TrascrizioneDTO();
+		conditionDTO.setIdScan(tras.getIdScan());
+		TrascrizioneDTO changesDTO = new TrascrizioneDTO();
+		changesDTO.setValidata(1);
+		TrascrizioneDAO.update(changesDTO, conditionDTO);
+		return true;
+	}
+	
 	public Boolean deleteTranscription(Trascrizione tras) throws ServiceException {
 		TrascrizioneDTO trasDTO = new TrascrizioneDTO();
 		trasDTO.setIdScan(tras.getIdScan());
