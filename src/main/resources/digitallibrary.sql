@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Creato il: Lug 22, 2019 alle 23:56
+-- Creato il: Lug 23, 2019 alle 23:35
 -- Versione del server: 5.6.35
 -- Versione PHP: 7.1.8
 
@@ -114,6 +114,8 @@ CREATE TABLE `opera` (
 --
 
 INSERT INTO `opera` (`ID`, `titolo`, `categoria`, `autore`, `lingua`, `date_creazione`, `data_publicazione`) VALUES
+(24, 'decamerore', 'deca', 'deca', 'italian', '2019-07-10', '2019-07-18 00:00:00'),
+(25, 'Batman', 'batman', 'kirby', 'itENg', '2019-07-17', '2019-07-17 00:00:00'),
 (23, 'Divina Commedia', 'Romanzo', 'Dante Alighieri', 'Italiana', '1304-06-27', '1304-06-27 00:00:00');
 
 -- --------------------------------------------------------
@@ -148,6 +150,8 @@ CREATE TABLE `scansione` (
 --
 
 INSERT INTO `scansione` (`ID`, `pagina`, `data_pubblicazione`, `formato`, `ID_opera`, `ID_user`, `path`) VALUES
+(11, '2', '2019-07-23 00:00:00', 'jpg', 25, 1, 'src/main/resources/imagedir/25/2.jpg'),
+(10, '2', '2019-07-23 00:00:00', 'jpg', 24, 1, 'src/main/resources/imagedir/24/2.jpg'),
 (6, '1', '2019-07-22 00:00:00', 'jpg', 23, 1, 'src/main/resources/imagedir/23/1.jpg'),
 (7, '2', '2019-07-22 00:00:00', 'jpg', 23, 1, 'src/main/resources/imagedir/23/2.jpg'),
 (8, '3', '2019-07-22 00:00:00', 'jpg', 23, 1, 'src/main/resources/imagedir/23/3.jpg'),
@@ -171,7 +175,7 @@ CREATE TABLE `trascrizione` (
 --
 
 INSERT INTO `trascrizione` (`ID`, `testo`, `ID_scan`, `validata`) VALUES
-(1, 'prova', 1, 1);
+(11, '<html dir=<apx>ltr<apx>><head></head><body contenteditable=<apx>true<apx>><p><font face=<apx>Lucida Grande<apx>>COMINCIA LA COMEDIA DI</font></p><p><font face=<apx>Lucida Grande<apx>>dante allegheri di firenzeTrascrittore</font></p></body></html>', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -201,7 +205,9 @@ INSERT INTO `user` (`ID`, `NAME`, `SURNAME`, `USERNAME`, `PASSWORD`, `MAIL`, `NO
 (3, 'rocco', 'papaleo', 'rocchetta', 'pappa', 'rocco@gmail.com', 'trascrittore', '', ''),
 (4, 'feffo', 'feffo', 'feffo', '51fa5adfd09d64475ee75ed58b40c75c28d5323f8f18167662057f76aef25a6', 'feffo@feffo.it', 'supervisore', 'via da qui', '+393453453333'),
 (5, 'fico', 'fico', 'fico@fico.it', '5d942a1d73fd8f28d71e6b3d2e42f44721db94b734c2edcfe6fcd48b76a74f9', 'fico@fico.it', 'supervisore', '', ''),
-(6, 'ste', 'ste', 'stef', '7aacb6d011d8d98c2caa91c132e5a3cdeb346b143a871a4a223b79ea922487', 'ste@ste.it', 'supervisore', '', '');
+(6, 'ste', 'ste', 'stef', '7aacb6d011d8d98c2caa91c132e5a3cdeb346b143a871a4a223b79ea922487', 'ste@ste.it', 'supervisore', '', ''),
+(7, 'stefano', 'stefano', 'stefano', '41c61f521e29163e5aa912e91d3f2db2201dab39c758e6b6473255251341af91', 'stefano@stef.it', 'supervisore', '', ''),
+(8, 'prova', 'prova', 'l', 'acac86c0e69ca906f632be2dacccb2b77d22b0621f20ebece1a4835b93f6f0', 'prova@prova.it', 'supervisore', '', '');
 
 -- --------------------------------------------------------
 
@@ -224,7 +230,9 @@ INSERT INTO `usergroup` (`fk_user`, `fk_group`) VALUES
 (3, 2),
 (5, 3),
 (6, 3),
-(4, 2);
+(4, 2),
+(7, 2),
+(8, 3);
 
 --
 -- Indici per le tabelle scaricate
@@ -312,12 +320,12 @@ ALTER TABLE `gruppo`
 -- AUTO_INCREMENT per la tabella `modulo`
 --
 ALTER TABLE `modulo`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT per la tabella `opera`
 --
 ALTER TABLE `opera`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT per la tabella `permessi`
 --
@@ -327,17 +335,17 @@ ALTER TABLE `permessi`
 -- AUTO_INCREMENT per la tabella `scansione`
 --
 ALTER TABLE `scansione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT per la tabella `trascrizione`
 --
 ALTER TABLE `trascrizione`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
