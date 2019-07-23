@@ -1,15 +1,14 @@
-package model;
+package db.dao.dto;
 
 import java.util.Date;
 
-public class Scansione {
-
+public class ScansioneDTO extends BaseDTO{
 	
 	private Integer id;
 	private String n_pagina;
 	private Date data_pubblicazione;
-	private String formato;
 	private String path;
+	private String formato;
 	private Integer idOpera;
 	private Integer IdUser;
 	

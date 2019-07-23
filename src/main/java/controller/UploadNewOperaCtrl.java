@@ -21,8 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
-import model.Opera;
-import model.service.OperaService;
+import service.model.Opera;
+import service.OperaService;
 
 
 public class UploadNewOperaCtrl  implements Initializable{

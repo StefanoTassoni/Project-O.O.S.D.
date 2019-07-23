@@ -1,4 +1,4 @@
-package model.service;
+package service;
 
 import java.util.List;
 
@@ -6,14 +6,14 @@ import java.util.List;
 
 import db.dao.UserDAO;
 import db.dao.UserGroupDAO;
-import db.dto.UserGroupDTO;
-import db.dto.UserDTO;
+import db.dao.dto.UserGroupDTO;
+import db.dao.dto.UserDTO;
 import controller.exception.enums.ErrorCode;
 import controller.exception.ServiceException;
-import model.mapper.UserGroupMapper;
-import model.mapper.UserMapper;
-import model.User;
-import model.UserGroup;
+import service.mapper.UserGroupMapper;
+import service.mapper.UserMapper;
+import service.model.User;
+import service.model.UserGroup;
 
 public class UserService{
 

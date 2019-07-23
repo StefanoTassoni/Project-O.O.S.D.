@@ -1,6 +1,6 @@
-package db.dto;
+package service.model;
 
-public class UserDTO extends BaseDTO{
+public class User {
 	
 	private Integer id;
 	private String name;
@@ -11,7 +11,7 @@ public class UserDTO extends BaseDTO{
 	private String phone;
 	private String address;
 	private String nome_gruppo;
-
+	
 	
 	public Integer getId() {
 		return id;
@@ -70,7 +70,7 @@ public class UserDTO extends BaseDTO{
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", username=" + username + ", password="
+		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", mail=" + mail+ ", username=" + username + ", password="
 				+ password + ", nome gruppo=" + nome_gruppo + ", Phone=" + phone + ", address=" + address +"]";
 	}
 	

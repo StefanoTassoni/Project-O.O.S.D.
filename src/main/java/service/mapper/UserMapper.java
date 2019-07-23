@@ -1,10 +1,10 @@
-package model.mapper;
+package service.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import db.dto.UserDTO;
-import model.User;
+import db.dao.dto.UserDTO;
+import service.model.User;
 
 public class UserMapper {
 	

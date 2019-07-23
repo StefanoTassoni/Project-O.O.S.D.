@@ -1,5 +1,5 @@
 package db.dao;
-import db.dto.TrascrizioneDTO;
+import db.dao.dto.TrascrizioneDTO;
 import controller.exception.ServiceException;
 
 public class TrascrizioneDAO extends BaseDAO<TrascrizioneDTO> {

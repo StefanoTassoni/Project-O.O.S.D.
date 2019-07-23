@@ -9,8 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Opera;
-import model.Modulo;
+import service.model.Opera;
+import service.model.Modulo;
 
 import javax.naming.NamingException;
 

@@ -1,6 +1,6 @@
 package db.dao;
 
-import db.dto.UserDTO;
+import db.dao.dto.UserDTO;
 
 import controller.exception.ServiceException;
 

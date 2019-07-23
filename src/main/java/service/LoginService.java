@@ -1,8 +1,8 @@
-package model.service;
+package service;
 
 import controller.exception.ServiceException;
 import controller.utils.StringUtils;
-import model.User;
+import service.model.User;
 
 public class LoginService {
 	

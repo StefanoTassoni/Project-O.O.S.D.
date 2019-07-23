@@ -1,6 +1,6 @@
-package db.dto;
+package service.model;
 
-public class TrascrizioneDTO extends BaseDTO{
+public class Trascrizione {
 	
 	private Integer id;
 	private String testo;
@@ -38,6 +38,5 @@ public class TrascrizioneDTO extends BaseDTO{
 	public String toString() {
 		return "Trascrizione [id=" + id + ", testo=" + testo + ", idscan=" + idscan + ", validata=" + validata +  "]";
 	}
-	
 	
 }

@@ -1,6 +1,6 @@
 package db.dao;
 
-import db.dto.UserGroupDTO;
+import db.dao.dto.UserGroupDTO;
 
 import java.util.List;
 

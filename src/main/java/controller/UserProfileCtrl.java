@@ -14,8 +14,8 @@ import javafx.scene.control.Button;
 //import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import model.User;
-import model.service.UserService;
+import service.model.User;
+import service.UserService;
 
 
 public class UserProfileCtrl implements Initializable{

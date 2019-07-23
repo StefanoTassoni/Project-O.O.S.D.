@@ -1,10 +1,10 @@
-package model.mapper;
+package service.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import db.dto.OperaDTO;
-import model.Opera;
+import db.dao.dto.OperaDTO;
+import service.model.Opera;
 
 public class OperaMapper {
 	

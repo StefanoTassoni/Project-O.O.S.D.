@@ -1,11 +1,11 @@
-package model.mapper;
+package service.mapper;
 
 import java.util.ArrayList;
 
 import java.util.List;
 
-import db.dto.TrascrizioneDTO;
-import model.Trascrizione;
+import db.dao.dto.TrascrizioneDTO;
+import service.model.Trascrizione;
 
 public class TrascrizioneMapper {
 	

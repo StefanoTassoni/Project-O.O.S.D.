@@ -18,8 +18,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import model.Opera;
-import model.service.OperaService;
+import service.model.Opera;
+import service.OperaService;
  
 public class OperaListCtrl implements Initializable, ObservableList<Opera>{
     

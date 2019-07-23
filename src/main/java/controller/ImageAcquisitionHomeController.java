@@ -33,10 +33,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
-import model.Opera;
-import model.Scansione;
-import model.service.OperaService;
-import model.service.ScansioneService;
+import service.model.Opera;
+import service.model.Scansione;
+import service.OperaService;
+import service.ScansioneService;
 
  
 public class ImageAcquisitionHomeController implements Initializable, ObservableList<Opera>{

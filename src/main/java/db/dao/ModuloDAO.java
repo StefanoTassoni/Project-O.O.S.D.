@@ -1,6 +1,6 @@
 package db.dao;
 
-import db.dto.ModuloDTO;
+import db.dao.dto.ModuloDTO;
 import java.util.List;
 
 import controller.exception.ServiceException;

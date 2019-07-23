@@ -1,9 +1,9 @@
-package model.mapper;
+package service.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import db.dto.ModuloDTO;
-import model.Modulo;
+import db.dao.dto.ModuloDTO;
+import service.model.Modulo;
 
 
 public class ModuloMapper {

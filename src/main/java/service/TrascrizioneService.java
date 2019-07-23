@@ -1,11 +1,11 @@
-package model.service;
+package service;
 
 import java.util.List;
 
 import db.dao.TrascrizioneDAO;
-import db.dto.TrascrizioneDTO;
-import model.mapper.TrascrizioneMapper;
-import model.Trascrizione;
+import db.dao.dto.TrascrizioneDTO;
+import service.mapper.TrascrizioneMapper;
+import service.model.Trascrizione;
 import controller.exception.ServiceException;
 
 

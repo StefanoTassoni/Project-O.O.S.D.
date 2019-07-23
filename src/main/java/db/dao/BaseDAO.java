@@ -1,5 +1,5 @@
 package db.dao;
-
+import db.dao.dto.BaseDTO;
 import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import db.Database;
-import db.dto.BaseDTO;
 import controller.exception.enums.ErrorCode;
 import controller.exception.ServiceException;
 

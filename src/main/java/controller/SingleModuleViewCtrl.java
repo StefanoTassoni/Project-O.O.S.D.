@@ -12,10 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import model.Modulo;
-import model.User;
-import model.service.ModuloService;
-import model.service.UserService;
+import service.model.Modulo;
+import service.model.User;
+import service.ModuloService;
+import service.UserService;
 
 public class SingleModuleViewCtrl implements Initializable{
 	

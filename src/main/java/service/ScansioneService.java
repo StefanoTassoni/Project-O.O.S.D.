@@ -1,11 +1,11 @@
-package model.service;
+package service;
 
 import java.util.List;
 
 import db.dao.ScansioneDAO;
-import db.dto.ScansioneDTO;
-import model.mapper.ScansioneMapper;
-import model.Scansione;
+import db.dao.dto.ScansioneDTO;
+import service.mapper.ScansioneMapper;
+import service.model.Scansione;
 import controller.exception.ServiceException;
 
 public class ScansioneService {

@@ -1,4 +1,4 @@
-package db.dto;
+package db.dao.dto;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package db.dao;
 
-import db.dto.OperaDTO;
+import db.dao.dto.OperaDTO;
 
 import java.util.List;
 

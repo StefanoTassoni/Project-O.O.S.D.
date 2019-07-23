@@ -8,8 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import model.User;
-import model.service.UserService;
+import service.model.User;
+import service.UserService;
 
 
 

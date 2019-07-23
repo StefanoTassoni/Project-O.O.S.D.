@@ -23,10 +23,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
-import model.Modulo;
-import model.User;
-import model.service.ModuloService;
-import model.service.UserService;
+import service.model.Modulo;
+import service.model.User;
+import service.ModuloService;
+import service.UserService;
  
 public class SeeModuleCtrl implements Initializable, ObservableList<ModuleJoin>{
     

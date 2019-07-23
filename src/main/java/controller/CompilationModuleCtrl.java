@@ -12,10 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
-import model.User;
-import model.Modulo;
-import model.service.ModuloService;
-import model.service.UserService;
+import service.model.User;
+import service.model.Modulo;
+import service.ModuloService;
+import service.UserService;
 
 
 public class CompilationModuleCtrl  implements Initializable{

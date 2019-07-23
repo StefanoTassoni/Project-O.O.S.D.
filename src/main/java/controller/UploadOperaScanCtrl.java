@@ -21,8 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import model.Scansione;
-import model.service.ScansioneService;
+import service.model.Scansione;
+import service.ScansioneService;
 
 public class UploadOperaScanCtrl implements Initializable{
 	

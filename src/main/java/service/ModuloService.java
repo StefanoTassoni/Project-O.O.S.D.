@@ -1,9 +1,9 @@
-package model.service;
+package service;
 
 import db.dao.ModuloDAO;
-import db.dto.ModuloDTO;
-import model.mapper.ModuloMapper;
-import model.Modulo;
+import db.dao.dto.ModuloDTO;
+import service.mapper.ModuloMapper;
+import service.model.Modulo;
 
 import java.util.ArrayList;
 import java.util.List;

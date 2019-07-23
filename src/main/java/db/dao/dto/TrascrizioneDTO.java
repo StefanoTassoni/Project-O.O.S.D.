@@ -1,6 +1,6 @@
-package model;
+package db.dao.dto;
 
-public class Trascrizione {
+public class TrascrizioneDTO extends BaseDTO{
 	
 	private Integer id;
 	private String testo;
@@ -38,5 +38,6 @@ public class Trascrizione {
 	public String toString() {
 		return "Trascrizione [id=" + id + ", testo=" + testo + ", idscan=" + idscan + ", validata=" + validata +  "]";
 	}
+	
 	
 }

@@ -1,6 +1,6 @@
 package db.dao;
 
-import db.dto.ScansioneDTO;
+import db.dao.dto.ScansioneDTO;
 
 //import java.util.List;
 

@@ -19,8 +19,8 @@ import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import model.User;
-import model.service.LoginService;
+import service.model.User;
+import service.LoginService;
 
 public class TextEditorCtrl {
 

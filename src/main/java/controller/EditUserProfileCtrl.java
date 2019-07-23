@@ -11,8 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import model.User;
-import model.service.UserService;
+import service.model.User;
+import service.UserService;
 
 
 public class EditUserProfileCtrl implements Initializable{

@@ -1,11 +1,11 @@
-package model.service;
+package service;
 
 import java.util.List;
 
 import db.dao.OperaDAO;
-import db.dto.OperaDTO;
-import model.mapper.OperaMapper;
-import model.Opera;
+import db.dao.dto.OperaDTO;
+import service.mapper.OperaMapper;
+import service.model.Opera;
 import controller.exception.ServiceException;
 
 public class OperaService {

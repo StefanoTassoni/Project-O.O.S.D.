@@ -1,11 +1,11 @@
-package model.mapper;
+package service.mapper;
 
 import java.util.ArrayList;
 
 import java.util.List;
 
-import db.dto.ScansioneDTO;
-import model.Scansione;
+import db.dao.dto.ScansioneDTO;
+import service.model.Scansione;
 
 public class ScansioneMapper {
 	
