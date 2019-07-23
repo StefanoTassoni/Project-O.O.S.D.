@@ -31,6 +31,13 @@ public class ScansioneDAO extends BaseDAO<ScansioneDTO> {
 		return find(operaDTO);
 	}
 	
+	public ScansioneDTO getByPath(String path) throws ServiceException 
+	{
+		ScansioneDTO operaDTO = new ScansioneDTO();
+		operaDTO.setPath(path);
+		return find(operaDTO);
+	}
+	
 	public void remove(ScansioneDTO opera) throws ServiceException 
 	{
 		delete(opera);

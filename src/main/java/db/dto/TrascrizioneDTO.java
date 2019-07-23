@@ -5,7 +5,7 @@ public class TrascrizioneDTO extends BaseDTO{
 	private Integer id;
 	private String testo;
 	private Integer idscan;
-	private Boolean validata;
+	private Integer validata;
 	
 	
 	public Integer getId() {
@@ -26,10 +26,10 @@ public class TrascrizioneDTO extends BaseDTO{
 	public void setIdScan(Integer idscan) {
 		this.idscan = idscan;
 	}
-	public Boolean getValidata() {
+	public Integer getValidata() {
 		return validata;
 	}
-	public void setValidata(Boolean validata) {
+	public void setValidata(Integer validata) {
 		this.validata = validata;
 	}
 	

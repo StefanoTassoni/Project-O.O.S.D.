@@ -30,7 +30,7 @@
             <TextField fx:id="operaLanguage"   GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label prefHeight="48.0" prefWidth="187.0" text="Data &#10;Pubblicazione" GridPane.rowIndex="5" />
             <DatePicker fx:id="operaPublicationDate"   GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label prefHeight="148.0" prefWidth="187.0" text="Data &#10;Creazione" GridPane.rowIndex="6" />
+            <Label prefHeight="48.0" prefWidth="87.0" text="Data &#10;Creazione" GridPane.rowIndex="6" />
             <DatePicker fx:id="operaCreationDate"   GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
          <columnConstraints>

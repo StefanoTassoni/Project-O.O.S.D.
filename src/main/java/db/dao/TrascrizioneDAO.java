@@ -27,6 +27,13 @@ public class TrascrizioneDAO extends BaseDAO<TrascrizioneDTO> {
 		return find(transcriptionDTO);
 	}
 	
+	public TrascrizioneDTO getByScanId(Integer scanId) throws ServiceException 
+	{
+		TrascrizioneDTO transcriptionDTO = new TrascrizioneDTO();
+		transcriptionDTO.setIdScan(scanId);
+		return find(transcriptionDTO);
+	}
+	
 	public void remove(TrascrizioneDTO transcription) throws ServiceException 
 	{
 		delete(transcription);

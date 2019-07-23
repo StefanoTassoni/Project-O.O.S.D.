@@ -32,6 +32,12 @@ public class ScansioneService {
 		return ScansioneMapper.toModel(scanDTO);
 	}
 	
+	public Scansione getScanByPath(String path ) throws ServiceException 
+	{
+		ScansioneDTO scanDTO = ScansioneDAO.getByPath(path);
+		return ScansioneMapper.toModel(scanDTO);
+	}
+	
 	public List<Scansione> getAllScans() throws ServiceException 
 	{
 		List<ScansioneDTO> scanDTOList = ScansioneDAO.selectAll();

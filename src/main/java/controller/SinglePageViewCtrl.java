@@ -3,7 +3,6 @@ package controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
@@ -13,7 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.web.HTMLEditor;
+import model.Scansione;
 import model.Trascrizione;
+import model.service.ScansioneService;
 import model.service.TrascrizioneService;
 import javafx.scene.text.Text;
 import javafx.scene.image.Image;
@@ -39,6 +40,17 @@ public class SinglePageViewCtrl implements Initializable{
     			pageScan.setImage(image);
     			
     			scanId.setText(userPreferences.get("currentSelectedScan", null));
+    			
+    			ScansioneService sService = ScansioneService.getInstance();
+    			Scansione tempScan = sService.getScanByPath(scanId.getText());
+    			
+    			
+    			TrascrizioneService tService = TrascrizioneService.getInstance();
+    			Trascrizione tempTrascr = tService.getTranscriptionByScanId(tempScan.getId());
+    			
+    			String replacedHtmlString = tempTrascr.getTesto().replace("<apx>", "\"");
+    			
+    			pageTranscription.setHtmlText(replacedHtmlString);
     	           
     		}
     		catch (Exception e) 
@@ -57,6 +69,17 @@ public class SinglePageViewCtrl implements Initializable{
     			GUIUtils guiUtils = GUIUtils.getInstance();
     	        System.out.println("SinglePageViewCtrl.cls - saveTranscription() - scanId: " + scanId.getText());
     	        System.out.println("SinglePageViewCtrl.cls - saveTranscription() - pageTranscription: " + pageTranscription.getHtmlText());
+    	        ScansioneService scanService = ScansioneService.getInstance();
+    	        Scansione scan = scanService.getScanByPath(scanId.getText());
+    	        System.out.println("SinglePageViewCtrl.cls - saveTranscription() - pageTranscription: " + scan.toString());
+    	        
+    	        Trascrizione transcription = new Trascrizione();
+    	        transcription.setIdScan(scan.getId());
+    	        String replaceHTMLString = pageTranscription.getHtmlText().replace("\"","<apx>");;
+    	        transcription.setTesto(replaceHTMLString);
+    	        transcription.setValidata(0);
+    	        TrascrizioneService tService = TrascrizioneService.getInstance();
+    	        tService.saveTranscription(transcription);
     	        guiUtils.closePopupWindow(validateButton.getScene());	
     		}
     		catch (Exception e) 

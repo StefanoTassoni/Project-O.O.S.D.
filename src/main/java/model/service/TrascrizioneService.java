@@ -33,6 +33,12 @@ public class TrascrizioneService {
 		return TrascrizioneMapper.toModel(trasDTO);
 	}
 	
+	public Trascrizione getTranscriptionByScanId(Integer scanId) throws ServiceException 
+	{
+		TrascrizioneDTO trasDTO = TrascrizioneDAO.getByScanId(scanId);
+		return TrascrizioneMapper.toModel(trasDTO);
+	}
+	
 	public List<Trascrizione> getAllTranscriptions() throws ServiceException 
 	{
 		List<TrascrizioneDTO> trasDTOList = TrascrizioneDAO.selectAll();
@@ -40,8 +46,16 @@ public class TrascrizioneService {
 	}
 	
 	public Boolean saveTranscription(Trascrizione tras) throws ServiceException {
+		deleteTranscription(tras);
 		TrascrizioneDTO trasDTO = TrascrizioneMapper.toDTO(tras); 
 		TrascrizioneDAO.insert(trasDTO);
+		return true;
+	}
+	
+	public Boolean deleteTranscription(Trascrizione tras) throws ServiceException {
+		TrascrizioneDTO trasDTO = new TrascrizioneDTO();
+		trasDTO.setIdScan(tras.getIdScan());
+		TrascrizioneDAO.delete(trasDTO);
 		return true;
 	}
 	
