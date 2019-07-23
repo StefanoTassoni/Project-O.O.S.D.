@@ -8,13 +8,16 @@
 	<CardPane fx:id="CardPaneAdmin" prefHeight="500.0" prefWidth="222.0">
 	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
 	    <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
-	    <!-- <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" /> -->
-	    <!-- <Label onMouseClicked="#temp" style="-fx-padding:10;" text="Test" />-->
-	    <Label onMouseClicked="#gotoSeeModule" style="-fx-padding:10;" text="Consulta Moduli" />
+	    <!-- 
+	    <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" /> 
+	    <Label onMouseClicked="#temp" style="-fx-padding:10;" text="Test" />
 	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Validazione Trascrizioni" />
+	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Gestione Livelli Trascrittori" />
+	    -->
+	    <Label onMouseClicked="#gotoSeeModule" style="-fx-padding:10;" text="Consulta Moduli" />
 	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Assegnazione Immagini" />
 	    <Label onMouseClicked="#gotoImageAcquisition" style="-fx-padding:10;" text="Acquisizione Immagini" />
-	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Gestione Livelli Trascrittori" />
+	    
 	</CardPane>
 	<CardPane fx:id="CardPaneUser" prefHeight="500.0" prefWidth="222.0">
 	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
@@ -24,6 +27,6 @@
 	<CardPane fx:id="CardPaneTranscriptor" prefHeight="500.0" prefWidth="222.0">
 	    <Label onMouseClicked="#gotoResearchHome" style="-fx-padding:10;" text="Ricerca Opera" />
 	    <Label onMouseClicked="#gotoUserProfile" style="-fx-padding:10;" text="Profilo Utente" />
-	    <Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />
+	    <!--<Label onMouseClicked="#gotoModuleCompiling" style="-fx-padding:10;" text="Compilazione Modulo" />-->
 	</CardPane>
 </Pane>

@@ -37,13 +37,13 @@ public class SideBarCtrl implements Initializable{
 	    			}
 	    			else if(groupId.equals("2")) 
 	    			{
-	    				CardPaneUser.setVisible(true);
+	    				CardPaneTranscriptor.setVisible(true);
 		    			CardPaneAdmin.setVisible(false);
 		    			CardPaneTranscriptor.setVisible(false);
 	    			}
 	    			else if(groupId.equals("3")) 
 	    			{
-	    				CardPaneTranscriptor.setVisible(true);
+	    				CardPaneUser.setVisible(true);
 	    				CardPaneUser.setVisible(false);
 		    			CardPaneAdmin.setVisible(false);
 	    			}
